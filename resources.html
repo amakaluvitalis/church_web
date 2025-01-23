@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="index.js" ></script>
+    <script src="index.js" defer></script>
     <link rel="stylesheet" href="index.css">
 </head>
 <body class="bg-gray-100 font-sans min-h-screen flex flex-col">
@@ -16,12 +16,13 @@
             <span><strong>Need help to Locate Us? Contact:</strong> +254 (7) 437-20033</span>
         </div>
     </div>
+    
     <!-- Header -->
-    <header class="absolute top-8 left-0 w-full z-5 bg-gradient-to-b from-[#a36666]/90 to-transparent text-white p-4">
+    <header class="absolute top-8 left-0 w-full z-10 bg-gradient-to-b from-[#a36666]/90 to-transparent text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <img src="logo.png" alt="Church Logo" class="h-20 w-auto object-contain">
-                <h1 class="text-xl font-bold">Church Name</h1>
+                <h1 class="text-xl font-bold">Church of God</h1>
             </div>
 
             <!-- Desktop Navigation -->
@@ -59,15 +60,15 @@
             </button>
 
             <!-- Mobile Menu -->
-            <nav class="hidden lg:hidden bg-gray-800 text-white" id="mobile-menu">
-                <ul class="p-4 space-y-4">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Ministries</a></li>
-                    <li><a href="activities.html">Activities</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="get-involved.html">Get Involved</a></li>
-                    <li><a href="contact-us.html">Contact Us</a></li>
+            <nav class="hidden lg:hidden bg-[#c19999] text-white shadow-lg rounded-lg p-6" id="mobile-menu">
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="hover:text-[#660000]">Home</a></li>
+                    <li><a href="#" class="hover:text-[#660000]">About</a></li>
+                    <li><a href="#" class="hover:text-[#660000]">Ministries</a></li>
+                    <li><a href="activities.html" class="hover:text-[#660000]">Activities</a></li>
+                    <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
+                    <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
+                    <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
