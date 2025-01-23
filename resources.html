@@ -73,19 +73,103 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow bg-white py-12 px-4 text-center mt-20">
-        <h2 class="text-3xl font-bold text-[#660000] mb-4">Resources</h2>
-        <p class="text-lg text-gray-700">Here you can find a list of resources to help you grow in your faith.</p>
-        <!-- Example content block -->
-        <div class="mt-8">
-            <ul class="space-y-4">
-                <li><a href="#" class="text-[#660000] hover:underline">Download Bible Studies</a></li>
-                <li><a href="#" class="text-[#660000] hover:underline">Access Sermon Archive</a></li>
-                <li><a href="#" class="text-[#660000] hover:underline">Join Prayer Groups</a></li>
-            </ul>
+<!-- Main Content -->
+<!-- Main Content -->
+<main class="flex-grow bg-white py-12 px-4 text-center mt-20 relative bg-cover bg-center bg-fixed" style="background-image: url('resources.jpg');">
+
+    <!-- Translucent Overlay -->
+    <div class="absolute inset-0 bg-[#efe5e5] bg-opacity-60"></div>
+
+    <!-- Content Wrapper (To Keep Text on Top of Overlay) -->
+    <div class="relative">
+        
+        <!-- YouTube Video Previews (Carousel style) -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-semibold text-[#660000] mb-4">Watch Our Latest Sermons</h3>
+
+            <!-- Carousel Container -->
+            <div class="flex justify-center gap-4 overflow-x-auto snap-x snap-mandatory pb-4">
+                <!-- Individual Video 1 -->
+                <div class="flex-shrink-0 snap-center w-[360px] h-[200px] md:w-[480px] md:h-[270px]">
+                    <iframe 
+                        class="w-full h-full rounded-md" 
+                        src="https://www.youtube.com/embed/75_ipUyonyA?rel=0&showinfo=0&modestbranding=1" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Individual Video 2 -->
+                <div class="flex-shrink-0 snap-center w-[360px] h-[200px] md:w-[480px] md:h-[270px]">
+                    <iframe 
+                        class="w-full h-full rounded-md" 
+                        src="https://www.youtube.com/embed/x3gomNVHoIU?rel=0&showinfo=0&modestbranding=1" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
         </div>
-    </main>
+
+        <!-- Audio Sermons Section -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-semibold text-[#660000] mb-4">Listen to Our Latest Sermons</h3>
+
+            <!-- Table-like container with scroll -->
+            <div class="max-w-xl mx-auto overflow-y-auto max-h-96 border border-gray-300 rounded-lg shadow-lg">
+                <table class="min-w-full border-collapse">
+                    <thead class="bg-[#660000] text-white">
+                        <tr>
+                            <th class="py-3 px-4 text-left">Sermon Title</th>
+                            <th class="py-3 px-4 text-left">Date</th>
+                            <th class="py-3 px-4 text-left">Audio</th>
+                            <th class="py-3 px-4 text-left">Download</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white text-gray-700">
+                        <!-- Sermon Row 1 -->
+                        <tr class="border-b">
+                            <td class="py-3 px-4">Sunday Sermon</td>
+                            <td class="py-3 px-4">Jan 14, 2024</td>
+                            <td class="py-3 px-4">
+                                <audio controls class="w-40">
+                                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td class="py-3 px-4">
+                                <a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" download class="text-[#660000] hover:underline">
+                                    Download
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Sermon Row 2 -->
+                        <tr class="border-b">
+                            <td class="py-3 px-4">Midweek Service</td>
+                            <td class="py-3 px-4">Jan 17, 2024</td>
+                            <td class="py-3 px-4">
+                                <audio controls class="w-40">
+                                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td class="py-3 px-4">
+                                <a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" download class="text-[#660000] hover:underline">
+                                    Download
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
 
     <!-- Footer -->
     <footer class="relative bg-contain bg-cover bg-center text-[#3d0000] py-12" style="background-image: url('footer.jpg');">
@@ -133,6 +217,27 @@
             </div>
         </div>
     </footer>
+    <script>
+function playVideo(videoId, videoNumber) {
+    // Get the specific elements for the clicked video
+    const thumbnailContainer = document.getElementById(`thumbnail-container-${videoNumber}`);
+    const thumbnail = document.getElementById(`thumbnail-${videoNumber}`);
+    const playButton = document.getElementById(`play-button-${videoNumber}`);
+    const iframe = document.getElementById(`video-${videoNumber}`);
 
+    // Hide the entire thumbnail container, thumbnail, and play button
+    thumbnailContainer.style.display = 'none';
+    thumbnail.style.display = 'none';
+    playButton.style.display = 'none';
+
+    // Set the video source and show the iframe
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
+    iframe.classList.remove('hidden');
+}
+
+
+
+    </script>
+    
 </body>
 </html>
