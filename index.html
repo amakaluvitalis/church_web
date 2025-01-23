@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
@@ -19,14 +20,15 @@
         </div>
     </div>
 
-    <section id="hero-container" class="relative h-[75vh] overflow-hidden text-white">
+    <section id="hero-container" class="relative h-[55vh] lg:h-[75vh] overflow-hidden text-white">
+        <!-- Header -->
         <header class="absolute top-0 left-0 w-full z-30 bg-gradient-to-b from-[#e0cccc]/90 to-transparent text-white p-4">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center space-x-4">
-                    <img src="logo.png" alt="Church Logo" class="h-20 w-auto object-contain">
-                    <h1 class="text-xl font-bold">Church Name</h1>
+                    <img src="logo.png" alt="Church Logo" class="h-16 lg:h-20 w-auto object-contain">
+                    <h1 class="text-lg lg:text-xl font-bold">Church Name</h1>
                 </div>
-
+    
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:block">
                     <ul class="flex space-x-4">
@@ -53,67 +55,33 @@
                         <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
                     </ul>
                 </nav>
-
-            <!-- Mobile Menu Toggle -->
-            <button class="lg:hidden text-white relative z-20" id="menu-toggle">
-                <!-- Menu Icon (hamburger) -->
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-
-                <!-- Close Icon (X) -->
-                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 hidden">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
     
-        <!-- Mobile Menu -->
-        <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
-            <ul class="p-6 space-y-4">
-                <li><a href="index.html" class="hover:text-[#660000]">Home</a></li>
-                <li>
-                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" data-dropdown="about-dropdown">
-                        About
-                        <span>&#9662;</span>
-                    </button>
-                    <ul id="about-dropdown" class="hidden space-y-2 ml-4">
-                        <li><a href="who-we-are.html" class="hover:text-[#660000]">Who We Are</a></li>
-                        <li><a href="history.html" class="hover:text-[#660000]">History</a></li>
-                        <li><a href="ministry.html" class="hover:text-[#660000]">Ministry</a></li>
-                        <li><a href="administration-and-governance.html" class="hover:text-[#660000]">Administration and Governance</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" data-dropdown="ministries-dropdown">
-                        Ministries
-                        <span>&#9662;</span>
-                    </button>
-                    <ul id="ministries-dropdown" class="hidden space-y-2 ml-4">
-                        <li><a href="family.html" class="hover:text-[#660000]">Family</a></li>
-                        <li><a href="praise-and-worship.html" class="hover:text-[#660000]">Praise and Worship</a></li>
-                    </ul>
-                </li>
-                <li><a href="activities.html" class="hover:text-[#660000]">Activities</a></li>
-                <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
-                <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
-                <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    </header>
-
-        <div class="hero-slide  active" data-text="Welcome to Our Church" data-subtext="We are a place of love, hope, and faith, where you can grow spiritually and connect with others." style="background-image: url('hero3b.jpg');"></div>
-        <div class="hero-slide" data-text="Join Our Ministries" data-subtext="Our ministries provide opportunities to serve and engage with others in meaningful ways, from family support to praise and worship." style="background-image: url('hero2.jpg');"></div>
-        <div class="hero-slide" data-text="Get Involved" data-subtext="Whether through volunteering, donations, or participation, you can make a difference in our community and beyond." style="background-image: url('hero2b.jpg');"></div>
-
-        <div class="text-container bg-[#e0cccc]/80 p-4 rounded-md absolute bottom-8 left-1/2 transform -translate-x-1/2 w-auto max-w-lg">
-            <h2 id="hero-title" class="text-3xl font-bold text-center text-[#660000]"></h2>
-            <p id="hero-subtext" class="text-base text-center mt-2 text-white"></p>
-        </div>        
-
+                <!-- Mobile Menu Toggle -->
+                <button class="lg:hidden text-white relative z-20" id="menu-toggle">
+                    <!-- Menu Icon (hamburger) -->
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <!-- Close Icon (X) -->
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 hidden">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+    
+        <!-- Hero Slides -->
+        <div class="hero-slide active" data-text="Welcome to Our Church" data-subtext="We are a place of love, hope, and faith, where you can grow spiritually and connect with others." style="background-image: url('hero3b.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="hero-slide" data-text="Join Our Ministries" data-subtext="Our ministries provide opportunities to serve and engage with others in meaningful ways, from family support to praise and worship." style="background-image: url('hero2.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="hero-slide" data-text="Get Involved" data-subtext="Whether through volunteering, donations, or participation, you can make a difference in our community and beyond." style="background-image: url('hero2b.jpg'); background-size: cover; background-position: center;"></div>
+    
+        <!-- Text Container -->
+        <div class="text-container bg-[#e0cccc]/80 p-4 rounded-md absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] md:w-[75%] max-w-lg">
+            <h2 id="hero-title" class="text-2xl md:text-3xl font-bold text-center text-[#660000]"></h2>
+            <p id="hero-subtext" class="text-sm md:text-base text-center mt-2 text-white"></p>
+        </div>
     </section>
-
+    
 
 <!-- Mission and Vision Section -->
 <section class="py-16 bg-[#e0cccc] text-center">
