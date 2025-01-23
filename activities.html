@@ -7,6 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="index.js" ></script>
     <link rel="stylesheet" href="index.css">
+    <style>
+        .event-item:hover .event-img {
+            transform: scale(1.2); /* Zoom effect */
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .event-item:hover .event-overlay {
+            opacity: 0; /* Hide the overlay */
+            pointer-events: none; /* Disable interaction with the overlay */
+            transition: opacity 0.3s ease-in-out;
+        }
+    
+        .event-img {
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .event-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen flex flex-col">
     
@@ -73,11 +93,155 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow bg-white py-12 px-4 text-center mt-20">
-        <h2 class="text-2xl font-bold mb-4">Activities</h2>
-<p class="text-gray-700">Stay updated on our upcoming events and activities.</p>
-    </main>
+<!-- Main Content -->
+<main class="flex-grow bg-white py-12 px-4 mt-20">
+    <h2 class="text-4xl font-bold text-[#660000] text-center mb-6">Activities</h2>
+    <p class="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-12">
+        Stay updated on our recent and upcoming events as we continue to grow in faith and community service.
+    </p>
+
+
+<!-- Upcoming Events Section -->
+<section class="mb-20">
+    <h3 class="text-3xl font-semibold text-center text-[#660000] mb-8">Upcoming Events</h3>
+
+    <!-- Event Posters Carousel -->
+    <div class="relative overflow-hidden max-w-5xl mx-auto">
+        <div id="event-carousel" class="flex transition-transform duration-500 ease-in-out space-x-8">
+            
+            <!-- Event 1 -->
+            <div class="relative w-full md:w-1/2 flex-shrink-0 event-item">
+                <img src="event1.jpg" alt="Event 1" class="w-full h-64 object-cover rounded-lg shadow-lg event-img">
+                <div class="absolute inset-0 flex justify-center items-center p-4 rounded-lg event-overlay">
+                    <div class="bg-[#c19999] bg-opacity-60 text-white px-6 py-4 rounded-md">
+                        <h3 class="text-2xl font-bold">Womens Convention</h3>
+                        <p class="text-sm mt-2">Date: March 15, 2025</p>
+                        <p class="text-sm">Venue: Main Hall</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="relative w-full md:w-1/2 flex-shrink-0 event-item">
+                <img src="event2.jpg" alt="Event 2" class="w-full h-64 object-cover rounded-lg shadow-lg event-img">
+                <div class="absolute inset-0 flex justify-center items-center p-4 rounded-lg event-overlay">
+                    <div class="bg-[#c19999] bg-opacity-60 text-white px-6 py-4 rounded-md">
+                        <h3 class="text-2xl font-bold">Youth Breakfast</h3>
+                        <p class="text-sm mt-2">Date: April 5, 2025</p>
+                        <p class="text-sm">Venue: Majengo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="relative w-full md:w-1/2 flex-shrink-0 event-item">
+                <img src="event3.jpg" alt="Event 3" class="w-full h-64 object-cover rounded-lg shadow-lg event-img">
+                <div class="absolute inset-0 flex justify-center items-center p-4 rounded-lg event-overlay">
+                    <div class="bg-[#c19999] bg-opacity-60 text-white px-6 py-4 rounded-md">
+                        <h3 class="text-2xl font-bold">Ministry Prayers</h3>
+                        <p class="text-sm mt-2">Date: May 20, 2025</p>
+                        <p class="text-sm">Venue: Mother Church Oginga Oding'a Street</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- Periodic Activities Section -->
+    <section>
+        <h3 class="text-3xl font-semibold text-center text-[#660000] mb-8">Periodic Activities</h3>
+
+        <div class="container mx-auto space-y-16">
+
+        <!-- Activity 1 - Image Left -->
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2">
+                <img src="activity1.jpg" alt="Community Outreach" class="w-full h-64 object-cover rounded-lg shadow-lg">
+            </div>
+            <div class="md:w-1/2 md:pl-12 text-left animate-fadeIn">
+                <h3 class="text-3xl font-semibold text-[#660000]">Community Outreach Program</h3>
+                <p class="text-gray-800 mt-4">
+                    Our community outreach program aimed to support underprivileged families by providing food supplies, clothes, and essential services.
+                    It was a great opportunity to spread kindness and love in the community.
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 2 - Image Right -->
+        <div class="flex flex-col md:flex-row-reverse items-center">
+            <div class="md:w-1/2">
+                <img src="activity2.jpg" alt="Youth Camp" class="w-full h-64 object-cover rounded-lg shadow-lg">
+            </div>
+            <div class="md:w-1/2 md:pr-12 text-left animate-fadeIn">
+                <h3 class="text-3xl font-semibold text-[#660000]">Annual Youth Camp</h3>
+                <p class="text-gray-800 mt-4">
+                    The annual youth camp was a time of spiritual growth, fun activities, and deep fellowship. 
+                    We encouraged young members to develop their faith and leadership skills while enjoying nature.
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 3 - Image Left -->
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2">
+                <img src="activity3.jpg" alt="Choir Concert" class="w-full h-64 object-cover rounded-lg shadow-lg">
+            </div>
+            <div class="md:w-1/2 md:pl-12 text-left animate-fadeIn">
+                <h3 class="text-3xl font-semibold text-[#660000]">Annual Choir Concert</h3>
+                <p class="text-gray-800 mt-4">
+                    Our choir concert brought together voices in worship and celebration, showcasing the incredible talent within our church.
+                    It was a night of praise and thanksgiving with uplifting music.
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 4 - Image Right -->
+        <div class="flex flex-col md:flex-row-reverse items-center">
+            <div class="md:w-1/2">
+                <img src="activity4.jpg" alt="Bible Study Groups" class="w-full h-64 object-cover rounded-lg shadow-lg">
+            </div>
+            <div class="md:w-1/2 md:pr-12 text-left animate-fadeIn">
+                <h3 class="text-3xl font-semibold text-[#660000]">Weekly Bible Study Groups</h3>
+                <p class="text-gray-800 mt-4">
+                    We organize weekly Bible study sessions to deepen our understanding of the Word of God and foster meaningful discussions among members.
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 5 - Image Left -->
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2">
+                <img src="activity5.jpg" alt="Charity Event" class="w-full h-64 object-cover rounded-lg shadow-lg">
+            </div>
+            <div class="md:w-1/2 md:pl-12 text-left animate-fadeIn">
+                <h3 class="text-3xl font-semibold text-[#660000]">Charity Fundraiser Event</h3>
+                <p class="text-gray-800 mt-4">
+                    Our charity event successfully raised funds for our mission projects, supporting various humanitarian causes.
+                    It was an amazing day filled with generosity and community spirit.
+                </p>
+            </div>
+        </div>
+
+        <!-- Activity 6 - Image Right -->
+        <div class="flex flex-col md:flex-row-reverse items-center">
+            <div class="md:w-1/2">
+                <img src="activity6.jpg" alt="Sunday School" class="w-full h-64 object-cover rounded-lg shadow-lg">
+            </div>
+            <div class="md:w-1/2 md:pr-12 text-left animate-fadeIn">
+                <h3 class="text-3xl font-semibold text-[#660000]">Children's Sunday School</h3>
+                <p class="text-gray-800 mt-4">
+                    Our Sunday School program focuses on teaching children biblical principles in a fun and engaging way, helping them grow in faith from an early age.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    </div>
+</main>
+
 
 <!-- Footer -->
 <footer class="relative  bg-contain bg-cover bg-center text-[#3d0000] py-12" style="background-image: url('footer.jpg'); ">
@@ -131,5 +295,45 @@
 
     </div>
 </footer>
+<script>
+    // Carousel functionality with FIFO animation
+    document.addEventListener("DOMContentLoaded", function () {
+        const carousel = document.getElementById("event-carousel");
+        let scrollAmount = 0;
+        const slideWidth = carousel.children[0].offsetWidth + 32; // Get width + margin
+        let carouselInterval;
+
+        function slideCarousel() {
+            scrollAmount += slideWidth;
+
+            // Reset when reaching the end
+            if (scrollAmount >= carousel.scrollWidth - carousel.offsetWidth) {
+                carousel.appendChild(carousel.firstElementChild);
+                scrollAmount = 0;
+            }
+
+            carousel.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+
+        function startCarousel() {
+            carouselInterval = setInterval(slideCarousel, 4000); // Change every 6 seconds
+        }
+
+        function stopCarousel() {
+            clearInterval(carouselInterval); // Stop sliding the carousel
+        }
+
+        // Stop carousel when hovering over event items
+        const eventItems = document.querySelectorAll('.event-item');
+        eventItems.forEach(item => {
+            item.addEventListener('mouseenter', stopCarousel); // Stop carousel on hover
+            item.addEventListener('mouseleave', startCarousel); // Resume carousel when hover ends
+        });
+
+        // Start the carousel initially
+        startCarousel();
+    });
+</script>
+
 </body>
 </html>
