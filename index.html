@@ -20,7 +20,7 @@
     </div>
 
     <section id="hero-container" class="relative h-[75vh] overflow-hidden text-white">
-        <header class="absolute top-0 left-0 w-full z-5 bg-gradient-to-b from-[#e0cccc]/90 to-transparent text-white p-4">
+        <header class="absolute top-0 left-0 w-full z-30 bg-gradient-to-b from-[#e0cccc]/90 to-transparent text-white p-4">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center space-x-4">
                     <img src="logo.png" alt="Church Logo" class="h-20 w-auto object-contain">
@@ -54,32 +54,56 @@
                     </ul>
                 </nav>
 
-                <!-- Mobile Menu Toggle -->
-                <button class="lg:hidden text-white" id="menu-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+            <!-- Mobile Menu Toggle -->
+            <button class="lg:hidden text-white relative z-20" id="menu-toggle">
+                <!-- Menu Icon (hamburger) -->
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
 
-
-
+                <!-- Close Icon (X) -->
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 hidden">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+    
         <!-- Mobile Menu -->
-        <nav class="hidden lg:hidden bg-gray-800 text-white" id="mobile-menu">
-            <ul class="p-4 space-y-4">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Ministries</a></li>
-                <li><a href="activities.html">Activities</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="get-involved.html">Get Involved</a></li>
-                <li><a href="contact-us.html">Contact Us</a></li>
+        <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
+            <ul class="p-6 space-y-4">
+                <li><a href="index.html" class="hover:text-[#660000]">Home</a></li>
+                <li>
+                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" data-dropdown="about-dropdown">
+                        About
+                        <span>&#9662;</span>
+                    </button>
+                    <ul id="about-dropdown" class="hidden space-y-2 ml-4">
+                        <li><a href="who-we-are.html" class="hover:text-[#660000]">Who We Are</a></li>
+                        <li><a href="history.html" class="hover:text-[#660000]">History</a></li>
+                        <li><a href="ministry.html" class="hover:text-[#660000]">Ministry</a></li>
+                        <li><a href="administration-and-governance.html" class="hover:text-[#660000]">Administration and Governance</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" data-dropdown="ministries-dropdown">
+                        Ministries
+                        <span>&#9662;</span>
+                    </button>
+                    <ul id="ministries-dropdown" class="hidden space-y-2 ml-4">
+                        <li><a href="family.html" class="hover:text-[#660000]">Family</a></li>
+                        <li><a href="praise-and-worship.html" class="hover:text-[#660000]">Praise and Worship</a></li>
+                    </ul>
+                </li>
+                <li><a href="activities.html" class="hover:text-[#660000]">Activities</a></li>
+                <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
+                <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
+                <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
             </ul>
         </nav>
     </div>
 
-        </header>
+    </header>
 
-        <div class="hero-slide active" data-text="Welcome to Our Church" data-subtext="We are a place of love, hope, and faith, where you can grow spiritually and connect with others." style="background-image: url('hero3b.jpg');"></div>
+        <div class="hero-slide  active" data-text="Welcome to Our Church" data-subtext="We are a place of love, hope, and faith, where you can grow spiritually and connect with others." style="background-image: url('hero3b.jpg');"></div>
         <div class="hero-slide" data-text="Join Our Ministries" data-subtext="Our ministries provide opportunities to serve and engage with others in meaningful ways, from family support to praise and worship." style="background-image: url('hero2.jpg');"></div>
         <div class="hero-slide" data-text="Get Involved" data-subtext="Whether through volunteering, donations, or participation, you can make a difference in our community and beyond." style="background-image: url('hero2b.jpg');"></div>
 
@@ -226,10 +250,10 @@
 
 
 <!-- Footer -->
-<footer class="relative  bg-contain bg-cover bg-center text-[#3d0000] py-12" style="background-image: url('footer.jpg'); ">
+<footer class="relative bg-contain bg-cover bg-center text-[#3d0000] py-12" style="background-image: url('footer.jpg');">
     <!-- Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-t from-[#c9bfcc]"></div>
-    
+
     <div class="relative container mx-auto px-6">
         <!-- Footer Top: Contact Info and Address -->
         <div class="grid md:grid-cols-3 gap-12 mb-8">
@@ -243,8 +267,8 @@
 
             <!-- Social Media Links -->
             <div>
-                <h3 class="text-2xl font-semibold mb-4">Follow Us</h3>
-                <div class="flex space-x-4">
+                <h3 class="text-2xl font-semibold mb-4 text-center">Follow Us</h3>
+                <div class="flex justify-center space-x-4">
                     <a href="#" class="hover:text-gray-400"><img src="facebook.png" alt="Facebook" class="w-10 h-10"></a>
                     <a href="#" class="hover:text-gray-400"><img src="x.png" alt="Twitter" class="w-10 h-10"></a>
                     <a href="#" class="hover:text-gray-400"><img src="instagram.png" alt="Instagram" class="w-10 h-10"></a>
@@ -260,23 +284,38 @@
                     <li><a href="ministries.html" class="hover:text-gray-400">Ministries</a></li>
                     <li><a href="activities.html" class="hover:text-gray-400">Activities</a></li>
                     <li><a href="resources.html" class="hover:text-gray-400">Resources</a></li>
+                    <li><a href="administration-and-governance.html" class="hover:text-gray-400">Administrative</a></li>
+                    <li><a href="governance.html" class="hover:text-gray-400">Governance</a></li>
                     <li><a href="contact-us.html" class="hover:text-gray-400">Contact Us</a></li>
                 </ul>
             </div>
         </div>
 
-<!-- Footer Bottom: Copyright -->
-<div class="border-t border-[#660000] pt-6 flex justify-between items-center text-center md:text-left">
-    <!-- Copyright -->
-    <p class="text-sm text-[#660000]">&copy; 2025 Church Name. All Rights Reserved.</p>
-    <!-- Developed By (with link) -->
-    <p class="text-sm text-[#660000]">
-        Developed by <a href="https://github.com/MerVitz" target="_blank" class="text-[#660000] hover:text-[#e0cccc]">Amakalu Vitalis</a>
-    </p>
-</div>
+        <!-- To Give & Prayer Line -->
+        <div class="flex justify-center items-center space-x-4 mb-8">
+            <a href="give.html" class="px-6 py-2 bg-[#660000] text-white rounded-lg hover:bg-[#3d0000]">
+                To Give
+            </a>
+            <a href="prayer-line.html" class="px-6 py-2 bg-[#660000] text-white rounded-lg hover:bg-[#3d0000]">
+                Prayer Line
+            </a>
+        </div>
 
+        <!-- Footer Bottom: Copyright -->
+        <div class="border-t border-[#660000] pt-6 flex justify-between items-center text-center md:text-left">
+            <!-- Copyright -->
+            <p class="text-sm text-[#660000]">&copy; 2025 Church Name. All Rights Reserved.</p>
+            <!-- Developed By -->
+            <p class="text-sm text-[#660000] flex items-center space-x-2">
+                <span>Developed by</span> 
+                <img src="coding-icon.png" alt="Coding Icon" class="w-5 h-5">
+                <a href="https://github.com/MerVitz" target="_blank" class="text-[#660000] hover:text-[#e0cccc]">Amakalu Vitalis</a>
+            </p>
+        </div>
     </div>
 </footer>
+
+
 </body>
 
 </html>

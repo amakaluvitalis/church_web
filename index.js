@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Elements for the mobile toggle
-    const menuToggle = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
+    const menuToggle = document.getElementById("menu-toggle"); // Button containing the icons
+    const mobileMenu = document.getElementById("mobile-menu"); // The actual menu
+    const menuIcon = document.getElementById("menu-icon"); // Menu icon (hamburger)
+    const closeIcon = document.getElementById("close-icon"); // Close icon (X)
+    const dropdownButtons = document.querySelectorAll('[data-dropdown]');
+
     
     // Hero section (slides and text update)
     const slides = document.querySelectorAll('.hero-slide');
@@ -80,13 +84,33 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching country data:', error);
         });
 
-    // Mobile menu toggle functionality
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener("click", function() {
-            mobileMenu.classList.toggle("hidden");
-            mobileMenu.classList.toggle("block"); // Toggle visibility
+        if (menuToggle && mobileMenu && menuIcon && closeIcon) {
+            menuToggle.addEventListener('click', () => {
+                const isMenuHidden = mobileMenu.classList.contains('translate-x-full');
+                
+                // Toggle the mobile menu visibility
+                mobileMenu.classList.toggle('translate-x-full', !isMenuHidden);
+    
+                // Smoothly toggle visibility of icons
+                if (isMenuHidden) {
+                    menuIcon.classList.add('hidden'); // Hide menu icon
+                    closeIcon.classList.remove('hidden'); // Show close icon
+                } else {
+                    menuIcon.classList.remove('hidden'); // Show menu icon
+                    closeIcon.classList.add('hidden'); // Hide close icon
+                }
+            });
+        } else {
+            console.error("Menu toggle elements are missing or incorrectly referenced.");
+        }
+
+        dropdownButtons.forEach((button) => {
+            const dropdownId = button.getAttribute('data-dropdown');
+            const dropdownMenu = document.getElementById(dropdownId);
+    
+            button.addEventListener('click', () => {
+                const isDropdownVisible = !dropdownMenu.classList.contains('hidden');
+                dropdownMenu.classList.toggle('hidden', isDropdownVisible); // Toggle visibility
+            });
         });
-    } else {
-        console.log('Menu elements not found!');
-    }
 });

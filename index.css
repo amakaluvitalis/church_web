@@ -6,6 +6,11 @@
         opacity: 1;
     }
 }
+/* Add a slight shadow when the menu is visible */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+}
+
 
 .hero-slide {
     position: absolute;
