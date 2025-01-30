@@ -6,6 +6,10 @@
         opacity: 1;
     }
 }
+body{
+    font-family: "Poppins", "Merriweather", "Roboto", sans-serif;
+}
+
 /* Add a slight shadow when the menu is visible */
 #mobile-menu {
     transition: transform 0.3s ease-in-out;
