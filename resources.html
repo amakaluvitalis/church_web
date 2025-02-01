@@ -33,15 +33,15 @@ iframe {
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     
-    <div class="bg-[#a36666] text-white text-sm py-2">
-        <div class="container mx-auto flex justify-between items-center px-6">
-            <span><strong>Location:</strong> 405 Church Of God, Kisumu</span>
-            <span><strong>Need help to Locate Us? Contact:</strong> +254 (7) 437-20033</span>
+    <div class="bg-[#a36666] text-white py-2">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 space-y-1 sm:space-y-0">
+            <span class="text-xs sm:text-sm leading-tight"><strong>Location:</strong> 405 Church Of God, Kisumu</span>
+            <span class="text-xs sm:text-sm leading-tight"><strong>Need help to Locate Us? Contact:</strong> +254 (7) 437-20033</span>
         </div>
-    </div>
+    </div>   
     
 <!-- Header -->
-<header class="absolute top-11 md:top-9 left-0 w-full z-10 bg-gradient-to-b from-[#a36666]/90 to-transparent text-white p-4">
+<header class="absolute top-12 md:top-9 left-0 w-full z-10 bg-gradient-to-b from-[#a36666]/90 to-transparent text-white p-4">
     <div class="container mx-auto flex justify-between items-center relative">
         <!-- Logo and Title -->
         <div class="flex items-center space-x-4">
@@ -125,8 +125,8 @@ iframe {
 <div id="videoCarouselWrapper" class="relative overflow-hidden w-full">
     <div id="videoCarousel" class="flex transition-transform duration-700 ease-in-out">
         <!-- Video 1 -->
-        <div class="video-item flex-shrink-0 w-full md:w-1/2">
-            <div class="bg-white shadow-lg rounded-lg p-4 text-left">
+        <div class="video-item flex-shrink-0 w-full md:w-1/2 px-2">
+            <div class="bg-[#e0cccc] shadow-lg rounded-lg p-4 text-left">
                 <h4 class="text-lg md:text-xl font-bold text-[#660000]">The Power of Faith</h4>
                 <p class="text-sm text-gray-600">📅 Jan 14, 2024</p>
                 <p class="text-sm text-gray-700 font-medium">🎤 Speaker: Pastor John Doe</p>
@@ -139,8 +139,8 @@ iframe {
         </div>
 
         <!-- Video 2 -->
-        <div class="video-item flex-shrink-0 w-full md:w-1/2">
-            <div class="bg-white shadow-lg rounded-lg p-4 text-left">
+        <div class="video-item flex-shrink-0 w-full md:w-1/2 px-2">
+            <div class="bg-[#e0cccc] shadow-lg rounded-lg p-4 text-left">
                 <h4 class="text-lg md:text-xl font-bold text-[#660000]">Walking in Grace</h4>
                 <p class="text-sm text-gray-600">📅 Jan 21, 2024</p>
                 <p class="text-sm text-gray-700 font-medium">🎤 Speaker: Pastor Jane Smith</p>
@@ -153,8 +153,8 @@ iframe {
         </div>
 
         <!-- Video 3 -->
-        <div class="video-item flex-shrink-0 w-full md:w-1/2">
-            <div class="bg-white shadow-lg rounded-lg p-4 text-left">
+        <div class="video-item flex-shrink-0 w-full md:w-1/2 px-2">
+            <div class="bg-[#e0cccc] shadow-lg rounded-lg p-4 text-left">
                 <h4 class="text-lg md:text-xl font-bold text-[#660000]">Overcoming Fear</h4>
                 <p class="text-sm text-gray-600">📅 Jan 28, 2024</p>
                 <p class="text-sm text-gray-700 font-medium">🎤 Speaker: Pastor Mark Adams</p>
@@ -167,8 +167,8 @@ iframe {
         </div>
 
         <!-- Clone First Video for Infinite Loop -->
-        <div class="video-item flex-shrink-0 w-full md:w-1/2">
-            <div class="bg-white shadow-lg rounded-lg p-4 text-left">
+        <div class="video-item flex-shrink-0 w-full md:w-1/2 px-2">
+            <div class="bg-[#e0cccc] shadow-lg rounded-lg p-4 text-left">
                 <h4 class="text-lg md:text-xl font-bold text-[#660000]">The Power of Faith</h4>
                 <p class="text-sm text-gray-600">📅 Jan 14, 2024</p>
                 <p class="text-sm text-gray-700 font-medium">🎤 Speaker: Pastor John Doe</p>
@@ -310,33 +310,35 @@ iframe {
     </div>
 </footer>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const carousel = document.getElementById("videoCarousel");
-        const videos = document.querySelectorAll(".video-item");
-        let index = 0;
-        const totalVideos = videos.length;
-        const videoWidth = videos[0].offsetWidth;
-    
-        function startAutoScroll() {
-            setInterval(() => {
-                index++;
-                carousel.style.transition = "transform 1s ease-in-out";
-                carousel.style.transform = `translateX(-${index * videoWidth}px)`;
-    
-                // Reset to First Video Smoothly (No Empty Space)
-                if (index === totalVideos - 1) {
-                    setTimeout(() => {
-                        carousel.style.transition = "none";
-                        carousel.style.transform = "translateX(0px)";
-                        index = 0;
-                    }, 1000);
-                }
-            }, 3000); // Move every 3 seconds
-        }
-    
-        startAutoScroll();
-    });
-    </script>
-    
+document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.getElementById("videoCarousel");
+    const videos = document.querySelectorAll(".video-item");
+    let index = 0;
+
+    // Detect screen size to adjust video width dynamically
+    const getVideoWidth = () => {
+        return videos[0].offsetWidth; // Dynamically get video width
+    };
+
+    function startAutoScroll() {
+        setInterval(() => {
+            index++;
+            carousel.style.transition = "transform 2s ease-in-out";
+            carousel.style.transform = `translateX(-${index * getVideoWidth()}px)`;
+
+            // Reset to First Video Smoothly
+            if (index === videos.length - 1) {
+                setTimeout(() => {
+                    carousel.style.transition = "none";
+                    carousel.style.transform = "translateX(0px)";
+                    index = 0;
+                }, 2000);
+            }
+        }, 5000); // Move every 3 seconds
+    }
+
+    startAutoScroll();
+});
+</script>
 </body>
 </html>
