@@ -8,6 +8,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="index.css">
+    <style>
+        .video-item {
+    flex: 0 0 100%; /* Show 1 video per slide on mobile */
+    max-width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .video-item {
+        flex: 0 0 50%; /* Show 2 videos per slide on desktop */
+        max-width: 50%;
+    }
+}
+
+iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+    </style>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     
@@ -36,11 +58,11 @@
                     <ul class="absolute hidden group-hover:block bg-[#660000] text-black shadow-lg mt-2 py-2 w-40">
                         <li><a href="who-we-are.html" class="block px-4 py-2 hover:bg-gray-100">Who We Are</a></li>
                         <li><a href="history.html" class="block px-4 py-2 hover:bg-gray-100">History</a></li>
-                        <li><a href="ministry.html" class="block px-4 py-2 hover:bg-gray-100">Ministry</a></li>
                         <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
                         <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
                     </ul>
                 </li>
+                <li><a href="ministries.html" class="hover:text-[#660000]">Ministries</a></li>
                 <li><a href="activities.html" class="hover:text-[#660000]">Activities</a></li>
                 <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
                 <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
@@ -73,21 +95,11 @@
                     <ul id="about-dropdown" class="hidden space-y-2 ml-4">
                         <li><a href="who-we-are.html" class="hover:text-[#660000]">Who We Are</a></li>
                         <li><a href="history.html" class="hover:text-[#660000]">History</a></li>
-                        <li><a href="ministry.html" class="hover:text-[#660000]">Ministry</a></li>
                         <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
                         <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
                     </ul>
                 </li>
-                <li>
-                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" data-dropdown="ministries-dropdown">
-                        Ministries
-                        <span>&#9662;</span>
-                    </button>
-                    <ul id="ministries-dropdown" class="hidden space-y-2 ml-4">
-                        <li><a href="family.html" class="hover:text-[#660000]">Family</a></li>
-                        <li><a href="praise-and-worship.html" class="hover:text-[#660000]">Praise and Worship</a></li>
-                    </ul>
-                </li>
+                <li><a href="ministries.html" class="hover:text-[#660000]">Ministries</a></li>
                 <li><a href="activities.html" class="hover:text-[#660000]">Activities</a></li>
                 <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
                 <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
@@ -99,7 +111,6 @@
 
 <!-- Main Content -->
 <main class="flex-grow bg-white py-12 px-4 text-center mt-20 relative bg-cover bg-center bg-fixed" style="background-image: url('resources.jpg');">
-
     <!-- Translucent Overlay -->
     <div class="absolute inset-0 bg-[#efe5e5] bg-opacity-60"></div>
 
@@ -110,30 +121,69 @@
         <div class="mb-12">
             <h3 class="text-2xl font-semibold text-[#660000] mb-4">Watch Our Latest Sermons</h3>
 
-            <!-- Carousel Container -->
-            <div class="flex justify-center gap-4 overflow-x-auto snap-x snap-mandatory pb-4">
-                <!-- Individual Video 1 -->
-                <div class="flex-shrink-0 snap-center w-[360px] h-[200px] md:w-[480px] md:h-[270px]">
-                    <iframe 
-                        class="w-full h-full rounded-md" 
-                        src="https://www.youtube.com/embed/75_ipUyonyA?rel=0&showinfo=0&modestbranding=1" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <!-- Individual Video 2 -->
-                <div class="flex-shrink-0 snap-center w-[360px] h-[200px] md:w-[480px] md:h-[270px]">
-                    <iframe 
-                        class="w-full h-full rounded-md" 
-                        src="https://www.youtube.com/embed/x3gomNVHoIU?rel=0&showinfo=0&modestbranding=1" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+<!-- Carousel Container -->
+<div id="videoCarouselWrapper" class="relative overflow-hidden w-full">
+    <div id="videoCarousel" class="flex transition-transform duration-700 ease-in-out">
+        <!-- Video 1 -->
+        <div class="video-item flex-shrink-0 w-full md:w-1/2">
+            <div class="bg-white shadow-lg rounded-lg p-4 text-left">
+                <h4 class="text-lg md:text-xl font-bold text-[#660000]">The Power of Faith</h4>
+                <p class="text-sm text-gray-600">📅 Jan 14, 2024</p>
+                <p class="text-sm text-gray-700 font-medium">🎤 Speaker: Pastor John Doe</p>
+                <iframe class="w-full h-[270px] md:h-[330px] rounded-md mt-2"
+                    src="https://www.youtube.com/embed/75_ipUyonyA?rel=0&showinfo=0&modestbranding=1"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
             </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-item flex-shrink-0 w-full md:w-1/2">
+            <div class="bg-white shadow-lg rounded-lg p-4 text-left">
+                <h4 class="text-lg md:text-xl font-bold text-[#660000]">Walking in Grace</h4>
+                <p class="text-sm text-gray-600">📅 Jan 21, 2024</p>
+                <p class="text-sm text-gray-700 font-medium">🎤 Speaker: Pastor Jane Smith</p>
+                <iframe class="w-full h-[270px] md:h-[330px] rounded-md mt-2"
+                    src="https://www.youtube.com/embed/x3gomNVHoIU?rel=0&showinfo=0&modestbranding=1"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-item flex-shrink-0 w-full md:w-1/2">
+            <div class="bg-white shadow-lg rounded-lg p-4 text-left">
+                <h4 class="text-lg md:text-xl font-bold text-[#660000]">Overcoming Fear</h4>
+                <p class="text-sm text-gray-600">📅 Jan 28, 2024</p>
+                <p class="text-sm text-gray-700 font-medium">🎤 Speaker: Pastor Mark Adams</p>
+                <iframe class="w-full h-[270px] md:h-[330px] rounded-md mt-2"
+                    src="https://www.youtube.com/embed/x3gomNVHoIU?rel=0&showinfo=0&modestbranding=1"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Clone First Video for Infinite Loop -->
+        <div class="video-item flex-shrink-0 w-full md:w-1/2">
+            <div class="bg-white shadow-lg rounded-lg p-4 text-left">
+                <h4 class="text-lg md:text-xl font-bold text-[#660000]">The Power of Faith</h4>
+                <p class="text-sm text-gray-600">📅 Jan 14, 2024</p>
+                <p class="text-sm text-gray-700 font-medium">🎤 Speaker: Pastor John Doe</p>
+                <iframe class="w-full h-[270px] md:h-[330px] rounded-md mt-2"
+                    src="https://www.youtube.com/embed/75_ipUyonyA?rel=0&showinfo=0&modestbranding=1"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
         </div>
 
         <!-- Audio Sermons Section -->
@@ -259,27 +309,33 @@
         </div>
     </div>
 </footer>
-
-    <script>
-function playVideo(videoId, videoNumber) {
-    // Get the specific elements for the clicked video
-    const thumbnailContainer = document.getElementById(`thumbnail-container-${videoNumber}`);
-    const thumbnail = document.getElementById(`thumbnail-${videoNumber}`);
-    const playButton = document.getElementById(`play-button-${videoNumber}`);
-    const iframe = document.getElementById(`video-${videoNumber}`);
-
-    // Hide the entire thumbnail container, thumbnail, and play button
-    thumbnailContainer.style.display = 'none';
-    thumbnail.style.display = 'none';
-    playButton.style.display = 'none';
-
-    // Set the video source and show the iframe
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
-    iframe.classList.remove('hidden');
-}
-
-
-
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const carousel = document.getElementById("videoCarousel");
+        const videos = document.querySelectorAll(".video-item");
+        let index = 0;
+        const totalVideos = videos.length;
+        const videoWidth = videos[0].offsetWidth;
+    
+        function startAutoScroll() {
+            setInterval(() => {
+                index++;
+                carousel.style.transition = "transform 1s ease-in-out";
+                carousel.style.transform = `translateX(-${index * videoWidth}px)`;
+    
+                // Reset to First Video Smoothly (No Empty Space)
+                if (index === totalVideos - 1) {
+                    setTimeout(() => {
+                        carousel.style.transition = "none";
+                        carousel.style.transform = "translateX(0px)";
+                        index = 0;
+                    }, 1000);
+                }
+            }, 3000); // Move every 3 seconds
+        }
+    
+        startAutoScroll();
+    });
     </script>
     
 </body>
