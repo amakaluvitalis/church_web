@@ -165,33 +165,45 @@
                     will reach out to welcome you personally. We’ll help you understand the next steps, get you connected
                     with our ministries, and ensure you're supported on your spiritual journey.
                 </p>
-    <!-- Country Selection Form -->
-    <!-- Country Selection Form -->
-    <form action="#" method="POST" class="space-y-6 bg-transparent p-8 rounded-lg shadow-lg">
-        <div>
-            <label for="full-name" class="block text-gray-800 text-lg font-semibold mb-2">Full Name</label>
-            <input type="text" id="full-name" name="full-name" class="w-full p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" placeholder="Enter your full name" required>
+<!-- Joining Form -->
+<form action="#" method="POST" class="space-y-6 bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
+    <!-- Full Name -->
+    <div class="flex items-center space-x-4">
+        <label for="full-name" class="text-gray-800 text-lg font-semibold w-32 text-left">Full Name <span class="text-red-500">*</span></label>
+        <input type="text" id="full-name" name="full-name" class="flex-grow p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" placeholder="Enter your full name" required>
+    </div>
+
+    <!-- Email Address -->
+    <div class="flex items-center space-x-4">
+        <label for="email" class="text-gray-800 text-lg font-semibold w-32 text-left">Email <span class="text-red-500">*</span></label>
+        <input type="email" id="email" name="email" class="flex-grow p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" placeholder="Enter your email address" required>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="flex items-center space-x-4">
+        <label for="phone" class="text-gray-800 text-lg font-semibold w-32 text-left">Phone <span class="text-red-500">*</span></label>
+        <div class="flex-grow flex space-x-3">
+            <select id="country-code" name="country-code" class="w-1/3 p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]">
+                <option value="+254">+254 (Kenya)</option>
+                <option value="+255">+255 (Tanzania)</option>
+                <option value="+256">+256 (Uganda)</option>
+                <option value="+260">+260 (Zambia)</option>
+                <!-- Add more country codes as needed -->
+            </select>
+            <input type="tel" id="phone" name="phone" class="w-2/3 p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" placeholder="Enter your phone number" required>
         </div>
-        <div>
-            <label for="email" class="block text-gray-800 text-lg font-semibold mb-2">Email Address</label>
-            <input type="email" id="email" name="email" class="w-full p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" placeholder="Enter your email address" required>
-        </div>
-        <div>
-            <label for="phone" class="block text-gray-800 text-lg font-semibold mb-2">Phone Number</label>
-            <div class="flex space-x-3">
-                <select id="country-code" name="country-code" class="w-1/4 p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]">
-                    <!-- Country codes and flags will be populated here -->
-                </select>
-                <input type="tel" id="phone" name="phone" class="w-3/4 p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" placeholder="Enter your phone number" required>
-            </div>
-        </div>
-        <button type="submit" class="w-full bg-[#843232] text-white py-3 rounded-lg hover:bg-[#660000] transition duration-300 font-semibold">
-            Become a Member
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex justify-center">
+        <button type="submit" class="w-1/3 bg-[#660000] text-white py-3 rounded-lg hover:bg-[#993333] transition duration-300 font-semibold">
+            Submit
         </button>
-    </form>
+    </div>
+</form>
+
                 
             </div>
-            
         </div>
     </div>
 </section>
