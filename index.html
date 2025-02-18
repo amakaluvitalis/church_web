@@ -213,20 +213,20 @@
 <!-- Notice Board Section -->
 <section 
     class="py-20 bg-cover bg-center text-white" 
-    style="background-image: url('https://media.istockphoto.com/id/468662782/photo/communion-elements-at-sunset.jpg?s=612x612&w=0&k=20&c=XtcJWHt_NlI9H7Ixi7KtHsylnr_58u6dgMucLn1eMmo='); ">
-    <div class="container mx-auto px-6 md:px-12 text-center">
-        <h2 class="text-4xl  text-[#660000] mb-12">Notice Board</h2>
+    style="background-image: url('https://media.istockphoto.com/id/468662782/photo/communion-elements-at-sunset.jpg?s=612x612&w=0&k=20&c=XtcJWHt_NlI9H7Ixi7KtHsylnr_58u6dgMucLn1eMmo=');">
+    <div class="container mx-auto px-6 md:px-12 text-center relative">
+        <h2 class="text-4xl text-[#660000] mb-12">Notice Board</h2>
         
-        <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="grid md:grid-cols-2 gap-12 items-center -bottom-6">
             <!-- Featured Poster -->
             <div class="bg-[#efe5e5] bg-opacity-90 shadow-lg rounded-lg p-8 text-gray-800">
-                <h3 class="text-2xl  text-[#660000] mb-4">Poster of the Week</h3>
+                <h3 class="text-2xl text-[#660000] mb-4">Poster of the Week</h3>
                 <img src="sunday_poster.jpg" alt="Weekly Poster" class="w-full rounded-lg shadow-md">
             </div>
 
             <!-- Event Summary -->
             <div class="bg-[#efe5e5] bg-opacity-90 shadow-lg rounded-lg p-8 text-gray-800">
-                <h3 class="text-2xl  font-semibold mb-4">Upcoming Events</h3>
+                <h3 class="text-2xl font-semibold mb-4">Upcoming Events</h3>
                 <ul class="text-left space-y-4">
                     <li class="border-b pb-2">
                         <strong>Sunday Service:</strong> 10:00 AM - 12:00 PM
@@ -243,8 +243,19 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Flowing Notices -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden bg-[#660000] text-white py-2">
+            <div class="animate-marquee whitespace-nowrap">
+                <span class="mx-8">🔥 Worship Night on March 15, 7:00 PM | </span>
+                <span class="mx-8">🙏 Join the Saturday Fellowship at 5:00 PM | </span>
+                <span class="mx-8">🎉 Youth Meeting this Friday at 6:00 PM | </span>
+                <span class="mx-8">📢 Sunday Service starts at 10:00 AM | </span>
+            </div>
+        </div>
     </div>
 </section>
+
 
 
 <!-- Footer -->

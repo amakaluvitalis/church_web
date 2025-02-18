@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     // Elements for the mobile toggle
     const menuToggle = document.getElementById("menu-toggle"); // Button containing the icons
