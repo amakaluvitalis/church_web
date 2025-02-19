@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="index.js" ></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    
+    <div class="bg-[#a36666] text-white py-2">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 space-y-1 sm:space-y-0">
+            <span class="text-xs sm:text-sm leading-tight"><strong>Location:</strong> 405 Church Of God, Kisumu</span>
+            <span class="text-xs sm:text-sm leading-tight"><strong>Need help to Locate Us? Contact:</strong> +254 (7) 437-20033</span>
+        </div>
+    </div> 
+
+<!-- Header -->
+<header class="absolute top-11 md:top-9 left-0 w-full z-10 bg-gradient-to-b from-[#a36666]/90 to-transparent text-white p-4">
+    <div class="container mx-auto flex justify-between items-center relative">
+        <!-- Logo and Title -->
+        <div class="flex items-center space-x-4">
+            <img src="logo.png" alt="Church Logo" class="h-20 w-auto object-contain">
+            <h1 class="text-xl font-bold">Church of God</h1>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:block">
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="relative hover:text-[#660000]">Home</a></li>
+                <li class="group relative">
+                    <a href="#" class="hover:text-[#660000]">About</a>
+                    <ul class="absolute hidden group-hover:block bg-[#660000] text-black shadow-lg mt-2 py-2 w-40">
+                        <li><a href="who-we-are.html" class="block px-4 py-2 hover:bg-gray-100">Who We Are</a></li>
+                        <li><a href="history.html" class="block px-4 py-2 hover:bg-gray-100">History</a></li>
+                        <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
+                        <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
+                    </ul>
+                </li>
+                <li><a href="ministries.html" class="hover:text-[#660000]">Ministries</a></li>
+                <li><a href="activities.html" class="hover:text-[#660000]">Activities</a></li>
+                <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
+                <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
+                <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="lg:hidden text-white relative z-20" id="menu-toggle">
+            <!-- Menu Icon (hamburger) -->
+            <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+
+            <!-- Close Icon (X) -->
+            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 hidden">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
+            <ul class="p-6 space-y-4">
+                <li><a href="index.html" class="hover:text-[#660000]">Home</a></li>
+                <li>
+                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" data-dropdown="about-dropdown">
+                        About
+                        <span>&#9662;</span>
+                    </button>
+                    <ul id="about-dropdown" class="hidden space-y-2 ml-4">
+                        <li><a href="who-we-are.html" class="hover:text-[#660000]">Who We Are</a></li>
+                        <li><a href="history.html" class="hover:text-[#660000]">History</a></li>
+                        <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
+                        <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
+                    </ul>
+                </li>
+                <li><a href="ministries.html" class="hover:text-[#660000]">Ministries</a></li>
+                <li><a href="activities.html" class="hover:text-[#660000]">Activities</a></li>
+                <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
+                <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
+                <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="flex-grow bg-white py-12 px-4 mt-20">
+    <h2 class="text-4xl font-bold text-[#660000] text-center mb-6">History of the Anglican Church of Kenya</h2>
+    <p class="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-12">
+        Explore the journey of our church through the years, from humble beginnings to a thriving community of faith and service.
+    </p>
+
+    <div class="container mx-auto overflow-x-auto scroll-smooth">
+        <!-- Timeline -->
+        <div class="relative space-y-12 max-w-4xl mx-auto">
+            <!-- Milestone 1 - Right -->
+            <div class="flex flex-col md:flex-row items-center md:items-start">
+                <div class="md:w-1/2 text-right md:pr-10 animate-fadeIn">
+                    <h3 class="text-2xl font-semibold text-[#660000]">1844 - Beginnings of the Anglican Church of Kenya</h3>
+                    <p class="text-gray-800 mt-2">
+                        The <strong>Anglican Church of Kenya</strong> traces its origins to the arrival of <strong>Dr. Johann Ludwig Krapf</strong> in <strong>1844</strong>, who, through the <strong>Church Missionary Society</strong>, established the first mission station in <strong>Rabai-Coast</strong>. His efforts, along with those of other early missionaries, laid the foundation for the spread of the gospel in Kenya.
+                    </p>
+                </div>
+                <div class="w-24 h-24 bg-gray-200 rounded-full overflow-hidden border-4 border-[#660000] shadow-lg">
+                    <img src="1844.webp" alt="Founding" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Milestone 2 - Left -->
+            <div class="flex flex-col md:flex-row-reverse items-center md:items-start">
+                <div class="md:w-1/2 text-left md:pl-10 animate-fadeIn">
+                    <h3 class="text-2xl font-semibold text-[#660000]">1961 - Expansion and Formation of New Dioceses</h3>
+                    <p class="text-gray-800 mt-2">
+                        In <strong>1961</strong>, the <strong>Anglican Church of Kenya</strong> achieved a significant milestone with the establishment of new dioceses. The <strong>Dioceses of Fort Hall (now Murang’a), Maseno, and Nakuru</strong> were carved out of the initial solitary <strong>Diocese of Mombasa</strong>, marking the beginning of structured regional church administration.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        This period also saw a rapid transformation in the church’s organizational structure, leading to the eventual establishment of the <strong>Diocese of Nairobi</strong> in <strong>1964</strong>. These changes allowed for better <strong>pastoral care, evangelism, and governance</strong>, ensuring the steady growth of the <strong>Anglican community in Kenya</strong>.
+                    </p>
+                </div>
+                <div class="w-24 h-24 bg-gray-200 rounded-full overflow-hidden border-4 border-[#660000] shadow-lg">
+                    <img src="1961.jpg" alt="Building" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Milestone 3 - Right -->
+            <div class="flex flex-col md:flex-row items-center md:items-start">
+                <div class="md:w-1/2 text-right md:pr-10 animate-fadeIn">
+                    <h3 class="text-2xl font-semibold text-[#660000]">1970 - Establishment of the Diocese of Maseno South</h3>
+                    <p class="text-gray-800 mt-2">
+                        The year <strong>1970</strong> marked a historic moment with the official establishment of the <strong>Diocese of Maseno South</strong>. This milestone was crucial in the <strong>decentralization of the Anglican Church’s leadership</strong> in the western region of Kenya, enabling greater focus on <strong>evangelism, pastoral care, and community development</strong> in Maseno and surrounding areas.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        <strong>Rev. Evan Agola</strong> became the first bishop of Maseno South (<strong>1970-1973</strong>), laying the foundation for <strong>strong church governance and expansion</strong>. His successor, <strong>Rev. Dr. Henry Okullu</strong> (<strong>1974-1994</strong>), further shaped the diocese’s mission, advocating for both <strong>spiritual growth and social justice</strong>, making the church a key pillar in the region’s development.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        Since its establishment, <strong>Maseno South Diocese</strong> has expanded significantly, leading to the creation of additional dioceses such as <strong>Maseno East, Maseno West, and the Diocese of Bondo</strong>, further strengthening the <strong>Anglican Church’s presence in western Kenya</strong>.
+                    </p>
+                </div>                
+                <div class="w-24 h-24 bg-gray-200 rounded-full overflow-hidden border-4 border-[#660000] shadow-lg">
+                    <img src="1970.jpg" alt="Outreach" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Milestone 4 - Left -->
+            <div class="flex flex-col md:flex-row-reverse items-center md:items-start">
+                <div class="md:w-1/2 text-left md:pl-10 animate-fadeIn">
+                    <h3 class="text-2xl font-semibold text-[#660000]">1980s - Founding of All Saints’ Church, Maseno</h3>
+                    <p class="text-gray-800 mt-2">
+                        The original Anglican Church in Maseno, known as <strong>Rock of Ages</strong>, was built near the present-day Maseno School. For many years, it served as the home of both the Diocese of Maseno South and Maseno North, playing a crucial role in shaping the church's presence in the Kavirondo region.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        By the 1980s, the growing needs of the Anglican community led to the founding and construction of <strong>All Saints’ Church, Maseno</strong>, which now serves as the parish headquarters. This marked a new chapter in the church’s development, enabling it to focus on expanding its evangelical and pastoral services in the region.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        Today, All Saints’ Church leads <strong>Maseno Parish</strong>, which includes six other churches: <strong>ACK St. Andrews Mbalawandu, ACK St. James Marera, ACK St. Johns Ong’iyo, ACK St. Anne’s Huma, ACK Mama Rebecca Memorial Church-Nyawita, and ACK Christ the King-Mirunda</strong>. However, compared to other churches in the diocese, All Saints’ Church has faced challenges in evangelistic outreach and infrastructural development, requiring renewed efforts for growth and sustainability.
+                    </p>
+                </div>
+                                
+                <div class="w-24 h-24 bg-gray-200 rounded-full overflow-hidden border-4 border-[#660000] shadow-lg">
+                    <img src="1980.jpg" alt="Ministries" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Milestone 5 - Right -->
+            <div class="flex flex-col md:flex-row items-center md:items-start">
+                <div class="md:w-1/2 text-right md:pr-10 animate-fadeIn">
+                    <h3 class="text-2xl font-semibold text-[#660000]">Present Day - Growth and Leadership of ACK Maseno</h3>
+                    <p class="text-gray-800 mt-2">
+                        Since its establishment, the <strong>Diocese of Maseno South</strong> has played a crucial role in the expansion of the Anglican Church in Kenya. The diocese has been led by notable bishops, including <strong>Rev. Evan Agola (1970-1973), Rev. Dr. Henry Okullu (1974-1994), Rev. Mwai Abiero (1994-2018), and Rev. Charles Ong’injo (2018-present)</strong>.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        The diocese currently consists of <strong>five archdeaconries</strong>—Cathedral, Maseno, Ndiru, Ngere, and St. Luke’s—governing a total of <strong>39 parishes</strong>. <strong>St. Stephens Cathedral in Kisumu City</strong> serves as its central place of worship and administration.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        Over the years, five new dioceses have been created from Maseno South: <strong>Maseno East, Maseno West, Bondo, Southern Nyanza, and Kisii</strong>. This growth reflects the diocese’s strong evangelistic mission and dedication to spreading the gospel. Today, the <strong>Anglican Church of Kenya has 37 dioceses across the country</strong>, under the leadership of <strong>Rev. Dr. Jackson Ole Sapit</strong>, the current Archbishop.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        The history of the Anglican Church in Kenya cannot be told without acknowledging Maseno, where it all began. The <strong>name "Maseno"</strong> itself originates from the large deciduous indigenous tree (<strong>Cordia monoica</strong>) called <strong>“Oseno” in Luo</strong> and <strong>“Luseno” in Luhya</strong>, under which the first Anglican Church services in the region were held as early as 1906.
+                    </p>
+                </div>                
+                <div class="w-24 h-24 bg-gray-200 rounded-full overflow-hidden border-4 border-[#660000] shadow-lg">
+                    <img src="present.JPG" alt="Digital" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Milestone 6 - Left -->
+            <div class="flex flex-col md:flex-row-reverse items-center md:items-start">
+                <div class="md:w-1/2 text-left md:pl-10 animate-fadeIn">
+                    <h3 class="text-2xl font-semibold text-[#660000]">2024 - Digital Transformation and Future Vision</h3>
+                    <p class="text-gray-800 mt-2">
+                        The evangelical sphere is rapidly evolving with advancements in technology and infrastructure, and <strong>ACK All Saints’ Church-Maseno</strong> is embracing this transformation. The church is now focusing on <strong>sustainable resource mobilization</strong> beyond traditional offertory, tithes, and donations to meet its expanding financial obligations.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        As part of its <strong>2024-2028 Strategic Plan</strong>, the church aims to <strong>integrate digital platforms into worship and evangelism</strong>, making services more accessible to congregants both physically and online. This includes broadcasting services live, utilizing social media for outreach, and adopting modern technology to enhance liturgy and administration.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        In addition to digital expansion, the church remains committed to fostering <strong>discipleship, compassion, and stewardship</strong> within the Anglican community. Congregants are encouraged to actively participate in ministries such as <strong>Sunday school, youth ministry, choir, KAMA, Mothers’ Union, and lay readership</strong>, ensuring holistic spiritual growth.
+                    </p>
+                    <p class="text-gray-800 mt-2">
+                        This strategic plan serves as a <strong>roadmap for the church's future</strong>, guiding socio-economic transformation while remaining rooted in Anglican traditions and biblical principles. As emphasized in <strong>Ephesians 6:10</strong>, ACK All Saints’ Church-Maseno is committed to equipping its members with the <strong>full armor of God</strong> to navigate the changing world with faith and purpose.
+                    </p>
+                    <p class="text-gray-800 font-semibold mt-4">
+                        - Rev. Emma Omondi, <br>
+                        The Vicar in-charge, <br>
+                        ACK Maseno Parish and All Saints’ Church
+                    </p>
+                </div>              
+                <div class="w-24 h-24 bg-gray-200 rounded-full overflow-hidden border-4 border-[#660000] shadow-lg">
+                    <img src="digital.jpg" alt="Expansion" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<!-- Footer -->
+<footer class="relative bg-contain bg-cover bg-center text-[#3d0000] py-12" style="background-image: url('footer.jpg');">
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#c9bfcc]"></div>
+
+    <div class="relative container mx-auto px-6">
+        <!-- Footer Top: Contact Info and Address -->
+        <div class="grid md:grid-cols-3 gap-12 mb-8">
+            <!-- Church Address -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">Contact Us</h3>
+                <p class="mb-2"><strong>Location:</strong> 405 Church of God, Kisumu</p>
+                <p><strong>Phone:</strong> +254 (7) 437-20033</p>
+                <p><strong>Email:</strong> info@churchname.com</p>
+            </div>
+
+            <!-- Social Media Links -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 text-center">Follow Us</h3>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="hover:text-gray-400"><img src="facebook.png" alt="Facebook" class="w-10 h-10"></a>
+                    <a href="#" class="hover:text-gray-400"><img src="x.png" alt="Twitter" class="w-10 h-10"></a>
+                    <a href="#" class="hover:text-gray-400"><img src="instagram.png" alt="Instagram" class="w-10 h-10"></a>
+                    <a href="#" class="hover:text-gray-400"><img src="youtube.png" alt="YouTube" class="w-10 h-10"></a>
+                </div>
+            </div>
+
+            <!-- Useful Links -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
+                <ul>
+                    <li><a href="about.html" class="hover:text-gray-400">About Us</a></li>
+                    <li><a href="ministries.html" class="hover:text-gray-400">Ministries</a></li>
+                    <li><a href="activities.html" class="hover:text-gray-400">Activities</a></li>
+                    <li><a href="resources.html" class="hover:text-gray-400">Resources</a></li>
+                    <li><a href="administration.html" class="hover:text-gray-400">Administration</a></li>
+                    <li><a href="governance.html" class="hover:text-gray-400">Governance</a></li>
+                    <li><a href="contact-us.html" class="hover:text-gray-400">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- To Give & Prayer Line -->
+        <div class="flex justify-center items-center space-x-4 mb-8">
+            <a href="give.html" class="px-6 py-2 bg-[#660000] text-white rounded-lg hover:bg-[#3d0000]">
+                To Give
+            </a>
+            <a href="prayer-line.html" class="px-6 py-2 bg-[#660000] text-white rounded-lg hover:bg-[#3d0000]">
+                Prayer Line
+            </a>
+        </div>
+
+        <!-- Footer Bottom: Copyright -->
+        <div class="border-t border-[#660000] pt-6 flex justify-between items-center text-center md:text-left">
+            <!-- Copyright -->
+            <p class="text-sm text-[#660000]">&copy; 2025 Church Name. All Rights Reserved.</p>
+            <!-- Developed By -->
+            <p class="text-sm text-[#660000] flex items-center space-x-2">
+                <span>Developed by</span> 
+                <img src="coding-icon.png" alt="Coding Icon" class="w-5 h-5">
+                <a href="https://github.com/MerVitz" target="_blank" class="text-[#660000] hover:text-[#e0cccc]">Amakalu Vitalis</a>
+            </p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
