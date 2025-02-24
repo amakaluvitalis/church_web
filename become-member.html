@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Involved</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest"><link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Become a Member</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="index.js" ></script>
+    <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
-    
+
     <div class="bg-[#a36666] text-white py-2">
         <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 space-y-1 sm:space-y-0">
             <span class="text-xs sm:text-sm leading-tight"><strong>Location: </strong>Kisumu Busia RD, Maseno Municipality</span>
@@ -90,83 +86,89 @@
     </div>
 </header>
 
-
 <!-- Main Content -->
-<main class="flex-grow bg-[#d1b2b2] z-0 py-12 px-4 text-center mt-20 relative">
-    <div class="absolute inset-0 bg-[#efe5e5] opacity-40"></div>
-    <div class="relative z-1 max-w-4xl mx-auto text-white">
-        <h2 class="text-4xl font-bold mb-6">Get Involved</h2>
-        <p class="text-lg mb-12 max-w-2xl mx-auto">
-            Discover meaningful ways to participate and contribute to our church community. Whether through giving, serving, or praying, there's a place for everyone to make a difference.
-        </p>
-    </div>
+<main class="flex-grow bg-white py-12 px-4 text-center mt-20">
 
-    <div class="relative z-10 container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
-        
+    <!-- Become a Member Section -->
+    <section class="py-16 bg-[#f5e6e6]">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-4xl font-bold text-[#660000] mb-8">Become a Member</h2>
 
-        <!-- Become a Member -->
-        <div class="p-8 bg-[#efe5e5] bg-opacity-90 rounded-lg shadow-lg">
-            <img src="members.png" alt="Become a Member" class="w-16 h-16 mb-4 mx-auto">
-            <h3 class="text-2xl font-semibold text-[#660000]">Become a Member</h3>
-            <p class="text-gray-700 mt-4">
-                Join our church family and be part of a loving, faith-filled community. As a member, you will grow spiritually, connect with others, and actively participate in the life of our church.
-            </p>
-            <a href="become-member.html" class="mt-4 inline-block text-[#660000] font-bold">Join Now →</a>
+            <!-- Call to Action: Join Now (Form Section) -->
+            <div class="bg-[#ffffff] custom-shadow rounded-lg p-8 max-w-2xl mx-auto shadow-lg">
+                <h3 class="text-3xl font-semibold text-[#660000] mb-4">Ready to Join?</h3>
+                <p class="text-lg text-gray-600 mb-6">
+                    Joining our church family is easy! Fill out the form below to get started, and a member of our team
+                    will reach out to welcome you personally.
+                </p>
+
+                <!-- Membership Form -->
+                <form action="#" method="POST" class="space-y-6 bg-white p-8 rounded-lg shadow-md">
+                    <!-- Full Name -->
+                    <div>
+                        <label for="full-name" class="block text-gray-800 text-lg font-semibold mb-2">Full Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="full-name" name="full-name" 
+                            class="w-full p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" 
+                            placeholder="Enter your full name" required>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div>
+                        <label for="email" class="block text-gray-800 text-lg font-semibold mb-2">Email <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" 
+                            class="w-full p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" 
+                            placeholder="Enter your email address" required>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div>
+                        <label for="phone" class="block text-gray-800 text-lg font-semibold mb-2">Phone <span class="text-red-500">*</span></label>
+                        <div class="flex space-x-3">
+                            <select id="country-code" name="country-code" class="w-1/3 p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]">
+                                <option value="+254">+254 (Kenya)</option>
+                                <option value="+255">+255 (Tanzania)</option>
+                                <option value="+256">+256 (Uganda)</option>
+                                <option value="+260">+260 (Zambia)</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" 
+                                class="w-2/3 p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" 
+                                placeholder="Enter your phone number" required>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="flex justify-center">
+                        <button type="submit" class="w-full bg-[#660000] text-white py-3 rounded-lg hover:bg-[#993333] transition duration-300 font-semibold">
+                            Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <!-- Support by Giving -->
-        <div class="p-8 bg-[#efe5e5] bg-opacity-90 rounded-lg shadow-lg">
-            <img src="giving-icon.png" alt="Giving" class="w-20 h-20 mb-4 mx-auto">
-            <h3 class="text-2xl font-semibold text-[#660000]">Support by Giving</h3>
-            <p class="text-gray-700 mt-4">
-                Your generous contributions help sustain our ministries, support the needy, and expand our outreach efforts. Every gift, no matter the size, makes an impact.
-            </p>
-            <a href="give.html" class="mt-4 inline-block text-[#660000] font-bold">Give Now →</a>
+    <!-- Welcome Message Section -->
+    <section class="py-16 bg-[#e6d6d6]">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <div class="max-w-3xl mx-auto bg-white custom-shadow rounded-lg p-8 shadow-lg">
+                <h3 class="text-3xl font-semibold text-[#660000] mb-4">A Welcome Message From The Vicar - Rev. Emmah Omondi</h3>
+                <p class="text-lg text-gray-600 mb-6">
+                    “Please allow me to cordially welcome you to the ACK ALL SAINTS MASENO PARISH, in the Diocese of Maseno South.
+                    We are a one-Church parish located along the Kisumu - Busia Road at Maseno Municipality, in the neighborhood of Maseno University
+                    and adjacent to Maseno School for Hearing Impaired.
+                </p>
+                <p class="text-lg text-gray-600 mb-6">
+                    We are committed to following Jesus and joyously worshiping Him. Our Theme for 2025 is from John 4:29: ‘Come, see a man…’
+                </p>
+                <p class="text-lg text-gray-600 mb-6">
+                    As a church family, we seek to be an exemplary congregation bound together by the love of Christ, reaching and touching lives
+                    by word and deed. Feel free to worship with us and participate in our activities.”
+                </p>
+            </div>
         </div>
+    </section>
 
-        <!-- Go on Mission -->
-        <div class="p-8 bg-[#efe5e5] bg-opacity-90 rounded-lg shadow-lg">
-            <img src="mission-icon.png" alt="Mission" class="w-16 h-16 mb-4 mx-auto">
-            <h3 class="text-2xl font-semibold text-[#660000]">Go on Mission</h3>
-            <p class="text-gray-700 mt-4">
-                Join us in reaching communities locally and globally, spreading the love of Christ through mission trips, evangelism, and community service projects.
-            </p>
-            <a href="#" class="mt-4 inline-block text-[#660000] font-bold">Join a Mission →</a>
-        </div>
-
-        <!-- Join Our Ministries -->
-        <div class="p-8 bg-[#efe5e5] bg-opacity-90 rounded-lg shadow-lg">
-            <img src="ministries-icon.png" alt="Ministries" class="w-16 h-16 mb-4 mx-auto">
-            <h3 class="text-2xl font-semibold text-[#660000]">Join Our Ministries</h3>
-            <p class="text-gray-700 mt-4">
-                Whether it's the worship team, youth ministry, or outreach programs, there's a place for you to serve using your unique gifts and talents.
-            </p>
-            <a href="ministries.html" class="mt-4 inline-block text-[#660000] font-bold">Explore Ministries →</a>
-        </div>
-
-        <!-- Pray for the Ministry -->
-        <div class="p-8 bg-[#efe5e5] bg-opacity-90 rounded-lg shadow-lg">
-            <img src="prayer-icon.png" alt="Prayer" class="w-16 h-16 mb-4 mx-auto">
-            <h3 class="text-2xl font-semibold text-[#660000]">Pray for the Ministry</h3>
-            <p class="text-gray-700 mt-4">
-                We believe in the power of prayer. Join us in lifting our leaders, missionaries, and community in prayer as we seek God's guidance and blessings.
-            </p>
-            <a href="#" class="mt-4 inline-block text-[#660000] font-bold">Join Prayer Team →</a>
-        </div>
-
-        <!-- Attend Our Events -->
-        <div class="p-8 bg-[#efe5e5] bg-opacity-90 rounded-lg shadow-lg">
-            <img src="events-icon.png" alt="Events" class="w-16 h-16 mb-4 mx-auto">
-            <h3 class="text-2xl font-semibold text-[#660000]">Attend Our Events</h3>
-            <p class="text-gray-700 mt-4">
-                Stay connected by attending our church events, worship services, and special programs. There's always something for everyone to enjoy and grow in faith.
-            </p>
-            <a href="activities.html" class="mt-4 inline-block text-[#660000] font-bold">View Events →</a>
-        </div>
-
-    </div>
 </main>
-
 
 <!-- Footer -->
 <footer class="relative bg-contain bg-cover bg-center text-[#3d0000] py-12" style="background-image: url('footer.jpg');">
@@ -183,7 +185,6 @@
                 <p><strong>Phone:</strong> +254 (7) 960-20551</p>
                 <p><strong>Email:</strong> info@ackallsaintsmasenoparish.com</p>
             </div>
-
             <!-- Social Media Links -->
             <div>
                 <h3 class="text-2xl font-semibold mb-4 text-center">Follow Us</h3>
@@ -194,7 +195,6 @@
                     <a href="#" class="hover:text-gray-400"><img src="youtube.png" alt="YouTube" class="w-10 h-10"></a>
                 </div>
             </div>
-
             <!-- Useful Links -->
             <div>
                 <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
@@ -209,7 +209,6 @@
                 </ul>
             </div>
         </div>
-
         <!-- To Give & Prayer Line -->
         <div class="flex justify-center items-center space-x-4 mb-8">
             <a href="give.html" class="px-6 py-2 bg-[#660000] text-white rounded-lg hover:bg-[#3d0000]">
@@ -219,7 +218,6 @@
                 Prayer Line
             </a>
         </div>
-
         <!-- Footer Bottom: Copyright -->
         <div class="border-t border-[#660000] pt-6 flex justify-between items-center text-center md:text-left">
             <!-- Copyright -->
@@ -233,5 +231,6 @@
         </div>
     </div>
 </footer>
+
 </body>
 </html>
