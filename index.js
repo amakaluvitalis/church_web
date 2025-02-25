@@ -1,18 +1,21 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     // Elements for the mobile toggle
-    const menuToggle = document.getElementById("menu-toggle"); // Button containing the icons
-    const mobileMenu = document.getElementById("mobile-menu"); // The actual menu
-    const menuIcon = document.getElementById("menu-icon"); // Menu icon (hamburger)
-    const closeIcon = document.getElementById("close-icon"); // Close icon (X)
-    const dropdownButtons = document.querySelectorAll('[data-dropdown]');
+    const menuToggle = document.getElementById("menu-toggle"); 
+    const mobileMenu = document.getElementById("mobile-menu"); 
+    const menuIcon = document.getElementById("menu-icon"); 
+    const closeIcon = document.getElementById("close-icon"); 
 
+    // Dropdown buttons for mobile
+    const dropdownButtons = document.querySelectorAll('[data-dropdown]');
     
+    // Desktop About dropdown
+    const aboutButton = document.getElementById("about-btn");
+    const aboutDropdown = document.getElementById("about-dropdown");
+
     // Hero section (slides and text update)
     const slides = document.querySelectorAll('.hero-slide');
     const heroTitle = document.getElementById('hero-title');
     const heroSubtext = document.getElementById('hero-subtext');
-    
     let currentSlide = 0;
 
     // Ensure heroTitle and heroSubtext are available
@@ -30,9 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSubtext.classList.remove('opacity-0');
             heroSubtext.classList.add('opacity-100');
         }
-
         updateText();
-
         setInterval(() => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
@@ -60,16 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(countries => {
             const selectElement = document.getElementById('country-code');
             
-            // Sort countries by name alphabetically
             countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
 
-            // Loop through countries and add them to the dropdown
             countries.forEach(country => {
-                const countryCode = country.idd ? `+${country.idd.suffixes[0]}` : ''; // Get country calling code
-                const countryName = country.name.common; // Get country name
-                const flagUrl = country.flags ? country.flags.png || country.flags.svg : ''; // Get flag URL (prefer PNG, fallback to SVG)
+                const countryCode = country.idd ? `+${country.idd.suffixes[0]}` : ''; 
+                const countryName = country.name.common; 
+                const flagUrl = country.flags ? country.flags.png || country.flags.svg : ''; 
 
-                // Ensure country code, flag, and name are available
                 if (countryCode && flagUrl && countryName) {
                     const option = document.createElement('option');
                     option.value = countryCode;
@@ -78,40 +76,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Optional: Set a default country code (e.g., Kenya's country code)
             selectElement.value = '+254'; 
         })
         .catch(error => {
             console.error('Error fetching country data:', error);
         });
 
-        if (menuToggle && mobileMenu && menuIcon && closeIcon) {
-            menuToggle.addEventListener('click', () => {
-                const isMenuHidden = mobileMenu.classList.contains('translate-x-full');
-                
-                // Toggle the mobile menu visibility
-                mobileMenu.classList.toggle('translate-x-full', !isMenuHidden);
-    
-                // Smoothly toggle visibility of icons
-                if (isMenuHidden) {
-                    menuIcon.classList.add('hidden'); // Hide menu icon
-                    closeIcon.classList.remove('hidden'); // Show close icon
-                } else {
-                    menuIcon.classList.remove('hidden'); // Show menu icon
-                    closeIcon.classList.add('hidden'); // Hide close icon
-                }
-            });
-        } else {
-            console.error("Menu toggle elements are missing or incorrectly referenced.");
-        }
+    // Mobile menu toggle functionality
+    if (menuToggle && mobileMenu && menuIcon && closeIcon) {
+        menuToggle.addEventListener('click', () => {
+            const isMenuHidden = mobileMenu.classList.contains('translate-x-full');
+            
+            mobileMenu.classList.toggle('translate-x-full', !isMenuHidden);
 
-        dropdownButtons.forEach((button) => {
-            const dropdownId = button.getAttribute('data-dropdown');
-            const dropdownMenu = document.getElementById(dropdownId);
-    
-            button.addEventListener('click', () => {
-                const isDropdownVisible = !dropdownMenu.classList.contains('hidden');
-                dropdownMenu.classList.toggle('hidden', isDropdownVisible); // Toggle visibility
-            });
+            if (isMenuHidden) {
+                menuIcon.classList.add('hidden'); 
+                closeIcon.classList.remove('hidden'); 
+            } else {
+                menuIcon.classList.remove('hidden'); 
+                closeIcon.classList.add('hidden'); 
+            }
         });
+    } else {
+        console.error("Menu toggle elements are missing or incorrectly referenced.");
+    }
+
+    // Mobile Dropdown Toggle
+    dropdownButtons.forEach((button) => {
+        const dropdownId = button.getAttribute('data-dropdown');
+        const dropdownMenu = document.getElementById(dropdownId);
+
+        button.addEventListener('click', () => {
+            const isDropdownVisible = !dropdownMenu.classList.contains('hidden');
+            dropdownMenu.classList.toggle('hidden', isDropdownVisible); 
+        });
+    });
+
+    // Desktop About Dropdown Toggle
+    if (aboutButton && aboutDropdown) {
+        aboutButton.addEventListener("click", () => {
+            aboutDropdown.classList.toggle("hidden");
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!aboutButton.contains(event.target) && !aboutDropdown.contains(event.target)) {
+                aboutDropdown.classList.add("hidden");
+            }
+        });
+    }
 });

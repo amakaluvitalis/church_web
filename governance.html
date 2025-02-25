@@ -23,24 +23,22 @@
 
     <!-- Header -->
     <header class="absolute top-11 md:top-9 left-0 w-full z-10 bg-gradient-to-b from-[#a36666]/90 to-transparent text-white p-4">
-        <div class="container mx-auto flex justify-between items-center relative">
-            <!-- Logo and Title -->
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
-                <img src="ack_logo.png" alt="Church Logo" class="h-20 w-auto object-contain -mt-4">
-                <h1 class="text-xl font-bold">ACK ALL SAINTS MASENO PARISH</h1>
+                <img src="ack_logo.png" alt="Church Logo" class="h-16 lg:h-20 w-auto object-contain -mt-4">
+                <h1 class="text-lg lg:text-xl font-bold">ACK ALL SAINTS MASENO PARISH</h1>
             </div>
-
             <!-- Desktop Navigation -->
             <nav class="hidden lg:block">
                 <ul class="flex space-x-4">
                     <li><a href="index.html" class="relative hover:text-[#660000]">Home</a></li>
-                    <li class="group relative">
-                        <a href="#" class="hover:text-[#660000]">About</a>
-                        <ul class="absolute hidden group-hover:block bg-[#660000] text-black shadow-lg mt-2 py-2 w-40">
-                            <li><a href="who-we-are.html" class="block px-4 py-2 hover:bg-gray-100">Who We Are</a></li>
-                            <li><a href="history.html" class="block px-4 py-2 hover:bg-gray-100">History</a></li>
-                            <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
-                            <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
+                    <li class="relative">
+                        <button id="about-btn" class="hover:text-[#660000] focus:outline-none">About</button>
+                        <ul id="about-dropdown-desktop" class="absolute left-0 bg-[#660000] text-white shadow-lg w-40 mt-2 py-2 hidden">
+                            <li><a href="who-we-are.html" class="block px-4 py-2 hover:bg-gray-700">Who We Are</a></li>
+                            <li><a href="history.html" class="block px-4 py-2 hover:bg-gray-700">History</a></li>
+                            <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-700">Administration</a></li>
+                            <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-700">Governance</a></li>
                         </ul>
                     </li>
                     <li><a href="ministries.html" class="hover:text-[#660000]">Ministries</a></li>
@@ -48,22 +46,20 @@
                     <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
                     <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
                     <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
+                    <li><a href="become-member.html" class="hover:text-[#660000]">Join Us</a></li>
                 </ul>
             </nav>
-
             <!-- Mobile Menu Toggle -->
             <button class="lg:hidden text-white relative z-20" id="menu-toggle">
                 <!-- Menu Icon (hamburger) -->
                 <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
-
                 <!-- Close Icon (X) -->
                 <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 hidden">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-
             <!-- Mobile Menu -->
             <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
                 <ul class="p-6 space-y-4">
@@ -73,11 +69,11 @@
                             About
                             <span>&#9662;</span>
                         </button>
-                        <ul id="about-dropdown" class="hidden space-y-2 ml-4">
+                        <ul id="about-dropdown-mobile" class="hidden space-y-2 ml-4">
                             <li><a href="who-we-are.html" class="hover:text-[#660000]">Who We Are</a></li>
                             <li><a href="history.html" class="hover:text-[#660000]">History</a></li>
-                            <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
-                            <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
+                            <li><a href="administration.html" class="hover:text-[#660000]">Administration</a></li>
+                            <li><a href="governance.html" class="hover:text-[#660000]">Governance</a></li>
                         </ul>
                     </li>
                     <li><a href="ministries.html" class="hover:text-[#660000]">Ministries</a></li>
@@ -85,6 +81,7 @@
                     <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
                     <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
                     <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
+                    <li><a href="become-member.html" class="hover:text-[#660000]">Join Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -222,6 +219,7 @@
                     <li><a href="administration.html" class="hover:text-gray-400">Administration</a></li>
                     <li><a href="governance.html" class="hover:text-gray-400">Governance</a></li>
                     <li><a href="contact-us.html" class="hover:text-gray-400">Contact Us</a></li>
+                    <li><a href="become-member.html" class="hover:text-[#660000]">Join Us</a></li>
                 </ul>
             </div>
         </div>

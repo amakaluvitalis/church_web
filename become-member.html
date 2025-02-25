@@ -19,24 +19,22 @@
 
 <!-- Header -->
 <header class="absolute top-11 md:top-9 left-0 w-full z-10 bg-gradient-to-b from-[#a36666]/90 to-transparent text-white p-4">
-    <div class="container mx-auto flex justify-between items-center relative">
-        <!-- Logo and Title -->
+    <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-4">
-            <img src="ack_logo.png" alt="Church Logo" class="h-20 w-auto object-contain -mt-4">
-            <h1 class="text-xl font-bold">ACK ALL SAINTS MASENO PARISH</h1>
+            <img src="ack_logo.png" alt="Church Logo" class="h-16 lg:h-20 w-auto object-contain -mt-4">
+            <h1 class="text-lg lg:text-xl font-bold">ACK ALL SAINTS MASENO PARISH</h1>
         </div>
-
         <!-- Desktop Navigation -->
         <nav class="hidden lg:block">
             <ul class="flex space-x-4">
                 <li><a href="index.html" class="relative hover:text-[#660000]">Home</a></li>
-                <li class="group relative">
-                    <a href="#" class="hover:text-[#660000]">About</a>
-                    <ul class="absolute hidden group-hover:block bg-[#660000] text-black shadow-lg mt-2 py-2 w-40">
-                        <li><a href="who-we-are.html" class="block px-4 py-2 hover:bg-gray-100">Who We Are</a></li>
-                        <li><a href="history.html" class="block px-4 py-2 hover:bg-gray-100">History</a></li>
-                        <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
-                        <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
+                <li class="relative">
+                    <button id="about-btn" class="hover:text-[#660000] focus:outline-none">About</button>
+                    <ul id="about-dropdown-desktop" class="absolute left-0 bg-[#660000] text-white shadow-lg w-40 mt-2 py-2 hidden">
+                        <li><a href="who-we-are.html" class="block px-4 py-2 hover:bg-gray-700">Who We Are</a></li>
+                        <li><a href="history.html" class="block px-4 py-2 hover:bg-gray-700">History</a></li>
+                        <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-700">Administration</a></li>
+                        <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-700">Governance</a></li>
                     </ul>
                 </li>
                 <li><a href="ministries.html" class="hover:text-[#660000]">Ministries</a></li>
@@ -44,22 +42,20 @@
                 <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
                 <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
                 <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
+                <li><a href="become-member.html" class="hover:text-[#660000]">Join Us</a></li>
             </ul>
         </nav>
-
         <!-- Mobile Menu Toggle -->
         <button class="lg:hidden text-white relative z-20" id="menu-toggle">
             <!-- Menu Icon (hamburger) -->
             <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
-
             <!-- Close Icon (X) -->
             <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
-
         <!-- Mobile Menu -->
         <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
             <ul class="p-6 space-y-4">
@@ -69,11 +65,11 @@
                         About
                         <span>&#9662;</span>
                     </button>
-                    <ul id="about-dropdown" class="hidden space-y-2 ml-4">
+                    <ul id="about-dropdown-mobile" class="hidden space-y-2 ml-4">
                         <li><a href="who-we-are.html" class="hover:text-[#660000]">Who We Are</a></li>
                         <li><a href="history.html" class="hover:text-[#660000]">History</a></li>
-                        <li><a href="administration.html" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
-                        <li><a href="governance.html" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
+                        <li><a href="administration.html" class="hover:text-[#660000]">Administration</a></li>
+                        <li><a href="governance.html" class="hover:text-[#660000]">Governance</a></li>
                     </ul>
                 </li>
                 <li><a href="ministries.html" class="hover:text-[#660000]">Ministries</a></li>
@@ -81,6 +77,7 @@
                 <li><a href="resources.html" class="hover:text-[#660000]">Resources</a></li>
                 <li><a href="get-involved.html" class="hover:text-[#660000]">Get Involved</a></li>
                 <li><a href="contact-us.html" class="hover:text-[#660000]">Contact Us</a></li>
+                <li><a href="become-member.html" class="hover:text-[#660000]">Join Us</a></li>
             </ul>
         </nav>
     </div>
@@ -89,13 +86,52 @@
 <!-- Main Content -->
 <main class="flex-grow bg-white py-12 px-4 text-center mt-20">
 
+    <!-- Welcome Message Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="max-w-4xl mx-auto bg-white rounded-lg p-8 ">
+                
+                <div class="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
+                    
+                    <!-- Vicar's Image (Left Side) -->
+                    <div class="flex-shrink-0">
+                        <img src="vicar_placeholder.jpg" alt="Rev. Emmah Omondi - Vicar" 
+                            class="w-48 h-48 rounded-full object-cover shadow-md border-4 border-[#660000]">
+                    </div>
+
+                    <!-- Message from the Vicar (Right Side) -->
+                    <div class="text-center md:text-left">
+                        <h3 class="text-3xl font-semibold text-[#660000] mb-4">
+                            Message From The Vicar - Rev. Emmah Omondi
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-4">
+                            “Please allow me to cordially welcome you to the ACK ALL SAINTS MASENO PARISH, in the Diocese of Maseno South.
+                            We are a one-Church parish located along the Kisumu - Busia Road at Maseno Municipality, in the neighborhood of 
+                            Maseno University and adjacent to Maseno School for Hearing Impaired.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-4">
+                            We are committed to following Jesus and joyously worshiping Him. Our Theme for 2025 is from John 4:29: 
+                            ‘Come, see a man…’
+                        </p>
+                        <p class="text-lg text-gray-600">
+                            As a church family, we seek to be an exemplary congregation bound together by the love of Christ, reaching 
+                            and touching lives by word and deed. Feel free to worship with us and participate in our activities.”
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Become a Member Section -->
-    <section class="py-16 bg-[#f5e6e6]">
+    <section class="py-16">
         <div class="container mx-auto px-6 md:px-12 text-center">
             <h2 class="text-4xl font-bold text-[#660000] mb-8">Become a Member</h2>
 
             <!-- Call to Action: Join Now (Form Section) -->
-            <div class="bg-[#ffffff] custom-shadow rounded-lg p-8 max-w-2xl mx-auto shadow-lg">
+            <div class="bg-white custom-shadow rounded-lg p-8 max-w-2xl mx-auto shadow-lg">
                 <h3 class="text-3xl font-semibold text-[#660000] mb-4">Ready to Join?</h3>
                 <p class="text-lg text-gray-600 mb-6">
                     Joining our church family is easy! Fill out the form below to get started, and a member of our team
@@ -103,42 +139,52 @@
                 </p>
 
                 <!-- Membership Form -->
-                <form action="#" method="POST" class="space-y-6 bg-white p-8 rounded-lg shadow-md">
-                    <!-- Full Name -->
-                    <div>
-                        <label for="full-name" class="block text-gray-800 text-lg font-semibold mb-2">Full Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="full-name" name="full-name" 
-                            class="w-full p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" 
-                            placeholder="Enter your full name" required>
-                    </div>
+                <form action="#" method="POST" class="bg-white p-6">
+                    <div class="space-y-4">
+                        <!-- Full Name -->
+                        <div class="flex items-center space-x-4">
+                            <label for="full-name" class="text-gray-800 text-lg font-semibold w-32 text-right">
+                                Full Name <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="full-name" name="full-name"
+                                class="flex-grow p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" 
+                                placeholder="Enter your full name" required>
+                        </div>
 
-                    <!-- Email Address -->
-                    <div>
-                        <label for="email" class="block text-gray-800 text-lg font-semibold mb-2">Email <span class="text-red-500">*</span></label>
-                        <input type="email" id="email" name="email" 
-                            class="w-full p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" 
-                            placeholder="Enter your email address" required>
-                    </div>
+                        <!-- Email Address -->
+                        <div class="flex items-center space-x-4">
+                            <label for="email" class="text-gray-800 text-lg font-semibold w-32 text-right">
+                                Email <span class="text-red-500">*</span>
+                            </label>
+                            <input type="email" id="email" name="email"
+                                class="flex-grow p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" 
+                                placeholder="Enter your email address" required>
+                        </div>
 
-                    <!-- Phone Number -->
-                    <div>
-                        <label for="phone" class="block text-gray-800 text-lg font-semibold mb-2">Phone <span class="text-red-500">*</span></label>
-                        <div class="flex space-x-3">
-                            <select id="country-code" name="country-code" class="w-1/3 p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]">
-                                <option value="+254">+254 (Kenya)</option>
-                                <option value="+255">+255 (Tanzania)</option>
-                                <option value="+256">+256 (Uganda)</option>
-                                <option value="+260">+260 (Zambia)</option>
-                            </select>
-                            <input type="tel" id="phone" name="phone" 
-                                class="w-2/3 p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000]" 
-                                placeholder="Enter your phone number" required>
+                        <!-- Phone Number -->
+                        <div class="flex items-center space-x-4">
+                            <label for="phone" class="text-gray-800 text-lg font-semibold w-32 text-right">
+                                Phone <span class="text-red-500">*</span>
+                            </label>
+                            <div class="flex border border-[#660000] rounded-lg overflow-hidden w-3/4">
+                                <select id="country-code" name="country-code"
+                                    class="bg-gray-100 px-3 py-3 border-r border-[#660000] text-gray-700 focus:outline-none w-1/4 min-w-[70px]">
+                                    <option value="+254">+254</option>
+                                    <option value="+255">+255</option>
+                                    <option value="+256">+256</option>
+                                    <option value="+260">+260</option>
+                                </select>
+                                <input type="tel" id="phone" name="phone"
+                                    class="flex-1 p-3 focus:outline-none focus:ring-2 focus:ring-[#660000]" 
+                                    placeholder="Enter phone number" required>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Submit Button -->
-                    <div class="flex justify-center">
-                        <button type="submit" class="w-full bg-[#660000] text-white py-3 rounded-lg hover:bg-[#993333] transition duration-300 font-semibold">
+                    <div class="flex justify-center mt-6">
+                        <button type="submit"
+                            class="w-full md:w-1/2 bg-[#660000] text-white py-3 rounded-lg hover:bg-[#993333] transition duration-300 font-semibold">
                             Submit Application
                         </button>
                     </div>
@@ -147,26 +193,7 @@
         </div>
     </section>
 
-    <!-- Welcome Message Section -->
-    <section class="py-16 bg-[#e6d6d6]">
-        <div class="container mx-auto px-6 md:px-12 text-center">
-            <div class="max-w-3xl mx-auto bg-white custom-shadow rounded-lg p-8 shadow-lg">
-                <h3 class="text-3xl font-semibold text-[#660000] mb-4">A Welcome Message From The Vicar - Rev. Emmah Omondi</h3>
-                <p class="text-lg text-gray-600 mb-6">
-                    “Please allow me to cordially welcome you to the ACK ALL SAINTS MASENO PARISH, in the Diocese of Maseno South.
-                    We are a one-Church parish located along the Kisumu - Busia Road at Maseno Municipality, in the neighborhood of Maseno University
-                    and adjacent to Maseno School for Hearing Impaired.
-                </p>
-                <p class="text-lg text-gray-600 mb-6">
-                    We are committed to following Jesus and joyously worshiping Him. Our Theme for 2025 is from John 4:29: ‘Come, see a man…’
-                </p>
-                <p class="text-lg text-gray-600 mb-6">
-                    As a church family, we seek to be an exemplary congregation bound together by the love of Christ, reaching and touching lives
-                    by word and deed. Feel free to worship with us and participate in our activities.”
-                </p>
-            </div>
-        </div>
-    </section>
+
 
 </main>
 
