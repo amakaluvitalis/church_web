@@ -125,4 +125,68 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+
+    const floatingButton = document.getElementById("floatingButton");
+    const toggleButton = document.getElementById("toggleButton");
+    const closeFloatingButton = document.getElementById("closeFloatingButton");
+    const notificationPanel = document.getElementById("notificationPanel");
+    const closePanel = document.getElementById("closePanel");
+
+    let isOpen = false;
+    let isManuallyClosed = false; 
+    let manualCloseTime = null; 
+
+    // Function to make the button shake periodically
+    function startShaking() {
+        setInterval(() => {
+            if (!isOpen && !isManuallyClosed) {
+                floatingButton.classList.add("shake");
+                setTimeout(() => floatingButton.classList.remove("shake"), 400);
+            }
+        }, 5000); 
+    }
+
+    // Function to show and hide button every 1 min (visible for 30s)
+    function toggleVisibility() {
+        if (!isManuallyClosed) {
+            floatingButton.classList.remove("hidden"); 
+            setTimeout(() => {
+                if (!isManuallyClosed) {
+                    floatingButton.classList.add("hidden"); 
+                }
+            }, 30000); 
+        }
+        setTimeout(toggleVisibility, 60000);
+    }
+
+    // Open Panel
+    toggleButton.addEventListener("click", () => {
+        notificationPanel.classList.remove("right-[-320px]");
+        notificationPanel.classList.add("right-4");
+        isOpen = true;
+    });
+
+    // Close Panel
+    closePanel.addEventListener("click", () => {
+        notificationPanel.classList.remove("right-4");
+        notificationPanel.classList.add("right-[-320px]");
+        isOpen = false;
+    });
+
+    // Close Floating Button & Prevent it from Showing for 10 Minutes
+    closeFloatingButton.addEventListener("click", () => {
+        floatingButton.classList.add("hidden");
+        isManuallyClosed = true; 
+        manualCloseTime = Date.now();
+
+        setTimeout(() => {
+            isManuallyClosed = false;
+            toggleVisibility();
+        }, 600000); 
+    });
+
+    // Start shaking animation & visibility toggle on load
+    startShaking();
+    toggleVisibility();
 });

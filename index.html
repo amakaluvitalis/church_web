@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
+<body class="bg-[#f0e6e6]">
     <div class="bg-[#a36666] text-white py-2">
         <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 space-y-1 sm:space-y-0">
             <span class="text-xs sm:text-sm leading-tight"><strong>Location: </strong>Kisumu Busia RD, Maseno Municipality</span>
@@ -104,43 +104,61 @@
     
 
 <!-- Vision, Mission, Slogan & Core Values Section -->
-<section class="py-16 bg-[#e0cccc] text-center">
+<section class="py-16 bg-[#f0e6e6] text-center">
     <div class="container mx-auto px-6 md:px-12">
         <h2 class="text-4xl font-bold text-[#660000] mb-12">Our Vision, Mission & Core Values</h2>
         <div class="grid md:grid-cols-2 gap-12">
             <!-- Mission -->
-            <div class="bg-[#efe5e5] custom-shadow rounded-lg p-12 text-center">
-                <div class="flex justify-center mb-6">
-                    <img src="mission.png" alt="Mission Icon" class="w-32 h-32">
+            <div class="flex items-center bg-[#efe5e5] custom-shadow rounded-lg p-8 relative overflow-hidden group">
+                <div class="w-24 h-24 flex-shrink-0">
+                    <img src="mission.png" alt="Mission Icon" class="w-full h-full object-contain">
                 </div>
-                <h3 class="text-2xl font-semibold text-[#660000] mb-4">Our Mission</h3>
-                <p class="text-gray-600 leading-relaxed">
-                    Rigorously and vigorously evangelize the gospel by witnessing and transforming the spiritual
-                    orientation of the congregants and proclamation of the salvation of Jesus Christ to all souls and believers.
-                </p>
+                <div class="ml-6 border-l-4 border-[#660000] pl-6">
+                    <h3 class="text-3xl font-bold text-[#660000] mb-3 relative">
+                        Mission
+                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-[#660000]"></span>
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Rigorously and vigorously evangelize the gospel by witnessing and transforming the spiritual
+                        orientation of the congregants and proclamation of the salvation of Jesus Christ to all souls and believers.
+                    </p>
+                </div>
             </div>
-
+        
             <!-- Vision -->
-            <div class="bg-[#efe5e5] custom-shadow rounded-lg p-12 text-center">
-                <div class="flex justify-center mb-6">
-                    <img src="vision.png" alt="Vision Icon" class="w-32 h-32">
+            <div class="flex items-center bg-[#efe5e5] custom-shadow rounded-lg p-8 relative overflow-hidden group">
+                <div class="w-24 h-24 flex-shrink-0">
+                    <img src="vision.png" alt="Vision Icon" class="w-full h-full object-contain">
                 </div>
-                <h3 class="text-2xl font-semibold text-[#660000] mb-4">Our Vision</h3>
-                <p class="text-gray-600 leading-relaxed">
-                    To be an exemplary church of believers bound together by the love in Christ.
-                </p>
+                <div class="ml-6 border-l-4 border-[#660000] pl-6">
+                    <h3 class="text-3xl font-bold text-[#660000] mb-3 relative">
+                        Vision
+                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-[#660000]"></span>
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        To be an exemplary church of believers bound together by the love in Christ.
+                    </p>
+                </div>
             </div>
         </div>
         
-        <!-- Slogan -->
-        <div class="mt-12">
-            <h3 class="text-2xl font-semibold text-[#660000] mb-4">Our Slogan</h3>
-            <p class="text-gray-600 leading-relaxed italic">“With Christ we shall conquer all that we purpose to do”</p>
-        </div>
+        
+<!-- Slogan Section -->
+<div class="mt-12 text-center relative">
+    <h3 class="text-3xl font-bold text-[#660000] mb-6">Slogan</h3>
+    <div class="max-w-3xl mx-auto p-8 rounded-lg bg-gradient-to-r from-[#f8e8e8] to-[#e0cccc] shadow-lg">
+        <p class="text-2xl md:text-3xl font-semibold italic text-gray-700 relative">
+            <span class="text-4xl md:text-5xl font-bold text-gray-700">“</span> 
+            With Christ, we shall conquer all that we purpose to do.
+            <span class="text-4xl md:text-5xl font-bold text-gray-700">”</span> 
+        </p>
+    </div>
+</div>
+
         
         <!-- Core Values Section -->
         <div class="mt-12 text-center">
-            <h3 class="text-2xl font-semibold text-[#660000] mb-6">Our Core Values</h3>
+            <h3 class="text-3xl font-bold text-[#660000] mb-6">Core Values</h3>
 
             <!-- Hexagon Grid -->
             <div class="flex flex-wrap justify-center gap-8">
@@ -169,25 +187,50 @@
                 <img src="sunday_poster.jpg" alt="Weekly Poster" class="w-full rounded-lg shadow-md">
             </div>
 
-            <!-- Weekly Services -->
-            <div class="bg-[#efe5e5] bg-opacity-90 shadow-lg rounded-lg p-8 text-gray-800">
-                <h3 class="text-2xl font-semibold mb-4">Our Weekly Services</h3>
-                <ul class="text-left space-y-4">
-                    <li class="border-b pb-2"><strong>Sunday:</strong></li>
-                    <li class="pl-4">6:00 AM - 7:00 AM: Morning Devotion</li>
-                    <li class="pl-4">7:00 AM - 9:00 AM: 1st Service</li>
-                    <li class="pl-4">10:00 AM - 12:00 PM: 2nd Service</li>
-                    <li class="pl-4">2:00 PM - 5:00 PM: Scheme Fellowship</li>
-                    <li class="pl-4">3:00 PM - 5:00 PM: Bible Study</li>
-                    <li class="border-b pb-2"><strong>Tuesday:</strong></li>
-                    <li class="pl-4">5:00 PM - 6:00 PM: Intercessory Prayers</li>
-                    <li class="border-b pb-2"><strong>Wednesday (Midweek Service):</strong></li>
-                    <li class="pl-4">6:30 AM - 7:30 AM</li>
-                    <li class="pl-4">5:30 PM - 6:30 PM</li>
-                    <li class="border-b pb-2"><strong>Friday:</strong></li>
-                    <li class="pl-4">6:00 PM - 7:00 PM: Youth Fellowship</li>
-                </ul>
-            </div>
+<!-- Weekly Services -->
+<div class="bg-[#efe5e5] bg-opacity-90 shadow-lg rounded-lg p-8 text-gray-800">
+    <h3 class="text-3xl font-bold text-[#660000] mb-6 text-center">Our Weekly Services</h3>
+    
+    <div class="divide-y divide-[#660000]/30">
+        <!-- Sunday Services -->
+        <div class="py-4">
+            <h4 class="text-xl font-semibold text-[#660000]">Sunday</h4>
+            <ul class="mt-2 text-gray-700">
+                <li class="mt-1">6:00 AM - 7:00 AM: Morning Devotion</li>
+                <li class="mt-1">7:00 AM - 9:00 AM: 1st Service</li>
+                <li class="mt-1">10:00 AM - 12:00 PM: 2nd Service</li>
+                <li class="mt-1">2:00 PM - 5:00 PM: Scheme Fellowship</li>
+                <li class="mt-1">3:00 PM - 5:00 PM: Bible Study</li>
+            </ul>
+        </div>
+
+        <!-- Tuesday Service -->
+        <div class="py-4">
+            <h4 class="text-xl font-semibold text-[#660000]">Tuesday</h4>
+            <ul class="mt-2 text-gray-700">
+                <li class="mt-1">5:00 PM - 6:00 PM: Intercessory Prayers</li>
+            </ul>
+        </div>
+
+        <!-- Wednesday Service -->
+        <div class="py-4">
+            <h4 class="text-xl font-semibold text-[#660000]">Wednesday (Midweek Service)</h4>
+            <ul class="mt-2 text-gray-700">
+                <li class="mt-1">6:30 AM - 7:30 AM: Morning Service</li>
+                <li class="mt-1">5:30 PM - 6:30 PM: Evening Service</li>
+            </ul>
+        </div>
+
+        <!-- Friday Service -->
+        <div class="py-4">
+            <h4 class="text-xl font-semibold text-[#660000]">Friday</h4>
+            <ul class="mt-2 text-gray-700">
+                <li class="mt-1">6:00 PM - 7:00 PM: Youth Fellowship</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
         </div>
 
         <!-- Flowing Notices -->
@@ -266,6 +309,45 @@
         </div>
     </div>
 </footer>
+<!-- Floating Notification Button -->
+<div id="floatingButton" 
+    class="fixed right-4 top-1/2 transform -translate-y-1/2 bg-transparent w-16 h-16 flex items-center justify-center shadow-none transition-all duration-300 hidden">
+    
+    <!-- Bell Icon -->
+    <button id="toggleButton" class="focus:outline-none w-full h-full flex items-center justify-center">
+        <img src="bell_icon.png" alt="Bell" class="w-full h-full object-contain">
+    </button>
+
+    <!-- Close (X) Button - Hidden by Default, Appears on Hover -->
+    <button id="closeFloatingButton" 
+        class="absolute -top-2 -right-2 bg-white text-[#660000] w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center shadow-md border border-[#660000] hover:bg-[#550000] hover:text-white">
+        ✖
+    </button>
+</div>
+
+<!-- Notification Panel -->
+<div id="notificationPanel" 
+    class="fixed right-[-320px] top-1/4 w-72 h-96 bg-white shadow-2xl rounded-lg p-4 transition-all duration-300 flex flex-col">
+    
+    <!-- Close Button (Left Side, Right Arrow) -->
+    <button id="closePanel" 
+        class="absolute left-[-30px] top-1/2 transform -translate-y-1/2 bg-[#660000] hover:bg-[#550000] text-white w-8 h-8 rounded-full flex items-center justify-center shadow-md transition-all duration-300">
+        →
+    </button>
+
+    <!-- Panel Header -->
+    <div class="border-b pb-2 text-center">
+        <span class="text-lg font-semibold text-[#660000]">Notifications</span>
+    </div>
+
+    <!-- Notification List -->
+    <ul class="mt-3 space-y-2 overflow-y-auto max-h-72">
+        <li class="bg-gray-100 p-2 rounded-md text-sm">📢 Announcement 1: Sunday Event at 10 AM.</li>
+        <li class="bg-gray-100 p-2 rounded-md text-sm">📢 Bible study on Wednesday at 6 PM.</li>
+        <li class="bg-gray-100 p-2 rounded-md text-sm">📢 Church meeting rescheduled to next week.</li>
+    </ul>
+</div>
+
 </body>
 
 </html>

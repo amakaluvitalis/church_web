@@ -116,8 +116,8 @@ nav ul li:hover > ul {
 .hexagon {
     width: 160px;
     height: 160px;
-    background-color: #660000;
-    color: white;
+    background-color: #e0cccc;
+    color: #616161;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,9 +141,33 @@ nav ul li:hover > ul {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(216, 2, 20, 0.6);
+    background: #c29999;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     z-index: -1;
     filter: blur(15px); /* Soft glow */
     opacity: 0.8;
 }
+
+/* Shaking Animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+}
+
+.shake {
+    animation: shake 0.4s ease-in-out infinite;
+}
+
+/* Hide Close Button by Default */
+#closeFloatingButton {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show Close Button on Hover */
+#floatingButton:hover #closeFloatingButton {
+    opacity: 1;
+}
+
