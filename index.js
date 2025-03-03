@@ -189,4 +189,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start shaking animation & visibility toggle on load
     startShaking();
     toggleVisibility();
+
+
+    const notices = [
+        "🔥 Worship Night on March 15, 7:00 PM",
+        "🙏 Join the Saturday Fellowship at 5:00 PM",
+        "🎉 Youth Meeting this Friday at 6:00 PM",
+        "📢 Sunday Service starts at 10:00 AM",
+        "🎶 Choir Rehearsal on Saturday at 4:00 PM",
+        "🛐 Intercessory Prayers on Tuesday at 5:00 PM",
+        "📖 Bible Study every Wednesday at 6:00 PM"
+    ];
+
+    const marquee = document.getElementById("marquee");
+
+    function populateNotices() {
+        marquee.innerHTML = ""; // Clear previous notices
+        notices.forEach((text) => {
+            const span = document.createElement("span");
+            span.classList.add("notice");
+            span.textContent = text;
+            marquee.appendChild(span);
+        });
+
+        // Duplicate notices for smooth looping
+        notices.forEach((text) => {
+            const span = document.createElement("span");
+            span.classList.add("notice");
+            span.textContent = text;
+            marquee.appendChild(span);
+        });
+    }
+
+    populateNotices();
 });

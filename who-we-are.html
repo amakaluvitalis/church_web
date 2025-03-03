@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who we are</title>
+    <title>who we are</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest"><link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest"><link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="index.js" ></script>
     <link rel="stylesheet" href="index.css">
@@ -89,70 +89,59 @@
 
 <!-- Main Content -->
 <main class="flex-grow bg-white py-12 px-4 mt-20 relative">
-    <!-- Background Image with Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#d1b2b2]/90 to-transparent">
-        <img 
-            src="road_map.png" 
-            alt="Church Community" 
-            class="w-full h-full object-cover opacity-30"
-        >
-    </div>
-
-<!-- Content -->
-<div class="relative container mx-auto text-left md:text-left md:flex items-center">
-    <!-- Text Section -->
-    <div class="md:w-1/2 px-6">
-        <h2 class="text-4xl font-bold text-[#660000] mb-6">Who We Are</h2>
-        <p class="text-lg text-gray-800 leading-relaxed mb-4">
-            All Saints’ Church Maseno is a vibrant Anglican community rooted in faith, discipleship, and stewardship. 
-            As part of the Anglican Church of Kenya (ACK), our journey traces back to the early missionary work in Maseno, 
-            which played a foundational role in spreading the gospel in the region. Our identity is built on the rich traditions 
-            of Anglican liturgy, worship, and service, fostering love, compassion, and unity among our congregants.
-        </p>
-        <p class="text-lg text-gray-800 leading-relaxed mb-4">
-            In a rapidly evolving world, we embrace both spiritual and infrastructural transformation to meet the dynamic needs of our church and community. 
-            Our mission is to uphold Anglican values while integrating modern technology in worship, evangelism, and sustainable resource mobilization. 
-            We encourage active participation in ministries such as the Sunday School, Youth Ministry, Praise & Worship, Mothers’ Union, ACWF, and KAMA 
-            to strengthen our fellowship and service.
-        </p>
-        <p class="text-lg text-gray-800 leading-relaxed mb-4">
-            Guided by our 2024-2028 strategic plan, we are committed to spiritual growth, community development, and ensuring sustainability for future generations. 
-            Our faith remains anchored in God’s word as we strive for effectiveness, efficiency, and relevance in today’s world. Our doors are always open, 
-            and we welcome you to join us in our mission of faith and service.
-        </p>
-        <a href="contact-us.html" class="mt-4 inline-block bg-[#660000] text-white px-6 py-3 rounded-md shadow-lg hover:bg-[#3d0000]">
-            Get Involved
-        </a>
-    </div>
-
-    <!-- Decorative Side (Optional) -->
-    <div class="hidden md:block md:w-1/2 px-6">
+    <!-- Background Image with Gradient Overlay (Hidden on Large Screens) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#d1b2b2]/90 to-transparent md:hidden">
         <img 
             src="we.jpg" 
             alt="Church Community" 
-            class="rounded-lg shadow-lg w-full h-auto"
+            class="w-full h-full object-cover opacity-20"
         >
     </div>
-</div>
 
+    <!-- Content -->
+    <div class="relative container mx-auto text-left md:text-left md:flex items-center">
+        <!-- Text Section -->
+        <div class="md:w-1/2 px-6">
+            <h2 class="text-4xl font-bold text-[#660000] mb-6">Who We Are</h2>
+            <p class="text-lg text-gray-800 leading-relaxed mb-4">
+                All Saints’ Church Maseno is a Christ-centered Anglican community rooted in worship, discipleship, and service. 
+                Our rich history traces back to early missionary work in Maseno, shaping our faith and traditions. 
+                We embrace both spiritual and infrastructural growth, integrating modern technology in worship and evangelism while 
+                fostering unity through ministries such as Sunday School, Youth Ministry, Mothers' Union, and Praise & Worship. 
+                Guided by our 2024-2028 strategic plan, we are committed to faith-driven transformation, sustainability, and community service, 
+                ensuring a lasting impact for generations to come.
+            </p>
+            <a href="contact-us.html" class="mt-4 inline-block bg-[#660000] text-white px-6 py-3 rounded-md shadow-lg hover:bg-[#3d0000]">
+                Get Involved
+            </a>
+        </div>
+
+        <!-- Decorative Side (Visible on Large Screens) -->
+        <div class="hidden md:block md:w-1/2 px-6">
+            <img 
+                src="we.jpg" 
+                alt="Church Community" 
+                class="rounded-lg shadow-lg w-full h-auto"
+            >
+        </div>
+    </div>
 </main>
+
 
 <!-- Footer -->
 <footer class="relative bg-contain bg-cover bg-center text-[#3d0000] py-12" style="background-image: url('footer.jpg');">
     <!-- Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-t from-[#c9bfcc]"></div>
-
     <div class="relative container mx-auto px-6">
         <!-- Footer Top: Contact Info and Address -->
         <div class="grid md:grid-cols-3 gap-12 mb-8">
             <!-- Church Address -->
-            <div>
+            <div class="text-center">
                 <h3 class="text-2xl font-semibold mb-4">Contact Us</h3>
                 <p class="mb-2"><strong>Location: </strong>Kisumu Busia RD, Maseno Municipality</p>
                 <p><strong>Phone:</strong> +254 (7) 960-20551</p>
                 <p><strong>Email:</strong> info@ackallsaintsmasenoparish.com</p>
             </div>
-
             <!-- Social Media Links -->
             <div>
                 <h3 class="text-2xl font-semibold mb-4 text-center">Follow Us</h3>
@@ -163,9 +152,8 @@
                     <a href="#" class="hover:text-gray-400"><img src="youtube.png" alt="YouTube" class="w-10 h-10"></a>
                 </div>
             </div>
-
             <!-- Useful Links -->
-            <div>
+            <div class="text-center">
                 <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
                 <ul>
                     <li><a href="about.html" class="hover:text-gray-400">About Us</a></li>
@@ -178,38 +166,38 @@
                     <li><a href="become-member.html" class="hover:text-[#660000]">Join Us</a></li>
                 </ul>
             </div>
-        </div>
 
+        </div>
         <!-- To Give & Prayer Line -->
         <div class="flex justify-center items-center space-x-4 mb-8">
-            <a href="give.html" class="px-6 py-2 bg-[#660000] text-white rounded-lg hover:bg-[#3d0000]">
-                To Give
+            <!-- To Give -->
+            <a href="give.html" class="flex items-center space-x-4 px-6 py-3 bg-[#660000] text-white rounded-lg hover:bg-[#d1b3b3] shadow-md transition">
+                <img src="donation.png" alt="To Give" class="w-8 h-8 grayscale">
+                <span class="text-lg font-semibold">To Give</span>
             </a>
-            <a href="prayer-line.html" class="px-6 py-2 bg-[#660000] text-white rounded-lg hover:bg-[#3d0000]">
-                Prayer Line
+            <!-- Prayer Line -->
+            <a href="prayer-line.html" class="flex items-center space-x-4 px-6 py-3 bg-[#660000] text-white rounded-lg hover:bg-[#d1b3b3] shadow-md transition">
+                <img src="pray.png" alt="Prayer Line" class="w-8 h-8 grayscale">
+                <span class="text-lg font-semibold">Prayer Line</span>
             </a>
+        </div>
+        
+        <!-- Footer Bottom: Copyright -->
+        <div class="border-t border-[#660000] pt-6 text-center md:flex md:justify-between md:items-center">
+            <!-- Copyright (Smaller font on small screens) -->
+            <p class="text-xs md:text-sm text-[#660000] leading-tight">
+                &copy; 2025 ACK ALL SAINTS MASENO PARISH. All Rights Reserved.
+            </p>
+
+<!-- Developed By (Now Properly Centered) -->
+<p class="text-xs md:text-sm text-[#660000] flex items-center justify-center md:justify-start space-x-2 mt-2 md:mt-0">
+    <span>Developed by</span> 
+    <img src="coding-icon.png" alt="Coding Icon" class="w-4 h-4 md:w-5 md:h-5 inline">
+    <a href="https://github.com/MerVitz" target="_blank" class="text-[#660000] hover:text-[#e0cccc]">Amakalu Vitalis</a>
+</p>
         </div>
 
-        <!-- Footer Bottom: Copyright -->
-        <div class="border-t border-[#660000] pt-6 flex justify-between items-center text-center md:text-left">
-            <!-- Copyright -->
-            <p class="text-sm text-[#660000]">&copy; 2025 ACK ALL SAINTS MASENO PARISH. All Rights Reserved.</p>
-            <!-- Developed By -->
-            <p class="text-sm text-[#660000] flex items-center space-x-2">
-                <span>Developed by</span> 
-                <img src="coding-icon.png" alt="Coding Icon" class="w-5 h-5">
-                <a href="https://github.com/MerVitz" target="_blank" class="text-[#660000] hover:text-[#e0cccc]">Amakalu Vitalis</a>
-            </p>
-        </div>
     </div>
 </footer>
-    <script>
-        // Toggle mobile menu
-        document.getElementById("menu-toggle").addEventListener("click", function() {
-            const mobileMenu = document.getElementById("mobile-menu");
-            mobileMenu.classList.toggle("hidden");
-        });
-    </script>
-
 </body>
 </html>

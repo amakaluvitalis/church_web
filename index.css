@@ -112,41 +112,6 @@ nav ul li:hover > ul {
 .custom-shadow {
     box-shadow: 0 4px 6px rgba(102, 0, 0, 0.5);
 }
-/* Base styles for the hexagon */
-.hexagon {
-    width: 160px;
-    height: 160px;
-    background-color: #e0cccc;
-    color: #616161;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.125rem;
-    font-weight: 600;
-    text-align: center;
-    position: relative;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 0 15px rgba(155, 6, 6, 0.8);
-}
-
-/* Hover effect */
-.hexagon:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(155, 6, 6, 0.8);
-}
-
-.hexagon::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #c29999;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    z-index: -1;
-    filter: blur(15px); /* Soft glow */
-    opacity: 0.8;
-}
 
 /* Shaking Animation */
 @keyframes shake {
@@ -171,3 +136,17 @@ nav ul li:hover > ul {
     opacity: 1;
 }
 
+@keyframes marqueeScroll {
+    from { transform: translateX(0%); }  
+    to { transform: translateX(-100%); }
+}
+.animate-marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marqueeScroll 20s linear infinite;
+}
+.notice {
+    display: inline-block;
+    padding-right: 3rem;
+    min-width: max-content;
+}
