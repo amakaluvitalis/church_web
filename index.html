@@ -25,7 +25,7 @@
 
     <section id="hero-container" class="relative h-[55vh] lg:h-[75vh] overflow-hidden text-white">
         <!-- Header -->
-        <header class="absolute top-0 left-0 w-full z-30 bg-gradient-to-b from-[#e0cccc]/90 to-transparent text-white p-4">
+        <header class="absolute top-0 left-0 w-full z-20 bg-gradient-to-b from-[#e0cccc]/90 to-transparent text-white p-4">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center space-x-4">
                     <img src="ack_logo.png" alt="Church Logo" class="h-16 lg:h-20 w-auto object-contain -mt-4">
@@ -357,7 +357,7 @@
 
 <!-- Floating Notification Button -->
 <div id="floatingButton" 
-    class="fixed right-4 top-1/2 transform -translate-y-1/2 bg-transparent w-16 h-16 flex items-center justify-center shadow-none transition-all duration-300 hidden">
+    class="fixed right-4 top-1/2 transform -translate-y-1/2 bg-transparent w-16 h-16 flex items-center justify-center shadow-none transition-all duration-300 hidden z-40">
     
     <!-- Bell Icon -->
     <button id="toggleButton" class="focus:outline-none w-full h-full flex items-center justify-center">
@@ -372,7 +372,7 @@
 </div>
 <!-- Notification Panel -->
 <div id="notificationPanel" 
-    class="fixed right-[-320px] top-1/4 w-72 h-96 bg-white shadow-2xl rounded-lg p-4 transition-all duration-300 flex flex-col">
+    class="fixed right-[-320px] top-1/4 w-72 h-96 bg-white shadow-2xl rounded-lg p-4 transition-all duration-300 flex flex-col z-41">
     
     <!-- Close Button (Left Side, Right Arrow) -->
     <button id="closePanel" 
