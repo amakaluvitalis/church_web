@@ -82,49 +82,68 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching country data:', error);
         });
 
-    // Mobile menu toggle functionality
-    if (menuToggle && mobileMenu && menuIcon && closeIcon) {
-        menuToggle.addEventListener('click', () => {
-            const isMenuHidden = mobileMenu.classList.contains('translate-x-full');
-            
-            mobileMenu.classList.toggle('translate-x-full', !isMenuHidden);
-
-            if (isMenuHidden) {
+        // Mobile menu toggle functionality
+        if (menuToggle && mobileMenu && menuIcon && closeIcon) {
+            // Open menu when menuToggle (hamburger icon) is clicked
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full'); // Show menu
                 menuIcon.classList.add('hidden'); 
                 closeIcon.classList.remove('hidden'); 
-            } else {
+            });
+
+            // Close menu when closeIcon (X button) is clicked
+            closeIcon.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full'); // Hide menu
                 menuIcon.classList.remove('hidden'); 
                 closeIcon.classList.add('hidden'); 
+            });
+
+        } else {
+            console.error("Menu toggle elements are missing or incorrectly referenced.");
+        }
+
+// Mobile Dropdown Toggle
+dropdownButtons.forEach((button) => {
+    const dropdownId = button.getAttribute("data-dropdown");
+    const dropdownMenu = document.getElementById(dropdownId);
+
+    button.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevent click from triggering document event
+        
+        // Toggle only the clicked dropdown
+        dropdownMenu.classList.toggle("hidden"); 
+
+        // Close other open dropdowns (optional: if you want only one open at a time)
+        document.querySelectorAll(".mobile-dropdown").forEach((menu) => {
+            if (menu !== dropdownMenu) {
+                menu.classList.add("hidden");
             }
-        });
-    } else {
-        console.error("Menu toggle elements are missing or incorrectly referenced.");
-    }
-
-    // Mobile Dropdown Toggle
-    dropdownButtons.forEach((button) => {
-        const dropdownId = button.getAttribute('data-dropdown');
-        const dropdownMenu = document.getElementById(dropdownId);
-
-        button.addEventListener('click', () => {
-            const isDropdownVisible = !dropdownMenu.classList.contains('hidden');
-            dropdownMenu.classList.toggle('hidden', isDropdownVisible); 
         });
     });
+});
 
-    // Desktop About Dropdown Toggle
-    if (aboutButton && aboutDropdown) {
-        aboutButton.addEventListener("click", () => {
-            aboutDropdown.classList.toggle("hidden");
-        });
+// Close mobile dropdown when clicking outside
+document.addEventListener("click", () => {
+    document.querySelectorAll(".mobile-dropdown").forEach((menu) => {
+        menu.classList.add("hidden");
+    });
+});
 
-        // Close dropdown when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!aboutButton.contains(event.target) && !aboutDropdown.contains(event.target)) {
-                aboutDropdown.classList.add("hidden");
-            }
-        });
-    }
+// ---- Desktop About Dropdown (Unchanged) ---- //
+if (aboutButton && aboutDropdown) {
+    aboutButton.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevent closing immediately
+        aboutDropdown.classList.toggle("hidden");
+    });
+
+    // Close dropdown when clicking outside (For Desktop)
+    document.addEventListener("click", (event) => {
+        if (!aboutButton.contains(event.target) && !aboutDropdown.contains(event.target)) {
+            aboutDropdown.classList.add("hidden");
+        }
+    });
+}
+
 
 
     const floatingButton = document.getElementById("floatingButton");
