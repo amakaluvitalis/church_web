@@ -1,0 +1,271 @@
+/* ===================================== */
+/* 1 GENERAL STYLES */
+/* ===================================== */
+
+body {
+    font-family: "Poppins", "Merriweather", "Roboto", sans-serif;
+}
+
+/* Custom shadow for elements */
+.custom-shadow {
+    box-shadow: 0 4px 6px rgba(102, 0, 0, 0.5);
+}
+
+/* ===================================== */
+/* 2 MENU & NAVIGATION STYLES */
+/* ===================================== */
+
+/* Mobile menu transition */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Navigation bar */
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Underline effect on hover */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #660000;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Active menu item */
+nav ul li a.active {
+    color: #660000;
+    font-weight: bold; /* Makes active menu items stand out */
+}
+
+nav ul li:hover > ul {
+    display: block;
+    z-index: 20;
+}
+
+/* ===================================== */
+/* 3 HERO SECTION & TEXT CONTAINER */
+/* ===================================== */
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: -1;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    z-index: -1;
+}
+
+/* Centered text inside hero section */
+.text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===================================== */
+/* 4 MARQUEE (FLOWING NOTICES) */
+/* ===================================== */
+
+#marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.marquee-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marqueeScroll 120s linear infinite;
+}
+
+.notice {
+    display: inline-block;
+    padding-right: 3rem;
+    min-width: max-content;
+    font-weight: bold;
+}
+
+@keyframes marqueeScroll {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* ===================================== */
+/* 5 ADDITIONAL EFFECTS & ANIMATIONS */
+/* ===================================== */
+
+/* Fade-in effect */
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Shaking effect for elements */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+}
+
+.shake {
+    animation: shake 0.4s ease-in-out infinite;
+}
+
+/* Hide Close Button by Default */
+#closeFloatingButton {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show Close Button on Hover */
+#floatingButton:hover #closeFloatingButton {
+    opacity: 1;
+}
+
+/* ===================================== */
+/* 6 EVENT CAROUSEL STYLES (From activities.php) */
+/* ===================================== */
+
+.event-item:hover .event-img {
+    transform: scale(1.2); /* Zoom effect */
+    transition: transform 0.3s ease-in-out;
+}
+
+.event-item:hover .event-overlay {
+    opacity: 0; /* Hide the overlay */
+    pointer-events: none; /* Disable interaction with the overlay */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.event-img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.event-overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* ===================================== */
+/* 7 VIDEO CAROUSEL STYLES (From resources.php) */
+/* ===================================== */
+
+.video-item {
+    flex: 0 0 100%; /* Show 1 video per slide on mobile */
+    max-width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .video-item {
+        flex: 0 0 50%; /* Show 2 videos per slide on desktop */
+        max-width: 50%;
+    }
+}
+
+iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+/* ===================================== */
+/* 8 DOWNLOAD BUTTONS (From resources.php) */
+/* ===================================== */
+
+.relative.group a.download-btn {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.relative.group:hover a.download-btn {
+    opacity: 1;
+}
+
+/* ===================================== */
+/* 9 GENERAL IMAGE STYLES */
+/* ===================================== */
+
+.img-rounded {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.img-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================== */
+/* 10 RESPONSIVENESS & MEDIA QUERIES */
+/* ===================================== */
+
+@media (max-width: 768px) {
+    .hidden-md {
+        display: none;
+    }
+
+    .block-md {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .hidden-lg {
+        display: none;
+    }
+
+    .block-lg {
+        display: block;
+    }
+}
