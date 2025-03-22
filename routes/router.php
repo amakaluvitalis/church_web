@@ -24,9 +24,6 @@ switch ($page) {
         break;
     case 'ministries':
         $pageTitle = "Ministries";
-        // echo "<pre>";
-        // debug_print_backtrace();
-        // echo "</pre>";
         include "views/ministries.php";
         exit;
         break;        
@@ -50,8 +47,11 @@ switch ($page) {
         $pageTitle = "Join Us";
         include "views/become-member.php";
         break;
+    case 'prayer-line':
+        $pageTitle = "Prayer Line";
+        include "views/prayer-line.php";
+        break;
     default:
-        $pageTitle = "404 Not Found";
         include "views/404.php";
         break;
 }

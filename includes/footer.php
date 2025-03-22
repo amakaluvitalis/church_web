@@ -26,7 +26,7 @@
 
             <!-- Prayer Line Button -->
             <div class="flex justify-center items-center">
-                <a href="public/pages/prayer-line.php" 
+                <a href="/?page=prayer-line" 
                    class="px-6 py-3 bg-[#660000] text-white rounded-lg hover:bg-[#d1b3b3] shadow-md transition flex items-center space-x-3">
                     <img src="public/images/pray.png" alt="Prayer Icon" class="w-8 h-8">
                     <span class="text-lg font-semibold">Prayer Line</span>
@@ -37,14 +37,57 @@
             <div class="text-left">
                 <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
                 <ul class="grid grid-cols-2 gap-2 text-sm sm:text-base">
-                    <li><a href="public/pages/who-we-are.php" class="hover:text-gray-400">Who We Are</a></li>
-                    <li><a href="public/pages/history.php" class="hover:text-gray-400">History</a></li>
-                    <li><a href="public/pages/administration.php" class="hover:text-gray-400">Administration</a></li>
-                    <li><a href="public/pages/governance.php" class="hover:text-gray-400">Governance</a></li>
+                    <li><a href="/?page=home" class="hover:text-gray-400">Home</a></li>
+                    <li><a href="/?page=who-we-are" class="hover:text-gray-400">Who We Are</a></li>
+                    <li><a href="/?page=history" class="hover:text-gray-400">History</a></li>
+                    <li><a href="/?page=administration" class="hover:text-gray-400">Administration</a></li>
+                    <li><a href="/?page=governance" class="hover:text-gray-400">Governance</a></li>
+                    <li><a href="/?page=ministries" class="hover:text-gray-400">Ministries</a></li>
+                    <li><a href="/?page=activities" class="hover:text-gray-400">Activities</a></li>
+                    <li><a href="/?page=resources" class="hover:text-gray-400">Resources</a></li>
+                    <li><a href="/?page=get-involved" class="hover:text-gray-400">Get Involved</a></li>
+                    <li><a href="/?page=contact-us" class="hover:text-gray-400">Contact Us</a></li>
+                    <li><a href="/?page=become-member" class="hover:text-gray-400">Join Us</a></li>
+                    <li><a href="/?page=prayer-line" class="hover:text-gray-400">Prayer Line</a></li>
                 </ul>
             </div>
 
         </div>
+
+        <!-- Social Media Links -->
+        <div class="text-center mt-6">
+            <h3 class="text-2xl font-semibold mb-4">Follow Us</h3>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="hover:text-gray-400">
+                    <img src="public/images/facebook.png" alt="Facebook" class="w-10 h-10">
+                </a>
+                <a href="#" class="hover:text-gray-400">
+                    <img src="public/images/x.png" alt="Twitter" class="w-10 h-10">
+                </a>
+                <a href="#" class="hover:text-gray-400">
+                    <img src="public/images/instagram.png" alt="Instagram" class="w-10 h-10">
+                </a>
+                <a href="#" class="hover:text-gray-400">
+                    <img src="public/images/youtube.png" alt="YouTube" class="w-10 h-10">
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Bottom: Copyright & Developer -->
+        <div class="border-t border-[#660000] pt-6 text-center md:flex md:justify-between md:items-center mt-6">
+            <!-- Copyright -->
+            <p class="text-xs md:text-sm text-[#660000] leading-tight">
+                &copy; 2025 ACK ALL SAINTS MASENO PARISH. All Rights Reserved.
+            </p>
+
+            <!-- Developed By -->
+            <p class="text-xs md:text-sm text-[#660000] flex items-center justify-center md:justify-start space-x-2 mt-2 md:mt-0">
+                <span>Developed by</span> 
+                <img src="public/images/coding-icon.png" alt="Coding Icon" class="w-4 h-4 md:w-5 md:h-5 inline">
+                <a href="https://github.com/MerVitz" target="_blank" class="text-[#660000] hover:text-[#e0cccc]">Amakalu Vitalis</a>
+            </p>
+        </div>
+
     </div>
 </footer>
 

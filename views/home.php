@@ -104,24 +104,45 @@ include_once 'routes/router.php';
                 <img src="public/images/event2.jpg" alt="Weekly Poster" class="w-full rounded-lg shadow-md">
             </div>
 
-            <!-- Weekly Services -->
             <div class="bg-[#efe5e5] bg-opacity-90 shadow-lg rounded-lg p-8 text-gray-800">
-                <h3 class="text-3xl font-bold text-[#660000] mb-6">Our Weekly Services</h3>
+                <h3 class="text-3xl font-bold text-[#660000] mb-6 text-center">Our Weekly Services</h3>
                 <div class="divide-y divide-[#660000]/30">
-                    <div class="py-4"><h4 class="text-xl font-semibold text-[#660000]">Sunday</h4>
-                        <ul class="text-gray-700">
-                            <li>6:00 AM - 7:00 AM: Morning Devotion</li>
-                            <li>7:00 AM - 9:00 AM: 1st Service</li>
-                            <li>10:00 AM - 12:00 PM: 2nd Service</li>
+                    <div class="py-4">
+                        <h4 class="text-xl font-semibold text-[#660000]">Sunday</h4>
+                        <ul class="mt-2 text-gray-700">
+                            <li class="mt-1">6:00 AM - 7:00 AM: Morning Devotion</li>
+                            <li class="mt-1">7:00 AM - 9:00 AM: 1st Service</li>
+                            <li class="mt-1">10:00 AM - 12:00 PM: 2nd Service</li>
+                            <li class="mt-1">2:00 PM - 5:00 PM: Scheme Fellowship</li>
+                            <li class="mt-1">3:00 PM - 5:00 PM: Bible Study</li>
                         </ul>
                     </div>
-                    <div class="py-4"><h4 class="text-xl font-semibold text-[#660000]">Friday</h4>
-                        <ul class="text-gray-700">
-                            <li>6:00 PM - 7:00 PM: Youth Fellowship</li>
+
+                    <div class="py-4">
+                        <h4 class="text-xl font-semibold text-[#660000]">Tuesday</h4>
+                        <ul class="mt-2 text-gray-700">
+                            <li class="mt-1">5:00 PM - 6:00 PM: Intercessory Prayers</li>
+                        </ul>
+                    </div>
+
+                    <div class="py-4">
+                        <h4 class="text-xl font-semibold text-[#660000]">Wednesday (Midweek Service)</h4>
+                        <ul class="mt-2 text-gray-700">
+                            <li class="mt-1">6:30 AM - 7:30 AM: Morning Service</li>
+                            <li class="mt-1">5:30 PM - 6:30 PM: Evening Service</li>
+                        </ul>
+                    </div>
+
+                    <div class="py-4">
+                        <h4 class="text-xl font-semibold text-[#660000]">Friday</h4>
+                        <ul class="mt-2 text-gray-700">
+                            <li class="mt-1">6:00 PM - 7:00 PM: Youth Fellowship</li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </section>

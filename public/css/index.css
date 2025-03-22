@@ -51,12 +51,6 @@ nav ul li a:hover::after {
     left: 0;
 }
 
-/* Active menu item */
-nav ul li a.active {
-    color: #660000;
-    font-weight: bold; /* Makes active menu items stand out */
-}
-
 nav ul li:hover > ul {
     display: block;
     z-index: 20;

@@ -1,6 +1,7 @@
 <?php 
 $pageTitle = "Our Ministries"; 
 include_once "includes/header.php";
+echo "<script>console.log('Current Page: $current_page');</script>"; 
 ?>
 <!-- Main Content -->
 <main class="flex-grow bg-[#f0e6e6] py-12 px-4 text-center mt-20">

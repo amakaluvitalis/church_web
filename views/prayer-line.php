@@ -12,7 +12,7 @@ include_once "includes/header.php";
 
     <!-- Prayer Form Section -->
     <section class="max-w-2xl mx-auto bg-gradient-to-t from-[#e6dcdc] to-[#f9f4f4] p-8 shadow-lg rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-[#a36666]">Submit Your Prayer Request</h3>
+        <h3 class="text-xl font-semibold mb-6 text-[#a36666]">Prayer Request</h3>
 
         <form id="prayer-form" onsubmit="submitPrayerForm(event)" class="space-y-6">
             <!-- Prayer Request Field -->

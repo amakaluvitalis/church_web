@@ -1,10 +1,10 @@
 <?php
 ob_start();
+$current_page = isset($_GET['page']) ? $_GET['page'] : 'home';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,6 @@ ob_start();
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,22 +53,24 @@ ob_start();
             <!-- Desktop Navigation -->
             <nav class="hidden lg:block">
                 <ul class="flex space-x-4">
-                    <li><a href="/" class="hover:text-[#660000]">Home</a></li>
-                    <li class="relative group">
-                        <button class="hover:text-[#660000] focus:outline-none">About</button>
-                        <ul class="absolute left-0 bg-[#660000] text-white shadow-lg w-40 mt-2 py-2 hidden group-hover:block">
-                            <li><a href="/?page=who-we-are" class="block px-4 py-2 hover:bg-gray-700">Who We Are</a></li>
-                            <li><a href="/?page=history" class="block px-4 py-2 hover:bg-gray-700">History</a></li>
-                            <li><a href="/?page=administration" class="block px-4 py-2 hover:bg-gray-700">Administration</a></li>
-                            <li><a href="/?page=governance" class="block px-4 py-2 hover:bg-gray-700">Governance</a></li>
-                        </ul>
+                    <li><a href="/?page=home" class="<?= $current_page == 'home' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Home</a></li>
+                    
+                    <li class="group relative">
+                    <button id="about-btn" class="text-black hover:text-[#660000] focus:outline-none">About</button>
+                    <ul id="about-dropdown" class="absolute left-0 mt-2 hidden bg-white shadow-md p-2 space-y-2">
+                        <li><a href="/?page=who-we-are" class="block px-4 py-2 hover:bg-gray-100">Who We Are</a></li>
+                        <li><a href="/?page=history" class="block px-4 py-2 hover:bg-gray-100">History</a></li>
+                        <li><a href="/?page=administration" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
+                        <li><a href="/?page=governance" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
+                    </ul>
                     </li>
-                    <li><a href="/?page=ministries" class="hover:text-[#660000]">Ministries</a></li>
-                    <li><a href="/?page=activities" class="hover:text-[#660000]">Activities</a></li>
-                    <li><a href="/?page=resources" class="hover:text-[#660000]">Resources</a></li>
-                    <li><a href="/?page=get-involved" class="hover:text-[#660000]">Get Involved</a></li>
-                    <li><a href="/?page=contact-us" class="hover:text-[#660000]">Contact Us</a></li>
-                    <li><a href="/?page=become-member" class="hover:text-[#660000]">Join Us</a></li>
+
+                    <li><a href="/?page=ministries" class="<?= $current_page == 'ministries' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Ministries</a></li>
+                    <li><a href="/?page=activities" class="<?= $current_page == 'activities' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Activities</a></li>
+                    <li><a href="/?page=resources" class="<?= $current_page == 'resources' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Resources</a></li>
+                    <li><a href="/?page=get-involved" class="<?= $current_page == 'get-involved' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Get Involved</a></li>
+                    <li><a href="/?page=contact-us" class="<?= $current_page == 'contact-us' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Contact Us</a></li>
+                    <li><a href="/?page=become-member" class="<?= $current_page == 'become-member' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Join Us</a></li>
                 </ul>
             </nav>
 
@@ -82,28 +83,29 @@ ob_start();
         </div>
 
         <!-- Mobile Menu -->
-        <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
-            <!-- Close Button -->
-            <button id="close-icon" class="absolute top-4 left-4 text-white hover:text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
+        <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300">
+
+        <!-- Close Button (X) - Positioned at Top Left Inside Menu -->
+        <button id="close-icon" class="absolute top-4 left-4 text-white hover:text-gray-300 hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
 
             <ul class="p-6 space-y-4 mt-10">
-                <li><a href="/" class="hover:text-[#660000]">Home</a></li>
+                <li><a href="/?page=home" class="hover:text-[#660000]">Home</a></li>
                 <li>
-                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" data-dropdown="about-dropdown">
-                        About
-                        <span>&#9662;</span>
+                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" id="about-toggle">
+                        About <span>&#9662;</span>
                     </button>
-                    <ul id="about-dropdown-mobile" class="hidden space-y-2 ml-4">
-                        <li><a href="/?page=who-we-are" class="hover:text-[#660000]">Who We Are</a></li>
-                        <li><a href="/?page=history" class="hover:text-[#660000]">History</a></li>
-                        <li><a href="/?page=administration" class="hover:text-[#660000]">Administration</a></li>
-                        <li><a href="/?page=governance" class="hover:text-[#660000]">Governance</a></li>
+                    <ul id="about-dropdown-mobile" class="mobile-submenu hidden">
+                        <li><a href="/?page=who-we-are" class="block px-4 py-2 hover:bg-gray-700">Who We Are</a></li>
+                        <li><a href="/?page=history" class="block px-4 py-2 hover:bg-gray-700">History</a></li>
+                        <li><a href="/?page=administration" class="block px-4 py-2 hover:bg-gray-700">Administration</a></li>
+                        <li><a href="/?page=governance" class="block px-4 py-2 hover:bg-gray-700">Governance</a></li>
                     </ul>
                 </li>
+
                 <li><a href="/?page=ministries" class="hover:text-[#660000]">Ministries</a></li>
                 <li><a href="/?page=activities" class="hover:text-[#660000]">Activities</a></li>
                 <li><a href="/?page=resources" class="hover:text-[#660000]">Resources</a></li>
@@ -113,3 +115,5 @@ ob_start();
             </ul>
         </nav>
     </header>
+</body>
+</html>
