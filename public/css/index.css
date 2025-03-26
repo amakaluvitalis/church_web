@@ -1,3 +1,4 @@
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
 /* ===================================== */
 /* 1 GENERAL STYLES */
 /* ===================================== */
@@ -261,5 +262,43 @@ iframe {
 
     .block-lg {
         display: block;
+    }
+}
+
+/* 🎇 Spiral Effect */
+.spiral-container {
+    position: relative;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    position: absolute;
+    background-color: transparent;
+    width: calc(var(--i) * 2.5vmin);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 0.9vmin solid #d4963a;
+    transform-style: preserve-3d;
+    transform: rotateX(70deg) translateZ(50px);
+    animation: my-move 3s ease-in-out calc(var(--i) * 0.08s) infinite;
+    box-shadow: 0px 0px 15px #d4963a,
+                inset 0px 0px 15px #3d0000;
+}
+
+@keyframes my-move {
+    0%, 100% {
+        transform: rotateX(70deg) translateZ(50px) translateY(0px);
+        border-color: #d4963a;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8),
+                    inset 0px 0px 15px rgb(104, 39, 39);
+    }
+    50% {
+        transform: rotateX(70deg) translateZ(50px) translateY(-50vmin);
+        border-color: rgb(121, 2, 2);
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8),
+                    inset 0px 0px 15px #d4963a;
     }
 }

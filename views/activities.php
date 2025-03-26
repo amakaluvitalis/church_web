@@ -1,6 +1,9 @@
 <?php
 $pageTitle = "Activities";
 include_once "includes/header.php";
+include_once "includes/models.php";
+$events = getUpcomingEvents();
+$activities = getActivities();
 ?>
 
 <!-- Main Content -->
@@ -18,29 +21,22 @@ include_once "includes/header.php";
         <div class="relative overflow-hidden max-w-5xl mx-auto">
             <div id="event-carousel" class="flex transition-transform duration-500 ease-in-out space-x-8">
                 
-                <!-- Event 1 -->
-                <div class="relative w-full md:w-1/2 flex-shrink-0 event-item">
-                    <img src="public/images/event1.jpg" alt="Event 1" class="w-full h-64 object-cover rounded-lg shadow-lg event-img">
-                    <div class="absolute inset-0 flex justify-center items-center p-4 rounded-lg event-overlay">
-                        <div class="bg-[#c19999] bg-opacity-60 text-white px-6 py-4 rounded-md">
-                            <h3 class="text-2xl font-bold text-center">Street Worship</h3>
-                            <p class="text-sm mt-2 text-center">Date: 7th and 8th March 2025</p>
-                            <p class="text-sm text-center">Venue: Maseno Market Grounds</p>
+                <?php if (!empty($events)): ?>
+                    <?php foreach ($events as $event): ?>
+                        <div class="relative w-full md:w-1/2 flex-shrink-0 event-item">
+                            <img src="<?= $event['poster'] ?>" alt="<?= htmlspecialchars($event['name']) ?>" class="w-full h-64 object-cover rounded-lg shadow-lg event-img">
+                            <div class="absolute inset-0 flex justify-center items-center p-4 rounded-lg event-overlay">
+                                <div class="bg-[#c19999] bg-opacity-60 text-white px-6 py-4 rounded-md">
+                                    <h3 class="text-2xl font-bold text-center"><?= htmlspecialchars($event['name']) ?></h3>
+                                    <p class="text-sm mt-2 text-center">Date: <?= date("jS F Y", strtotime($event['date'])) ?></p>
+                                    <p class="text-sm text-center">Venue: <?= htmlspecialchars($event['venue']) ?></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="relative w-full md:w-1/2 flex-shrink-0 event-item">
-                    <img src="public/images/event2.jpg" alt="Event 2" class="w-full h-64 object-cover rounded-lg shadow-lg event-img">
-                    <div class="absolute inset-0 flex justify-center items-center p-4 rounded-lg event-overlay">
-                        <div class="bg-[#c19999] bg-opacity-60 text-white px-6 py-4 rounded-md">
-                            <h3 class="text-2xl font-bold text-center">Street Worship Service and Evangelism</h3>
-                            <p class="text-sm mt-2 text-center">Date: 7th and 8th March 2025</p>
-                            <p class="text-sm text-center">Venue: Maseno Market Grounds</p>
-                        </div>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text-center text-gray-600">No upcoming events at the moment.</p>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -50,35 +46,19 @@ include_once "includes/header.php";
         <h3 class="text-3xl font-semibold text-center text-[#660000] mb-8">Periodic Activities</h3>
 
         <div class="container mx-auto space-y-16">
-            <?php
-            $activities = [
-                ["outreach.JPG", "Community Outreach Program", "Our community outreach program aimed to support underprivileged families by providing food supplies, clothes, and essential services."],
-                ["youth_camp.JPG", "Annual Youth Camp", "The annual youth camp was a time of spiritual growth, fun activities, and deep fellowship."],
-                ["choir_concert.JPG", "Annual Choir Concert", "Our choir concert brought together voices in worship and celebration, showcasing the incredible talent within our church."],
-                ["bible_study.JPG", "Weekly Bible Study Groups", "We organize weekly Bible study sessions to deepen our understanding of the Word of God."],
-                ["charity.JPG", "Charity Fundraiser Event", "Our charity event successfully raised funds for our mission projects, supporting various humanitarian causes."],
-                ["sunday_school.JPG", "Children's Sunday School", "Our Sunday School program focuses on teaching children biblical principles in a fun and engaging way."]
-            ];
-
-            $reverse = false;
-            foreach ($activities as $activity) {
-                $image = "public/images/" . $activity[0];
-                $title = $activity[1];
-                $description = $activity[2];
-                ?>
-                <div class="flex flex-col md:flex-row<?php echo $reverse ? '-reverse' : ''; ?> items-center">
+            <?php $reverse = false; ?>
+            <?php foreach ($activities as $activity): ?>
+                <div class="flex flex-col md:flex-row<?= $reverse ? '-reverse' : ''; ?> items-center">
                     <div class="md:w-1/2">
-                        <img src="<?= $image ?>" alt="<?= $title ?>" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <img src="<?= $activity['image'] ?>" alt="<?= $activity['name'] ?>" class="w-full h-64 object-cover rounded-lg shadow-lg">
                     </div>
-                    <div class="md:w-1/2 md:<?php echo $reverse ? 'pr' : 'pl'; ?>-12 text-left animate-fadeIn">
-                        <h3 class="text-3xl font-semibold text-[#660000]"><?= $title ?></h3>
-                        <p class="text-gray-800 mt-4"><?= $description ?></p>
+                    <div class="md:w-1/2 md:<?= $reverse ? 'pr' : 'pl'; ?>-12 text-left animate-fadeIn">
+                        <h3 class="text-3xl font-semibold text-[#660000]"><?= $activity['name'] ?></h3>
+                        <p class="text-gray-800 mt-4"><?= $activity['description'] ?></p>
                     </div>
                 </div>
-                <?php
-                $reverse = !$reverse;
-            }
-            ?>
+                <?php $reverse = !$reverse; ?>
+            <?php endforeach; ?>
         </div>
     </section>
 </main>
@@ -117,5 +97,4 @@ include_once "includes/header.php";
         startCarousel();
     });
 </script>
-
 <?php include_once "includes/footer.php"; ?>
