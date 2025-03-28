@@ -90,6 +90,27 @@
 
     </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Handle Image Download
+    document.querySelectorAll(".download-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const imageUrl = this.getAttribute("data-url");
+            const fileName = imageUrl.split('/').pop();
+
+            fetch(imageUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const link = document.createElement("a");
+                    link.href = URL.createObjectURL(blob);
+                    link.download = fileName;
+                    link.click();
+                })
+                .catch(error => console.error("Download failed:", error));
+        });
+    });
+});
+</script>
 
 </body>
 </html>

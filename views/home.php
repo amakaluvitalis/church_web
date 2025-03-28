@@ -1,25 +1,37 @@
 <?php 
 include_once 'includes/header.php'; 
 include_once 'routes/router.php';
+include_once 'includes/models.php';
+
+$heroContent = getHeroContent();
+$visionMissionSlogan = getVisionMissionSlogan()
+
 ?>
 
 
 <!-- Hero Section -->
 <section id="hero-container" class="relative h-[55vh] lg:h-[75vh] overflow-hidden text-white">
     <!-- Hero Slides -->
-    <div class="hero-slide active" data-text="Welcome to Our Church" data-subtext="We are a place of love, hope, and faith, where you can grow spiritually and connect with others." 
-         style="background-image: url('public/images/hero1.jpg'); background-size: cover; background-position: top;"></div>
+    <?php if (!empty($heroContent)): ?>
+        <?php foreach ($heroContent as $index => $hero) : ?>
+            <div class="hero-slide <?= $index === 0 ? 'active' : '' ?>" 
+                 data-text="<?= htmlspecialchars($hero['title']) ?>" 
+                 data-subtext="<?= htmlspecialchars($hero['content']) ?>" 
+                 style="background-image: url('<?= htmlspecialchars($hero['image_url']) ?>'); background-size: cover; background-position: top;">
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p class="text-center text-red-500">⚠ No hero content available.</p>
+    <?php endif; ?>
 
-    <div class="hero-slide" data-text="Join Our Ministries" data-subtext="Our ministries provide opportunities to serve and engage with others in meaningful ways, from family support to praise and worship." 
-         style="background-image: url('public/images/hero2.jpg'); background-size: cover; background-position: top;"></div>
-
-    <div class="hero-slide" data-text="Get Involved" data-subtext="Whether through volunteering, donations, or participation, you can make a difference in our community and beyond." 
-         style="background-image: url('public/images/hero3.jpg'); background-size: cover; background-position: top;"></div>
-
-    <!-- Hero Text Container -->
+    <!-- Hero Text Container (Ensures Dynamic Updates) -->
     <div class="text-container bg-[#e0cccc]/80 p-4 rounded-md absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] md:w-[75%] max-w-lg">
-        <h2 id="hero-title" class="text-2xl md:text-3xl font-bold text-center text-[#660000]"></h2>
-        <p id="hero-subtext" class="text-sm md:text-base text-center mt-2 text-white"></p>
+        <h2 id="hero-title" class="text-2xl md:text-3xl font-bold text-center text-[#660000]">
+            <?= !empty($heroContent) ? htmlspecialchars($heroContent[0]['title']) : 'Welcome' ?>
+        </h2>
+        <p id="hero-subtext" class="text-sm md:text-base text-center mt-2 text-white">
+            <?= !empty($heroContent) ? htmlspecialchars($heroContent[0]['content']) : 'We are a place of faith and love.' ?>
+        </p>
     </div>
 </section>
 
@@ -27,17 +39,17 @@ include_once 'routes/router.php';
 <section class="py-16 bg-[#f0e6e6] text-center">
     <div class="container mx-auto px-6 md:px-12">
         <h2 class="text-4xl font-bold text-[#660000] mb-12">Our Vision, Mission & Core Values</h2>
+        
         <div class="grid md:grid-cols-2 gap-12">
             <!-- Mission -->
             <div class="flex items-center bg-[#efe5e5] custom-shadow rounded-lg p-8">
                 <div class="w-24 h-24 flex-shrink-0">
-                    <img src="public/images/mission.png" alt="Mission Icon" class="w-full h-full object-contain">
+                    <img src="<?= htmlspecialchars($visionMissionSlogan[0]['image_url']) ?>" alt="Mission Icon" class="w-full h-full object-contain">
                 </div>
                 <div class="ml-6 border-l-4 border-[#660000] pl-6">
-                    <h3 class="text-3xl font-bold text-[#660000] mb-3">Mission</h3>
+                    <h3 class="text-3xl font-bold text-[#660000] mb-3"><?= htmlspecialchars($visionMissionSlogan[0]['title']) ?></h3>
                     <p class="text-gray-700 leading-relaxed">
-                        Rigorously and vigorously evangelize the gospel by witnessing and transforming the spiritual
-                        orientation of the congregants and proclamation of the salvation of Jesus Christ to all souls and believers.
+                        <?= htmlspecialchars($visionMissionSlogan[0]['content']) ?>
                     </p>
                 </div>
             </div>
@@ -45,27 +57,38 @@ include_once 'routes/router.php';
             <!-- Vision -->
             <div class="flex items-center bg-[#efe5e5] custom-shadow rounded-lg p-8">
                 <div class="w-24 h-24 flex-shrink-0">
-                    <img src="public/images/vision.png" alt="Vision Icon" class="w-full h-full object-contain">
+                    <img src="<?= htmlspecialchars($visionMissionSlogan[1]['image_url']) ?>" alt="Vision Icon" class="w-full h-full object-contain">
                 </div>
                 <div class="ml-6 border-l-4 border-[#660000] pl-6">
-                    <h3 class="text-3xl font-bold text-[#660000] mb-3">Vision</h3>
+                    <h3 class="text-3xl font-bold text-[#660000] mb-3"><?= htmlspecialchars($visionMissionSlogan[1]['title']) ?></h3>
                     <p class="text-gray-700 leading-relaxed">
-                        To be an exemplary church of believers bound together by the love in Christ.
+                        <?= htmlspecialchars($visionMissionSlogan[1]['content']) ?>
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Slogan -->
+        <!-- Slogan Section -->
         <div class="mt-12 text-center">
-            <h3 class="text-3xl font-bold text-[#660000] mb-6">Slogan</h3>
-            <div class="max-w-3xl mx-auto p-8 rounded-lg bg-gradient-to-r from-[#f8e8e8] to-[#e0cccc] shadow-lg">
-                <p class="text-2xl md:text-3xl font-semibold italic text-gray-700">
-                    <span class="text-4xl md:text-5xl font-bold">“</span> With Christ, we shall conquer all that we purpose to do.
-                    <span class="text-4xl md:text-5xl font-bold">”</span>
-                </p>
+            <div class="flex items-center justify-center bg-[#efe5e5] custom-shadow rounded-lg p-8 max-w-3xl mx-auto">
+                <!-- Slogan Icon -->
+                <div class="w-24 h-24 flex-shrink-0">
+                    <img src="<?= htmlspecialchars($visionMissionSlogan[2]['image_url']) ?>" alt="Slogan Icon" class="w-full h-full object-contain">
+                </div>
+                <!-- Slogan Content -->
+                <div class="ml-6 border-l-4 border-[#660000] pl-6 text-left">
+                    <h3 class="text-3xl font-bold text-[#660000] mb-4"><?= htmlspecialchars($visionMissionSlogan[2]['title']) ?></h3>
+                    <div class="p-6 rounded-lg bg-gradient-to-r from-[#f8e8e8] to-[#e0cccc] shadow-lg">
+                        <p class="text-2xl md:text-3xl font-semibold italic text-gray-700 leading-relaxed">
+                            <span class="text-4xl md:text-5xl font-bold">“</span> 
+                            <?= htmlspecialchars($visionMissionSlogan[2]['content']) ?>
+                            <span class="text-4xl md:text-5xl font-bold">”</span>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+
 
         <!-- Core Values -->
         <div class="mt-12 text-center">

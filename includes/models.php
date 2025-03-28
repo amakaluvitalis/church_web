@@ -1,6 +1,28 @@
 <?php
 include_once "db.php";
 
+
+/**
+ * Fetch Vision, Mission, and Slogan content.
+ */
+function getVisionMissionSlogan() {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM vision_mission_slogan ORDER BY id ASC");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Fetch Hero Section Content (Max 3 Items).
+ */
+function getHeroContent() {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM hero ORDER BY id ASC LIMIT 3");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
 /**
  * Fetch Gallery preview pictures.
  */
