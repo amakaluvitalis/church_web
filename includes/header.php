@@ -22,6 +22,7 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="public/css/index.css">

@@ -64,50 +64,127 @@ include_once "includes/header.php";
     </div>
     </div>
 
-<!-- Contact Form Section -->
-<section class="py-12">
-    <div class="container mx-auto max-w-2xl bg-white shadow-lg rounded-lg p-6">
-        <h3 class="text-2xl font-semibold text-[#660000] text-center mb-4">Send Us a Message</h3>
-        <p class="text-gray-600 text-center mb-6">We would love to hear from you. Fill in the form below.</p>
+    <!-- Contact Form Section -->
+    <section class="py-12">
+        <div class="container mx-auto max-w-2xl bg-white shadow-lg rounded-lg p-6">
+            <h3 class="text-2xl font-semibold text-[#660000] text-center mb-4">Send Us a Message</h3>
+            <p class="text-gray-600 text-center mb-6">We would love to hear from you. Fill in the form below.</p>
 
-        <form action="process-contact.php" method="POST">
-            <div class="space-y-4">
-                <!-- Full Name -->
-                <div class="flex items-center space-x-4">
-                    <label for="name" class="text-gray-800 font-semibold w-1/4">Full Name <span class="text-red-500">*</span></label>
-                    <input type="text" id="name" name="name"
-                        class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-3/4"
-                        placeholder="Enter your full name" required>
-                </div>
+            <!-- Response Message (Appears Below Form) -->
+            <div id="response-message"></div>
 
-                <!-- Email -->
-                <div class="flex items-center space-x-4">
-                    <label for="email" class="text-gray-800 font-semibold w-1/4">Email <span class="text-red-500">*</span></label>
-                    <input type="email" id="email" name="email"
-                        class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-3/4"
-                        placeholder="Enter your email address" required>
-                </div>
+            <form id="contact-form" class="bg-white">
+                <div class="space-y-4">
+                    <!-- Full Name -->
+                    <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                        <label for="name" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
+                            Full Name <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="name" name="name"
+                            class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
+                            placeholder="Enter your full name" required>
+                    </div>
 
-                <!-- Message -->
-                <div class="flex items-start space-x-4">
-                    <label for="message" class="text-gray-800 font-semibold w-1/4 pt-2">Message <span class="text-red-500">*</span></label>
-                    <textarea id="message" name="message" rows="5"
-                        class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-3/4"
-                        placeholder="Enter your message" required></textarea>
+                    <!-- Email Address -->
+                    <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                        <label for="email" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
+                            Email <span class="text-red-500">*</span>
+                        </label>
+                        <input type="email" id="email" name="email"
+                            class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
+                            placeholder="Enter your email address" required>
+                    </div>
+
+                    <!-- Phone Number (Optional) -->
+                    <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                        <label for="phone" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
+                            Phone
+                        </label>
+                        <div class="flex border border-[#660000] rounded-lg overflow-hidden w-full">
+                            <select id="country-code" name="country-code"
+                                class="bg-gray-100 px-3 py-3 border-r border-[#660000] text-gray-700 focus:outline-none w-1/4 min-w-[100px]">
+                                <option value="+254">+254</option>
+                                <option value="+255">+255</option>
+                                <option value="+256">+256</option>
+                                <option value="+260">+260</option>
+                                <option value="+1">+1 (USA)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+234">+234 (Nigeria)</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone"
+                                class="p-3 focus:outline-none focus:ring-2 focus:ring-[#660000] w-3/4"
+                                placeholder="Enter phone number" required>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="flex flex-col md:flex-row md:items-start md:space-x-4">
+                        <label for="message" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right pt-2">
+                            Message <span class="text-red-500">*</span>
+                        </label>
+                        <textarea id="message" name="message" rows="5"
+                            class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
+                            placeholder="Enter your message" required></textarea>
+                    </div>
                 </div>
 
                 <!-- Submit Button -->
-                <div class="flex justify-center mt-4">
+                <div class="flex justify-center mt-6">
                     <button type="submit"
-                        class="bg-[#660000] text-white py-3 px-6 rounded-lg hover:bg-[#993333] transition duration-300 font-semibold">
+                        class="w-full md:w-1/2 bg-[#660000] text-white py-3 rounded-lg hover:bg-[#993333] transition duration-300 font-semibold">
                         Send Message
                     </button>
                 </div>
-            </div>
-        </form>
-    </div>
-</section>
+            </form>
+        </div>
+    </section>
+<script>
+    $(document).ready(function() {
+    $("#contact-form").submit(function(event) {
+        event.preventDefault(); // Prevent page reload
 
+        let formData = $(this).serialize(); // Serialize form data
+
+        $.ajax({
+            url: "includes/models.php",
+            type: "POST",
+            data: formData,
+            dataType: "json",
+            success: function(response) {
+                $("#response-message").html(
+                    `<div class="bg-${response.status === 'success' ? 'green' : 'red'}-100 border border-${response.status === 'success' ? 'green' : 'red'}-400 text-${response.status === 'success' ? 'green' : 'red'}-700 px-4 py-3 rounded relative max-w-2xl mx-auto mt-6">
+                        <strong class="font-bold">${response.status === 'success' ? 'Success!' : 'Error!'}</strong>
+                        <span class="block sm:inline">${response.message}</span>
+                    </div>`
+                );
+
+                if (response.status === "success") {
+                    $("#contact-form")[0].reset(); // Clear form fields
+                }
+
+                // ✅ Auto-hide message after 5 seconds
+                setTimeout(function() {
+                    $("#response-message").fadeOut("slow");
+                }, 5000);
+            },
+            error: function() {
+                $("#response-message").html(
+                    `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-2xl mx-auto mt-6">
+                        <strong class="font-bold">Error!</strong>
+                        <span class="block sm:inline">Something went wrong. Please try again.</span>
+                    </div>`
+                );
+
+                // ✅ Auto-hide error message after 5 seconds
+                setTimeout(function() {
+                    $("#response-message").fadeOut("slow");
+                }, 5000);
+            }
+        });
+    });
+});
+
+</script>
 
 </main>
 

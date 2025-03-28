@@ -17,7 +17,7 @@
             </div>
 
             <!-- Giving & Offerings -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-300 text-center">
+            <div id="giving" class="bg-white p-6 rounded-lg shadow-md border border-gray-300 text-center">
                 <img src="public/images/donation.png" alt="Giving Icon" class="w-12 h-12 mx-auto mb-3">
                 <h3 class="text-2xl font-bold text-[#660000] mb-2">Giving & Offerings</h3>
                 <p class="text-xl font-semibold text-gray-800">Till Number: <span class="text-[#660000] font-bold">654321</span></p>
