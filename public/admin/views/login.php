@@ -1,7 +1,12 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+session_start();
+$message = "";
+
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    unset($_SESSION['message']);
 }
+
 include_once __DIR__ . '/../../../includes/db.php';
 
 $errorMessage = isset($_SESSION['error']) ? $_SESSION['error'] : "";
@@ -26,14 +31,18 @@ function generateCsrfToken() {
 <body class="h-screen flex justify-center items-center bg-gradient-to-r from-[#3d0000] to-[#ffffff]">
 <a href="/" class="absolute top-2 left-2 px-3 py-1 bg-white/20 text-white font-semibold rounded-lg hover:bg-white/30 transition">
         ← Back to Home
-    </a>
+</a>
+
+<?php if (!empty($message)) : ?>
+    <div class="bg-red-500 text-white p-3 rounded-lg mb-4">
+        <?php echo htmlspecialchars($message); ?>
+    </div>
+<?php endif; ?>
 
 <div class="relative w-11/12 md:w-3/4 max-w-lg bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg">
-    <!-- 🏠 Back to Home Button -->
 
     <h2 class="text-2xl font-bold text-white text-center mb-6">Admin Login</h2>
     <!-- Error Message Display -->
-
     <?php if (!empty($errorMessage)): ?>
     <div class="bg-red-200 text-red-800 border border-red-400 px-4 py-2 rounded-lg shadow-md text-center font-semibold mb-4 z-index[10]">
         <?= htmlspecialchars($errorMessage) ?>

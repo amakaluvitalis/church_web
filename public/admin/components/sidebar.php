@@ -29,8 +29,7 @@
         </ul>
     </nav>
 
-    <!-- Logout Button -->
-    <a href="?page=admin-login" class="flex items-center justify-center space-x-3 p-3 rounded-lg bg-red-500 hover:bg-red-600 transition-all duration-200 ease-in-out">
+    <a href="?page=logout" class="flex items-center justify-center space-x-3 p-3 rounded-lg bg-red-500 hover:bg-red-600 transition-all duration-200 ease-in-out">
         <img src="/public/images/bx-log-out.svg" alt="Logout" class="w-6 h-6">
         <span>Logout</span>
     </a>

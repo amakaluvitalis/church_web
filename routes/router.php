@@ -58,10 +58,16 @@ switch ($page) {
         break;
 
     case 'logout':
+        session_start();
+        $_SESSION = []; 
         session_destroy();
+    
+        if (ini_get("session.use_cookies")) {
+            setcookie(session_name(), '', time() - 42000, "/");
+        }
+    
         header("Location: /?page=admin-login");
         exit();
-        break;
 
     case 'admin-home':
         session_start();
@@ -70,6 +76,12 @@ switch ($page) {
     
         if (!isset($_SESSION['admin_name'])) {
             error_log("Access denied. Redirecting to admin-login...");
+        
+            // Store a message before redirecting
+            session_start();
+            $_SESSION['message'] = "Your session has expired. Please log in again.";
+            session_write_close();
+    
             header("Location: /?page=admin-login");
             exit();
         }
@@ -77,6 +89,7 @@ switch ($page) {
         $pageTitle = "Admin Dashboard";
         include __DIR__ . "/../public/admin/views/admin-home.php";
         break;
+        
     default:
         include "views/404.php";
         break;

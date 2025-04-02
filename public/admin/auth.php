@@ -1,6 +1,5 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    session_save_path(__DIR__ . '/../../sessions');
     session_start();
 }
 
@@ -8,6 +7,7 @@ include __DIR__ . '/../../includes/db.php';
 
 // Set response type to JSON
 header('Content-Type: application/json');
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
@@ -47,8 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['admin_username'] = $admin['username'];
     $_SESSION['admin'] = true;
 
+    error_log("Session Path: " . session_save_path());
     error_log("User logged in successfully.");
+    
     echo json_encode(["success" => true, "redirect" => "/?page=admin-home"]);
+    
     exit();
 }
 

@@ -4,10 +4,15 @@ if(session_status() === PHP_SESSION_NONE) {
 }
 
 // Redirect to login if not logged in
-if (!isset($_SESSION['admin_name'])) {
-    header("Location: /../login.php");
+if (!isset($_SESSION['admin'])) {
+    header("Location: /?page=admin-login");
     exit();
 }
+
+// Prevent back button access
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+header("Expires: Wed, 11 Jan 1984 05:00:00 GMT");
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +41,9 @@ if (!isset($_SESSION['admin_name'])) {
 
 <script>
 $(document).ready(function() {
-    // Set default page if none exists in localStorage
-    let lastPage = localStorage.getItem("admin_last_page") || "dashboard";
+    // Always reset to dashboard when a new session starts
+    let lastPage = "dashboard";  
+    localStorage.setItem("admin_last_page", lastPage);
 
     // Show a loading message before content loads
     $("#admin-content").html('<div class="text-gray-500 text-center mt-4">Loading...</div>');
