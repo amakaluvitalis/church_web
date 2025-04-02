@@ -1,6 +1,5 @@
 <?php
 $pageTitle = "Activities";
-include_once "includes/header.php";
 include_once "includes/models.php";
 $events = getUpcomingEvents();
 $activities = getActivities();
@@ -97,4 +96,3 @@ $activities = getActivities();
         startCarousel();
     });
 </script>
-<?php include_once "includes/footer.php"; ?>

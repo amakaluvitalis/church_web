@@ -1,6 +1,5 @@
 <?php
 $pageTitle = "Governance";
-include_once "includes/header.php";
 ?>
 
 <!-- Main Content -->
@@ -94,5 +93,3 @@ include_once "includes/header.php";
         </p>
     </section>
 </main>
-
-<?php include_once "includes/footer.php"; ?>

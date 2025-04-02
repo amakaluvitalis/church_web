@@ -1,6 +1,5 @@
 <?php
 $pageTitle = "History of ACK";
-include_once "includes/header.php";
 include_once "includes/models.php";
 $history = getHistory();
 ?>
@@ -28,5 +27,3 @@ $history = getHistory();
         </div>
     </div>
 </main>
-
-<?php include_once "includes/footer.php"; ?>

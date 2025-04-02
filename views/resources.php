@@ -1,6 +1,5 @@
 <?php 
 $pageTitle = "Resources"; 
-include_once "includes/header.php"; 
 include_once "includes/models.php"; 
 $sermons = getLatestSermons();
 $audio_sermons = getLatestAudioSermons();
@@ -215,5 +214,3 @@ $galleries = getGallery();
     });
 
 </script>
-
-<?php include_once "includes/footer.php"; ?>

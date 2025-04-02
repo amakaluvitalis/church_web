@@ -1,3 +1,12 @@
+<?php
+include_once "models.php"; 
+
+$contact = getContactInfo();
+$giving = getGivingOfferings();
+$socials = getSocialLinks();
+
+?>
+
 <!-- Footer -->
 <footer class="relative bg-contain bg-cover bg-center text-[#3d0000] py-12" 
         style="background-image: url('public/images/footer.jpg');">
@@ -11,17 +20,17 @@
             <!-- Contact Information -->
             <div class="text-left">
                 <h3 class="text-2xl font-semibold mb-4">Contact Us</h3>
-                <p class="mb-2"><strong>Location:</strong> Kisumu, Busia RD, Maseno Municipality</p>
-                <p class="mb-2"><strong>Phone:</strong> +254 (7) 960-20551</p>
-                <p><strong>Email:</strong> info@ackallsaintsmasenoparish.com</p>
+                <p class="mb-2"><strong>Location:</strong> <?= htmlspecialchars($contact['location']) ?></p>
+                <p class="mb-2"><strong>Phone:</strong> <?= htmlspecialchars($contact['phone']) ?></p>
+                <p><strong>Email:</strong> <?= htmlspecialchars($contact['email']) ?></p>
             </div>
 
             <!-- Giving & Offerings -->
             <div id="giving" class="bg-white p-6 rounded-lg shadow-md border border-gray-300 text-center">
                 <img src="public/images/donation.png" alt="Giving Icon" class="w-12 h-12 mx-auto mb-3">
                 <h3 class="text-2xl font-bold text-[#660000] mb-2">Giving & Offerings</h3>
-                <p class="text-xl font-semibold text-gray-800">Till Number: <span class="text-[#660000] font-bold">654321</span></p>
-                <p class="text-sm text-gray-600 mt-2">Assistance? Call: <strong class="text-gray-900">+254 700 123 456</strong></p>
+                <p class="text-xl font-semibold text-gray-800">Till Number: <span class="text-[#660000] font-bold"><?= htmlspecialchars($giving['till_number']) ?></span></p>
+                <p class="text-sm text-gray-600 mt-2">Assistance? Call: <strong class="text-gray-900"><?= htmlspecialchars($giving['assistance_phone']) ?></strong></p>
             </div>
 
             <!-- Prayer Line Button -->
@@ -58,18 +67,11 @@
         <div class="text-center mt-6">
             <h3 class="text-2xl font-semibold mb-4">Follow Us</h3>
             <div class="flex justify-center space-x-4">
-                <a href="#" class="hover:text-gray-400">
-                    <img src="public/images/facebook.png" alt="Facebook" class="w-10 h-10">
-                </a>
-                <a href="#" class="hover:text-gray-400">
-                    <img src="public/images/x.png" alt="Twitter" class="w-10 h-10">
-                </a>
-                <a href="#" class="hover:text-gray-400">
-                    <img src="public/images/instagram.png" alt="Instagram" class="w-10 h-10">
-                </a>
-                <a href="#" class="hover:text-gray-400">
-                    <img src="public/images/youtube.png" alt="YouTube" class="w-10 h-10">
-                </a>
+                <?php foreach ($socials as $social): ?>
+                    <a href="<?= htmlspecialchars($social['url']) ?>" target="_blank" class="hover:text-gray-400">
+                        <img src="<?= htmlspecialchars($social['icon']) ?>" alt="<?= htmlspecialchars($social['platform']) ?>" class="w-10 h-10">
+                    </a>
+                <?php endforeach; ?>
             </div>
         </div>
 
@@ -109,8 +111,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch(error => console.error("Download failed:", error));
         });
     });
+
+    const toggleButton = document.getElementById("toggleButton");
+    const closeButton = document.getElementById("closePanel");
+    const floatingButton = document.getElementById("floatingButton");
+    const notificationPanel = document.getElementById("notificationPanel");
+
+    // Make sure the floating button appears
+    floatingButton.classList.remove("hidden");
+
+    // Toggle notifications panel
+    toggleButton.addEventListener("click", function () {
+        notificationPanel.style.right = "10px"; // Slide into view
+    });
+
+    // Close panel
+    closeButton.addEventListener("click", function () {
+        notificationPanel.style.right = "-320px"; // Hide panel
+    });
 });
 </script>
-
 </body>
 </html>

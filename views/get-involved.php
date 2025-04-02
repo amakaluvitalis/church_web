@@ -1,6 +1,5 @@
 <?php
 $pageTitle = "Get Involved";
-include_once "includes/header.php";
 ?>
 
 <!-- Main Content -->
@@ -121,55 +120,53 @@ include_once "includes/header.php";
 </div>
 
 <script>
-$(document).ready(function() {
-    $("#joinForm").submit(function(event) {
-        event.preventDefault();
+    $(document).ready(function() {
+        $("#joinForm").submit(function(event) {
+            event.preventDefault();
 
-        let formData = $(this).serialize();
+            let formData = $(this).serialize();
 
-        $.ajax({
-            url: "includes/models.php",
-            type: "POST",
-            data: formData,
-            dataType: "json",
-            success: function(response) {
-                let messageHtml = `
-                    <div class="bg-${response.status === 'success' ? 'green' : 'red'}-100 border border-${response.status === 'success' ? 'green' : 'red'}-400 text-${response.status === 'success' ? 'green' : 'red'}-700 px-4 py-3 rounded shadow-lg">
-                        <strong class="font-bold">${response.status === 'success' ? 'Success!' : 'Error!'}</strong>
-                        <span class="block sm:inline">${response.message}</span>
-                    </div>
-                `;
+            $.ajax({
+                url: "includes/models.php",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: function(response) {
+                    let messageHtml = `
+                        <div class="bg-${response.status === 'success' ? 'green' : 'red'}-100 border border-${response.status === 'success' ? 'green' : 'red'}-400 text-${response.status === 'success' ? 'green' : 'red'}-700 px-4 py-3 rounded shadow-lg">
+                            <strong class="font-bold">${response.status === 'success' ? 'Success!' : 'Error!'}</strong>
+                            <span class="block sm:inline">${response.message}</span>
+                        </div>
+                    `;
 
-                $("#response-message").html(messageHtml).fadeIn();
+                    $("#response-message").html(messageHtml).fadeIn();
 
-                if (response.status === "success") {
-                    $("#joinForm")[0].reset();
-                    setTimeout(closeJoinModal, 500);
+                    if (response.status === "success") {
+                        $("#joinForm")[0].reset();
+                        setTimeout(closeJoinModal, 500);
+                    }
+
+                    // Auto-hide message after 5 seconds
+                    setTimeout(function() {
+                        $("#response-message").fadeOut("slow");
+                    }, 5000);
+                },
+                error: function() {
+                    $("#response-message").html(
+                        `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow-lg">
+                            <strong class="font-bold">Error!</strong>
+                            <span class="block sm:inline">Something went wrong. Please try again.</span>
+                        </div>`
+                    ).fadeIn();
+
+                    // Auto-hide error message after 5 seconds
+                    setTimeout(function() {
+                        $("#response-message").fadeOut("slow");
+                    }, 5000);
                 }
-
-                // Auto-hide message after 5 seconds
-                setTimeout(function() {
-                    $("#response-message").fadeOut("slow");
-                }, 5000);
-            },
-            error: function() {
-                $("#response-message").html(
-                    `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow-lg">
-                        <strong class="font-bold">Error!</strong>
-                        <span class="block sm:inline">Something went wrong. Please try again.</span>
-                    </div>`
-                ).fadeIn();
-
-                // Auto-hide error message after 5 seconds
-                setTimeout(function() {
-                    $("#response-message").fadeOut("slow");
-                }, 5000);
-            }
+            });
         });
     });
-});
-
-
 
     function openJoinModal(ministryName) {
         document.getElementById("modalTitle").innerText = `Join ${ministryName}`;
@@ -181,7 +178,3 @@ $(document).ready(function() {
         document.getElementById("joinModal").classList.add("hidden");
     }
 </script>
-
-
-
-<?php include_once "includes/footer.php"; ?>

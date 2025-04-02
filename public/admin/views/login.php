@@ -2,8 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include_once __DIR__ . '/../../includes/db.php';
-include_once __DIR__ . '/../../includes/auth.php';
+include_once __DIR__ . '/../../../includes/db.php';
+include_once __DIR__ . '/../../../includes/auth.php';
 
 $errorMessage = isset($_SESSION['error']) ? $_SESSION['error'] : "";
 unset($_SESSION['error']);

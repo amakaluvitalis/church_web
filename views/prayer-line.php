@@ -1,6 +1,5 @@
 <?php 
 $pageTitle = "Prayer Line"; 
-include_once "includes/header.php"; 
 ?>
 
 <!-- Main Content -->
@@ -25,7 +24,7 @@ include_once "includes/header.php";
         </div>
 
         <!-- Prayer Request Form -->
-        <form id="prayer-form" method="POST" class="space-y-6">
+        <form id="prayer-form" method="POST" class="space-y-6" class="bg-white">
             
             <!-- Prayer Request Field -->
             <div class="flex flex-col text-left">
@@ -58,11 +57,6 @@ include_once "includes/header.php";
                 </button>
             </div>
         </form>
-
-        <!-- Success Message (Hidden by Default) -->
-        <div id="successMessage" class="hidden mt-6 text-green-600 font-semibold text-center">
-            Thank you! Your prayer request has been submitted. Our team will pray for you.
-        </div>
     </section>
 </main>
 
@@ -70,14 +64,13 @@ include_once "includes/header.php";
 <!-- Custom JavaScript -->
 <script>
 document.getElementById("prayer-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     var formData = new FormData(this);
-    formData.append("prayer_request", true); // Ensure PHP function is triggered
+    formData.append("prayer_request", true);
     var submitBtn = document.getElementById("submitBtn");
     var successMessage = document.getElementById("successMessage");
 
-    // Disable button to prevent multiple clicks
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
 
@@ -85,30 +78,23 @@ document.getElementById("prayer-form").addEventListener("submit", function(event
         method: "POST",
         body: formData
     })
-    .then(response => response.json()) // Expecting a JSON response
+    .then(response => response.json())
     .then(data => {
         if (data.status === "success") {
-            successMessage.classList.remove("hidden"); // Show success message
-            document.getElementById("prayer-form").reset(); // Clear form
+            successMessage.classList.remove("hidden");
+            document.getElementById("prayer-form").reset();
 
-            // Auto-hide the success message after 5 seconds
             setTimeout(() => {
                 successMessage.classList.add("hidden");
             }, 5000);
         } else {
-            alert("Error: " + data.message); // Show error message
+            alert("Error: " + data.message);
         }
     })
     .catch(error => console.error("Error:", error))
     .finally(() => {
-        // Re-enable the button after submission
         submitBtn.disabled = false;
         submitBtn.textContent = "Submit Prayer Request";
     });
 });
 </script>
-
-
-
-
-<?php include_once "includes/footer.php"; ?>

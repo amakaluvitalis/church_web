@@ -1,8 +1,6 @@
 <?php
 $pageTitle = "Administration";
-include_once "includes/header.php";
 include_once "includes/models.php";
-
 $leaders = getAdministrationLeaders(); 
 ?>
 
@@ -31,6 +29,3 @@ $leaders = getAdministrationLeaders();
         </div>
     </section>
 </main>
-
-
-<?php include_once "includes/footer.php"; ?>

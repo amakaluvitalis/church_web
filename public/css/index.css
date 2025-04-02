@@ -145,25 +145,15 @@ nav ul li:hover > ul {
 /* Shaking effect for elements */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-3px); }
-    50% { transform: translateX(3px); }
-    75% { transform: translateX(-3px); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
 }
 
-.shake {
-    animation: shake 0.4s ease-in-out infinite;
+.animate-shake {
+    animation: shake 0.5s infinite;
 }
 
-/* Hide Close Button by Default */
-#closeFloatingButton {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-/* Show Close Button on Hover */
-#floatingButton:hover #closeFloatingButton {
-    opacity: 1;
-}
 
 /* ===================================== */
 /* 6 EVENT CAROUSEL STYLES (From activities.php) */
@@ -301,4 +291,28 @@ iframe {
         box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8),
                     inset 0px 0px 15px #d4963a;
     }
+}
+
+#carousel {
+    width: 1200px; /* Display area for 4 notices */
+    overflow: hidden;
+    position: relative;
+}
+
+#carousel-inner {
+    display: flex;
+    gap: 20px; /* Space between cards */
+    position: relative;
+    transition: transform 0.7s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 280px;
+    max-width: 280px;
+    text-align: center;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }

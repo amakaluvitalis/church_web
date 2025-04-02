@@ -4,8 +4,8 @@ include_once 'routes/router.php';
 include_once 'includes/models.php';
 
 $heroContent = getHeroContent();
-$visionMissionSlogan = getVisionMissionSlogan()
-
+$visionMissionSlogan = getVisionMissionSlogan();
+$notices = getNotices()
 ?>
 
 
@@ -164,12 +164,56 @@ $visionMissionSlogan = getVisionMissionSlogan()
                     </div>
                 </div>
             </div>
-
-
+        </div>
+        <div class="h-20"></div>
+    <!-- Flowing Notices Section -->
+    <div class="bg-[#660000] text-white py-6 px-6 md:px-12 w-full overflow-hidden relative">
+        <div id="marquee-container" class="relative w-full flex justify-center">
+            <div id="carousel" class="relative w-[1200px] overflow-hidden">
+                <div id="carousel-inner" class="flex space-x-6">
+                    <?php foreach ($notices as $notice): ?>
+                        <div class="carousel-item bg-white text-black px-6 py-3 rounded-lg shadow-md text-lg font-semibold min-w-[280px] max-w-[280px] text-center whitespace-normal">
+                            <?php echo nl2br(htmlspecialchars($notice['notice_text'])); ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
     </div>
+    </div>
 </section>
-<?php include_once "includes/footer.php"; ?>
-<?php include_once "includes/announcements.php"; ?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const carouselInner = document.getElementById("carousel-inner");
+    const carouselItems = Array.from(carouselInner.children);
+    const moveInterval = 3000; // Move every 3 seconds
+
+    function moveCarousel() {
+        // Get the first item
+        let firstItem = carouselInner.children[0];
+
+        // Apply transition to shift left
+        carouselInner.style.transition = "transform 0.7s ease-in-out";
+        carouselInner.style.transform = `translateX(-${firstItem.offsetWidth + 20}px)`;
+
+        // After transition completes, move first item to end
+        setTimeout(() => {
+            carouselInner.style.transition = "none"; // Disable transition for repositioning
+            carouselInner.appendChild(firstItem); // Move first item to end
+            carouselInner.style.transform = "translateX(0)"; // Reset transform
+        }, 700); // Match transition duration
+    }
+
+    let interval = setInterval(moveCarousel, moveInterval);
+
+    // Pause on hover
+    carouselInner.addEventListener("mouseenter", () => clearInterval(interval));
+
+    // Resume when mouse leaves
+    carouselInner.addEventListener("mouseleave", () => {
+        interval = setInterval(moveCarousel, moveInterval);
+    });
+});
+</script>
 </body>
 </html>

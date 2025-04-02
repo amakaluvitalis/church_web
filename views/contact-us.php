@@ -1,6 +1,8 @@
 <?php
 $pageTitle = "Contact Us";
-include_once "includes/header.php";
+include_once "includes/models.php"; 
+
+$contact = getContactInfo();
 ?>
 
 <!-- Main Content -->
@@ -20,7 +22,7 @@ include_once "includes/header.php";
                 </div>
                 <div>
                     <h4 class="text-xl font-semibold text-gray-800">Our Location</h4>
-                    <p class="text-gray-600">Kisumu Busia RD, Maseno Municipality</p>
+                    <p class="text-gray-600"><?= htmlspecialchars($contact['location']) ?></p>
                 </div>
             </div>
 
@@ -33,7 +35,7 @@ include_once "includes/header.php";
                 </div>
                 <div>
                     <h4 class="text-xl font-semibold text-gray-800">Call Us</h4>
-                    <p class="text-gray-600">+254 (7) 960-20551</p>
+                    <p class="text-gray-600"><?= htmlspecialchars($contact['phone']) ?></p>
                 </div>
             </div>
 
@@ -46,7 +48,7 @@ include_once "includes/header.php";
                 </div>
                 <div>
                     <h4 class="text-xl font-semibold text-gray-800">Email Us</h4>
-                    <p class="text-gray-600">contact@ackallsaintsmasenoparish.com</p>
+                    <p class="text-gray-600"><?= htmlspecialchars($contact['email']) ?></p>
                 </div>
             </div>
         </div>
@@ -70,122 +72,115 @@ include_once "includes/header.php";
             <h3 class="text-2xl font-semibold text-[#660000] text-center mb-4">Send Us a Message</h3>
             <p class="text-gray-600 text-center mb-6">We would love to hear from you. Fill in the form below.</p>
 
-            <!-- Response Message (Appears Below Form) -->
-            <div id="response-message"></div>
+        <!-- Success Message (Initially Hidden) -->
+        <div id="successMessage" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-md mb-4 shadow-md">
+            <strong>Success!</strong> Your message has been sent successfully.
+        </div>
 
-            <form id="contact-form" class="bg-white">
-                <div class="space-y-4">
-                    <!-- Full Name -->
-                    <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
-                        <label for="name" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
-                            Full Name <span class="text-red-500">*</span>
-                        </label>
-                        <input type="text" id="name" name="name"
-                            class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
-                            placeholder="Enter your full name" required>
-                    </div>
+        <form id="contact-form" method="POST" class="bg-white">
 
-                    <!-- Email Address -->
-                    <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
-                        <label for="email" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
-                            Email <span class="text-red-500">*</span>
-                        </label>
-                        <input type="email" id="email" name="email"
-                            class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
-                            placeholder="Enter your email address" required>
-                    </div>
+            <div class="space-y-4">
+                <!-- Full Name -->
+                <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                    <label for="name" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
+                        Full Name <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="name" name="name"
+                        class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
+                        placeholder="Enter your full name" required>
+                </div>
 
-                    <!-- Phone Number (Optional) -->
-                    <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
-                        <label for="phone" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
-                            Phone
-                        </label>
-                        <div class="flex border border-[#660000] rounded-lg overflow-hidden w-full">
-                            <select id="country-code" name="country-code"
-                                class="bg-gray-100 px-3 py-3 border-r border-[#660000] text-gray-700 focus:outline-none w-1/4 min-w-[100px]">
-                                <option value="+254">+254</option>
-                                <option value="+255">+255</option>
-                                <option value="+256">+256</option>
-                                <option value="+260">+260</option>
-                                <option value="+1">+1 (USA)</option>
-                                <option value="+44">+44 (UK)</option>
-                                <option value="+234">+234 (Nigeria)</option>
-                            </select>
-                            <input type="tel" id="phone" name="phone"
-                                class="p-3 focus:outline-none focus:ring-2 focus:ring-[#660000] w-3/4"
-                                placeholder="Enter phone number" required>
-                        </div>
-                    </div>
+                <!-- Email Address -->
+                <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                    <label for="email" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
+                        Email <span class="text-red-500">*</span>
+                    </label>
+                    <input type="email" id="email" name="email"
+                        class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
+                        placeholder="Enter your email address" required>
+                </div>
 
-                    <!-- Message -->
-                    <div class="flex flex-col md:flex-row md:items-start md:space-x-4">
-                        <label for="message" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right pt-2">
-                            Message <span class="text-red-500">*</span>
-                        </label>
-                        <textarea id="message" name="message" rows="5"
-                            class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
-                            placeholder="Enter your message" required></textarea>
+                <!-- Phone Number (Optional) -->
+                <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                    <label for="phone" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right">
+                        Phone
+                    </label>
+                    <div class="flex border border-[#660000] rounded-lg overflow-hidden w-full">
+                        <select id="country-code" name="country-code"
+                            class="bg-gray-100 px-3 py-3 border-r border-[#660000] text-gray-700 focus:outline-none w-1/4 min-w-[100px]">
+                            <option value="+254">+254</option>
+                            <option value="+255">+255</option>
+                            <option value="+256">+256</option>
+                            <option value="+260">+260</option>
+                            <option value="+1">+1 (USA)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+234">+234 (Nigeria)</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone"
+                            class="p-3 focus:outline-none focus:ring-2 focus:ring-[#660000] w-3/4"
+                            placeholder="Enter phone number">
                     </div>
                 </div>
 
-                <!-- Submit Button -->
-                <div class="flex justify-center mt-6">
-                    <button type="submit"
-                        class="w-full md:w-1/2 bg-[#660000] text-white py-3 rounded-lg hover:bg-[#993333] transition duration-300 font-semibold">
-                        Send Message
-                    </button>
+                <!-- Message -->
+                <div class="flex flex-col md:flex-row md:items-start md:space-x-4">
+                    <label for="message" class="text-gray-800 font-semibold w-full md:w-32 text-left md:text-right pt-2">
+                        Message <span class="text-red-500">*</span>
+                    </label>
+                    <textarea id="message" name="message" rows="5"
+                        class="p-3 border border-[#660000] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#660000] w-full"
+                        placeholder="Enter your message" required></textarea>
                 </div>
-            </form>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center mt-6">
+                <button type="submit" id="submitBtn"
+                    class="w-full md:w-1/2 bg-[#660000] text-white py-3 rounded-lg hover:bg-[#993333] transition duration-300 font-semibold">
+                    Send Message
+                </button>
+            </div>
+        </form>
+
         </div>
     </section>
+<!-- Custom JavaScript -->
 <script>
-    $(document).ready(function() {
-    $("#contact-form").submit(function(event) {
-        event.preventDefault(); // Prevent page reload
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-        let formData = $(this).serialize(); // Serialize form data
+    var formData = new FormData(this);
+    formData.append("contact_request", true); // Ensure PHP function is triggered
+    var submitBtn = document.getElementById("submitBtn");
+    var successMessage = document.getElementById("successMessage");
 
-        $.ajax({
-            url: "includes/models.php",
-            type: "POST",
-            data: formData,
-            dataType: "json",
-            success: function(response) {
-                $("#response-message").html(
-                    `<div class="bg-${response.status === 'success' ? 'green' : 'red'}-100 border border-${response.status === 'success' ? 'green' : 'red'}-400 text-${response.status === 'success' ? 'green' : 'red'}-700 px-4 py-3 rounded relative max-w-2xl mx-auto mt-6">
-                        <strong class="font-bold">${response.status === 'success' ? 'Success!' : 'Error!'}</strong>
-                        <span class="block sm:inline">${response.message}</span>
-                    </div>`
-                );
+    // Disable button to prevent multiple clicks
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
 
-                if (response.status === "success") {
-                    $("#contact-form")[0].reset(); // Clear form fields
-                }
+    fetch("includes/models.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json()) // Expecting a JSON response
+    .then(data => {
+        if (data.status === "success") {
+            successMessage.classList.remove("hidden"); // Show success message
+            document.getElementById("contact-form").reset(); // Clear form
 
-                // ✅ Auto-hide message after 5 seconds
-                setTimeout(function() {
-                    $("#response-message").fadeOut("slow");
-                }, 5000);
-            },
-            error: function() {
-                $("#response-message").html(
-                    `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-2xl mx-auto mt-6">
-                        <strong class="font-bold">Error!</strong>
-                        <span class="block sm:inline">Something went wrong. Please try again.</span>
-                    </div>`
-                );
-
-                // ✅ Auto-hide error message after 5 seconds
-                setTimeout(function() {
-                    $("#response-message").fadeOut("slow");
-                }, 5000);
-            }
-        });
+            // Auto-hide the success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.add("hidden");
+            }, 5000);
+        } else {
+            alert("Error: " + data.message); // Show error message
+        }
+    })
+    .catch(error => console.error("Error:", error))
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
     });
 });
-
 </script>
-
 </main>
-
-<?php include_once "includes/footer.php"; ?>

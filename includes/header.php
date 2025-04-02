@@ -1,8 +1,10 @@
 <?php
 ob_start();
 $current_page = isset($_GET['page']) ? $_GET['page'] : 'home';
-?>
+include_once "models.php"; 
 
+$contact = getContactInfo();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,8 +35,9 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 'home';
     <!-- Custom Styles -->
     <link rel="stylesheet" href="public/css/index.css">
 
-    <!-- Custom Scripts -->
-    <script defer src="public/js/index.js"></script>
+<!-- Custom Scripts -->
+<script defer src="public/js/index.js"></script>
+<script defer src="public/js/announcements.js"></script>
 </head>
 
 <body class="bg-[#f0e6e6]">
@@ -42,8 +45,8 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 'home';
     <!-- Top Contact Bar -->
     <div class="bg-[#a36666] text-white py-2">
         <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 space-y-1 sm:space-y-0">
-            <span class="text-xs sm:text-sm leading-tight"><strong>Location:</strong> Kisumu Busia RD, Maseno Municipality</span>
-            <span class="text-xs sm:text-sm leading-tight"><strong>Need Assistance? Contact:</strong> +254 (7) 960-20551</span>
+            <span class="text-xs sm:text-sm leading-tight"><strong>Location: </strong><?= htmlspecialchars($contact['location']) ?></span>
+            <span class="text-xs sm:text-sm leading-tight"><strong>Need Assistance? Contact:</strong> <?= htmlspecialchars($contact['phone']) ?></span>
         </div>
     </div>
 
@@ -51,35 +54,48 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 'home';
     <header class="bg-[#e0cccc] shadow-md">
         <div class="container mx-auto flex justify-between items-center py-4 px-6">
             
-            <!-- Logo & Title -->
-            <div class="flex items-center space-x-4">
-                <img src="public/images/ack_logo.png" alt="Church Logo" class="h-16 lg:h-20 w-auto object-contain">
-                <h1 class="text-lg lg:text-xl font-bold text-[#660000]">ACK ALL SAINTS MASENO PARISH</h1>
-            </div>
+<!-- Logo & Title --> 
+<div class="flex items-center">
+    <img src="public/images/ack_logo.png" alt="Church Logo" class="h-16 lg:h-20 w-auto object-contain">
+    <h1 class="text-lg lg:text-xl font-bold text-[#660000] ml-1">ACK ALL SAINTS MASENO PARISH</h1>
+</div>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden lg:block">
-                <ul class="flex space-x-4">
-                    <li><a href="/?page=home" class="<?= $current_page == 'home' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Home</a></li>
-                    
-                    <li class="group relative">
-                    <button id="about-btn" class="text-black hover:text-[#660000] focus:outline-none">About</button>
-                    <ul id="about-dropdown" class="absolute left-0 mt-2 hidden bg-white shadow-md p-2 space-y-2">
-                        <li><a href="/?page=who-we-are" class="block px-4 py-2 hover:bg-gray-100">Who We Are</a></li>
-                        <li><a href="/?page=history" class="block px-4 py-2 hover:bg-gray-100">History</a></li>
-                        <li><a href="/?page=administration" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
-                        <li><a href="/?page=governance" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
-                    </ul>
-                    </li>
 
-                    <li><a href="/?page=ministries" class="<?= $current_page == 'ministries' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Ministries</a></li>
-                    <li><a href="/?page=activities" class="<?= $current_page == 'activities' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Activities</a></li>
-                    <li><a href="/?page=resources" class="<?= $current_page == 'resources' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Resources</a></li>
-                    <li><a href="/?page=get-involved" class="<?= $current_page == 'get-involved' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Get Involved</a></li>
-                    <li><a href="/?page=contact-us" class="<?= $current_page == 'contact-us' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Contact Us</a></li>
-                    <li><a href="/?page=become-member" class="<?= $current_page == 'become-member' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Join Us</a></li>
-                </ul>
-            </nav>
+
+
+<!-- Desktop Navigation -->
+<nav class="hidden lg:block">
+    <ul class="flex space-x-4 items-center">
+        <li><a href="/?page=home" class="<?= $current_page == 'home' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Home</a></li>
+        
+        <li class="group relative">
+            <button id="about-btn" class="text-black hover:text-[#660000] focus:outline-none">About</button>
+            <ul id="about-dropdown" class="absolute left-0 mt-2 hidden bg-white shadow-md p-2 space-y-2">
+                <li><a href="/?page=who-we-are" class="block px-4 py-2 hover:bg-gray-100">Who We Are</a></li>
+                <li><a href="/?page=history" class="block px-4 py-2 hover:bg-gray-100">History</a></li>
+                <li><a href="/?page=administration" class="block px-4 py-2 hover:bg-gray-100">Administration</a></li>
+                <li><a href="/?page=governance" class="block px-4 py-2 hover:bg-gray-100">Governance</a></li>
+            </ul>
+        </li>
+
+        <li><a href="/?page=ministries" class="<?= $current_page == 'ministries' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Ministries</a></li>
+        <li><a href="/?page=activities" class="<?= $current_page == 'activities' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Activities</a></li>
+        <li><a href="/?page=resources" class="<?= $current_page == 'resources' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Resources</a></li>
+        <li><a href="/?page=get-involved" class="<?= $current_page == 'get-involved' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Get Involved</a></li>
+        <li><a href="/?page=contact-us" class="<?= $current_page == 'contact-us' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Contact</a></li>
+        <li><a href="/?page=become-member" class="<?= $current_page == 'become-member' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Join</a></li>
+        
+        <!-- Admin Login Button with Radiating Glowing Dot -->
+        <li class="relative flex items-center">
+            <a href="/public/admin/index.php?page=login" class="text-black text-sm hover:text-[#660000]">Admin</a>
+            <span class="relative flex ml-1">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#660000] opacity-75"></span>
+                <span class="relative inline-flex h-2 w-2 bg-[#660000] rounded-full"></span>
+            </span>
+        </li>
+    </ul>
+</nav>
+           
 
             <!-- Mobile Menu Toggle -->
             <button class="lg:hidden text-[#660000]" id="menu-toggle">
@@ -90,7 +106,7 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 'home';
         </div>
 
         <!-- Mobile Menu -->
-        <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300">
+        <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#c19999] text-white shadow-lg transform translate-x-full transition-transform duration-300 z-[9999]">
 
         <!-- Close Button (X) - Positioned at Top Left Inside Menu -->
         <button id="close-icon" class="absolute top-4 left-4 text-white hover:text-gray-300 hidden">
@@ -99,27 +115,37 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 'home';
             </svg>
         </button>
 
-            <ul class="p-6 space-y-4 mt-10">
-                <li><a href="/?page=home" class="hover:text-[#660000]">Home</a></li>
-                <li>
-                    <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" id="about-toggle">
-                        About <span>&#9662;</span>
-                    </button>
-                    <ul id="about-dropdown-mobile" class="mobile-submenu hidden">
-                        <li><a href="/?page=who-we-are" class="block px-4 py-2 hover:bg-gray-700">Who We Are</a></li>
-                        <li><a href="/?page=history" class="block px-4 py-2 hover:bg-gray-700">History</a></li>
-                        <li><a href="/?page=administration" class="block px-4 py-2 hover:bg-gray-700">Administration</a></li>
-                        <li><a href="/?page=governance" class="block px-4 py-2 hover:bg-gray-700">Governance</a></li>
-                    </ul>
-                </li>
+        <ul class="p-6 space-y-4 mt-10">
+            <li><a href="/?page=home" class="hover:text-[#660000]">Home</a></li>
+            <li>
+                <button class="w-full text-left flex justify-between items-center hover:text-[#660000]" id="about-toggle">
+                    About <span>&#9662;</span>
+                </button>
+                <ul id="about-dropdown-mobile" class="mobile-submenu hidden">
+                    <li><a href="/?page=who-we-are" class="block px-4 py-2 hover:bg-gray-700">Who We Are</a></li>
+                    <li><a href="/?page=history" class="block px-4 py-2 hover:bg-gray-700">History</a></li>
+                    <li><a href="/?page=administration" class="block px-4 py-2 hover:bg-gray-700">Administration</a></li>
+                    <li><a href="/?page=governance" class="block px-4 py-2 hover:bg-gray-700">Governance</a></li>
+                </ul>
+            </li>
 
-                <li><a href="/?page=ministries" class="hover:text-[#660000]">Ministries</a></li>
-                <li><a href="/?page=activities" class="hover:text-[#660000]">Activities</a></li>
-                <li><a href="/?page=resources" class="hover:text-[#660000]">Resources</a></li>
-                <li><a href="/?page=get-involved" class="hover:text-[#660000]">Get Involved</a></li>
-                <li><a href="/?page=contact-us" class="hover:text-[#660000]">Contact Us</a></li>
-                <li><a href="/?page=become-member" class="hover:text-[#660000]">Join Us</a></li>
-            </ul>
+            <li><a href="/?page=ministries" class="hover:text-[#660000]">Ministries</a></li>
+            <li><a href="/?page=activities" class="hover:text-[#660000]">Activities</a></li>
+            <li><a href="/?page=resources" class="hover:text-[#660000]">Resources</a></li>
+            <li><a href="/?page=get-involved" class="hover:text-[#660000]">Get Involved</a></li>
+            <li><a href="/?page=contact-us" class="hover:text-[#660000]">Contact</a></li>
+            <li><a href="/?page=become-member" class="hover:text-[#660000]">Join</a></li>
+
+            <!-- Admin Login Button with Radiating Glowing Dot -->
+            <li class="relative flex items-center">
+                <a href="/public/admin/index.php?page=login" class="hover:text-[#660000]">Admin</a>
+                <span class="relative flex ml-1">
+                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#660000] opacity-75"></span>
+                    <span class="relative inline-flex h-2 w-2 bg-[#660000] rounded-full"></span>
+                </span>
+            </li>
+        </ul>
+
         </nav>
     </header>
 </body>

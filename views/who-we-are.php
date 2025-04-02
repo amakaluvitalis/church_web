@@ -1,6 +1,5 @@
 <?php 
 $pageTitle = "Who We Are"; 
-include_once "includes/header.php"; 
 include_once "includes/models.php"; 
 // Fetch Who We Are data
 $whoWeAre = getWhoWeAre();
@@ -42,5 +41,3 @@ $whoWeAre = getWhoWeAre();
         </div>
     </div>
 </main>
-
-<?php include_once "includes/footer.php"; ?>

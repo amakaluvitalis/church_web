@@ -25,8 +25,7 @@ switch ($page) {
     case 'ministries':
         $pageTitle = "Ministries";
         include "views/ministries.php";
-        exit;
-        break;        
+        break;
     case 'activities':
         $pageTitle = "Activities";
         include "views/activities.php";
