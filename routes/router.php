@@ -1,4 +1,5 @@
 <?php
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {
@@ -49,6 +50,32 @@ switch ($page) {
     case 'prayer-line':
         $pageTitle = "Prayer Line";
         include "views/prayer-line.php";
+        break;
+
+    case 'admin-login':
+        $_GET['page'] = 'login';
+        include "public/admin/views/login.php";
+        break;
+
+    case 'logout':
+        session_destroy();
+        header("Location: /?page=admin-login");
+        exit();
+        break;
+
+    case 'admin-home':
+        session_start();
+        error_log("Checking session...");
+        error_log("Session Data: " . json_encode($_SESSION));
+    
+        if (!isset($_SESSION['admin_name'])) {
+            error_log("Access denied. Redirecting to admin-login...");
+            header("Location: /?page=admin-login");
+            exit();
+        }
+        error_log("Session found! Loading admin-home...");
+        $pageTitle = "Admin Dashboard";
+        include __DIR__ . "/../public/admin/views/admin-home.php";
         break;
     default:
         include "views/404.php";

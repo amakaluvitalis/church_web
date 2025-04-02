@@ -85,9 +85,9 @@ $contact = getContactInfo();
         <li><a href="/?page=contact-us" class="<?= $current_page == 'contact-us' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Contact</a></li>
         <li><a href="/?page=become-member" class="<?= $current_page == 'become-member' ? 'text-[#660000] font-bold' : 'text-black' ?> hover:text-[#660000]">Join</a></li>
         
-        <!-- Admin Login Button with Radiating Glowing Dot -->
+        <!-- Admin Login-->
         <li class="relative flex items-center">
-            <a href="/public/admin/index.php?page=login" class="text-black text-sm hover:text-[#660000]">Admin</a>
+            <a href="/?page=admin-login" class="text-black text-sm hover:text-[#660000]">Admin</a>
             <span class="relative flex ml-1">
                 <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#660000] opacity-75"></span>
                 <span class="relative inline-flex h-2 w-2 bg-[#660000] rounded-full"></span>
@@ -136,9 +136,9 @@ $contact = getContactInfo();
             <li><a href="/?page=contact-us" class="hover:text-[#660000]">Contact</a></li>
             <li><a href="/?page=become-member" class="hover:text-[#660000]">Join</a></li>
 
-            <!-- Admin Login Button with Radiating Glowing Dot -->
+            <!-- Admin Login -->
             <li class="relative flex items-center">
-                <a href="/public/admin/index.php?page=login" class="hover:text-[#660000]">Admin</a>
+                <a href="/?page=admin-login" class="hover:text-[#660000]">Admin</a>
                 <span class="relative flex ml-1">
                     <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#660000] opacity-75"></span>
                     <span class="relative inline-flex h-2 w-2 bg-[#660000] rounded-full"></span>

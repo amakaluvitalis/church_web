@@ -1,13 +1,23 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
+    session_save_path(__DIR__ . '/../../sessions');
     session_start();
 }
 
-include __DIR__ . '/../includes/db.php';
+include __DIR__ . '/../../includes/db.php';
+
+// Set response type to JSON
+header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
+
+    // Validate empty fields
+    if (empty($username) || empty($password)) {
+        echo json_encode(["error" => "Username and password are required."]);
+        exit();
+    }
 
     error_log("Login Attempt - Username: $username");
 
@@ -16,37 +26,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute([$username]);
     $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($admin) {
-        error_log("User found in DB: " . json_encode($admin));
-
-        // Verify hashed password
-        if (password_verify($password, $admin['password'])) {
-            error_log("🔑 Password Matched!");
-
-            // Store session data correctly
-            $_SESSION['admin_id'] = $admin['id'];
-            $_SESSION['admin_name'] = $admin['name'];
-            $_SESSION['admin_username'] = $admin['username'];
-            $_SESSION['admin'] = true;  // Add this for `requireAuth()` to work
-
-            // Redirect to dashboard
-            header("Location: /public/admin/dashboard.php");
-            exit();
-        } else {
-            error_log("Incorrect Password!");
-            $_SESSION['error'] = "Invalid credentials!";
-        }
-    } else {
+    if (!$admin) {
         error_log("User Not Found!");
-        $_SESSION['error'] = "Invalid credentials!";
+        echo json_encode(["error" => "Unregistered username."]);
+        exit();
     }
-    header("Location: /public/admin/login.php");
+
+    error_log("User found in DB: " . json_encode($admin));
+
+    // Verify hashed password
+    if (!password_verify($password, $admin['password'])) {
+        error_log("Incorrect Password!");
+        echo json_encode(["error" => "Incorrect password."]);
+        exit();
+    }
+
+    // Login successful - Store session
+    $_SESSION['admin_id'] = $admin['id'];
+    $_SESSION['admin_name'] = $admin['name'];
+    $_SESSION['admin_username'] = $admin['username'];
+    $_SESSION['admin'] = true;
+
+    error_log("User logged in successfully.");
+    echo json_encode(["success" => true, "redirect" => "/?page=admin-home"]);
     exit();
 }
 
 // Function to check if user is logged in
 function isLoggedIn() {
-    return isset($_SESSION['admin']);  // Check for the correct session variable
+    return isset($_SESSION['admin']);
 }
 
 // Function to redirect unauthorized users

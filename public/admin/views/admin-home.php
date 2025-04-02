@@ -1,9 +1,11 @@
 <?php
-session_start();
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Redirect to login if not logged in
 if (!isset($_SESSION['admin_name'])) {
-    header("Location: ../login.php");
+    header("Location: /../login.php");
     exit();
 }
 ?>
@@ -17,47 +19,49 @@ if (!isset($_SESSION['admin_name'])) {
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery for AJAX -->
 </head>
-<body class="flex bg-gray-100">
+<body class="flex h-screen bg-gray-100">
 
-    <!-- Sidebar -->
-    <aside class="w-64 bg-[#660000] text-white min-h-screen flex flex-col">
-        <?php include_once "../components/sidebar.php"; ?>
-    </aside>
+<aside class="w-64 bg-[#660000] text-white h-full fixed top-0 left-0">
+    <?php include_once "public/admin/components/sidebar.php"; ?>
+</aside>
 
-    <!-- Main Content -->
-    <main class="flex-1 p-6">
-        <h1 class="text-3xl font-bold text-gray-700 mb-6">Welcome, <?= $_SESSION['admin_name'] ?? "Admin"; ?>!</h1>
+<main class="absolute left-64 top-0 w-[calc(100%-16rem)] h-full p-6 bg-gray-100">
+    <h1 class="text-3xl font-bold text-gray-700 mb-6">Welcome, <?= $_SESSION['admin_name'] ?? "Admin"; ?>!</h1>
 
-        <div id="admin-content">
-            <?php include "../components/dashboard.php"; ?>  <!-- Default page -->
-        </div>
-    </main>
+    <div id="admin-content" class="w-full h-full">
+        <?php include "public/admin/components/dashboard.php"; ?>  
+    </div>
+</main>
+
 
 <script>
-    $(document).ready(function() {
-        // Get the last selected page, or use "dashboard" as default
-        let lastPage = localStorage.getItem("admin_last_page") || "dashboard";
+$(document).ready(function() {
+    // Set default page if none exists in localStorage
+    let lastPage = localStorage.getItem("admin_last_page") || "dashboard";
 
-        // Load the last page immediately (BEFORE showing anything)
-        $("#admin-content").html('<div class="text-gray-500 text-center mt-4">Loading...</div>'); // Optional loading message
-        $("#admin-content").load("../components/" + lastPage + ".php");
+    // Show a loading message before content loads
+    $("#admin-content").html('<div class="text-gray-500 text-center mt-4">Loading...</div>');
 
-        $(".menu-item").click(function(event) {
-            event.preventDefault(); // Prevent default anchor behavior
+    // Correct the path issue
+    $("#admin-content").load("/public/admin/components/" + lastPage + ".php");
 
-            let page = $(this).data("page");
+    $(".menu-item").click(function(event) {
+        event.preventDefault(); // Prevent page refresh
 
-            // Save the selected page in localStorage
-            localStorage.setItem("admin_last_page", page);
+        let page = $(this).data("page"); // Get the page from the `data-page` attribute
 
-            // Load the new page smoothly
-            $("#admin-content").fadeOut(200, function() {
-                $("#admin-content").load("../components/" + page + ".php", function() {
-                    $("#admin-content").fadeIn(200);
-                });
+        // Save last selected page in localStorage
+        localStorage.setItem("admin_last_page", page);
+
+        // Load the content smoothly
+        $("#admin-content").fadeOut(200, function() {
+            $("#admin-content").load("/public/admin/components/" + page + ".php", function() {
+                $("#admin-content").fadeIn(200);
             });
         });
     });
+});
+
 </script>
 </body>
 </html>

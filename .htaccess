@@ -1,0 +1,6 @@
+# .htaccess (in project root)
+RewriteEngine On
+
+# Rewrite admin?page=whatever to public/admin/index.php?page=whatever
+RewriteRule ^admin$ public/admin/index.php [L,QSA]
+RewriteRule ^admin\?(.*)$ public/admin/index.php?$1 [L,QSA]

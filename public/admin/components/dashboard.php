@@ -8,23 +8,27 @@ if (!isset($_SESSION['admin'])) {
 }
 ?>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-white shadow-lg rounded-lg p-6">
-        <h3 class="text-lg font-semibold text-gray-800">Total Users</h3>
-        <p class="text-3xl font-bold text-[#660000]">1,245</p>
+<div class="h-full w-full flex flex-col">
+    <!-- Stats Section -->
+    <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+        <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-full">
+            <h3 class="text-lg font-semibold text-gray-800">Total Users</h3>
+            <p class="text-3xl font-bold text-[#660000]">1,245</p>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-full">
+            <h3 class="text-lg font-semibold text-gray-800">Total Posts</h3>
+            <p class="text-3xl font-bold text-[#660000]">320</p>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-full">
+            <h3 class="text-lg font-semibold text-gray-800">Total Donations</h3>
+            <p class="text-3xl font-bold text-[#660000]">$4,500</p>
+        </div>
     </div>
 
-    <div class="bg-white shadow-lg rounded-lg p-6">
-        <h3 class="text-lg font-semibold text-gray-800">Total Posts</h3>
-        <p class="text-3xl font-bold text-[#660000]">320</p>
-    </div>
-
-    <div class="bg-white shadow-lg rounded-lg p-6">
-        <h3 class="text-lg font-semibold text-gray-800">Total Donations</h3>
-        <p class="text-3xl font-bold text-[#660000]">$4,500</p>
-    </div>
-</div>
-<div class="mt-8">
-        <!-- Include Analytics Component -->
+    <!-- Analytics Section -->
+    <div class="w-full h-full mt-8">
         <?php include_once "analytics.php"; ?>
+    </div>
 </div>
