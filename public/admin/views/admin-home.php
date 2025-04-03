@@ -40,6 +40,54 @@ header("Expires: Wed, 11 Jan 1984 05:00:00 GMT");
 
 
 <script>
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const response = await fetch("public/admin/models/dashboard_data.php", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        });
+        const data = await response.json();
+
+        document.getElementById("totalAdmins").textContent = data.totalAdmins;
+        document.getElementById("totalMinistries").textContent = data.totalMinistries;
+        document.getElementById("totalMembers").textContent = data.totalMembers;
+        document.getElementById("totalPrayerRequests").textContent = data.totalPrayerRequests;
+        
+        document.getElementById("unreadMessages").textContent = data.unreadMessages;
+        document.getElementById("upcomingEvents").textContent = data.upcomingEvents;
+        document.getElementById("pendingAnnouncements").textContent = data.pendingAnnouncements;
+        
+        document.getElementById("totalMinistryApplications").textContent = data.totalMinistryApplications;
+        document.getElementById("newMinistryApplications").textContent = data.newMinistryApplications;
+        
+        document.getElementById("totalSermons").textContent = data.totalSermons;
+        document.getElementById("totalAudioSermons").textContent = data.totalAudioSermons;
+        document.getElementById("totalImageSets").textContent = data.totalImageSets;
+
+        // Display most recent sermon
+        if (data.recentSermon) {
+            document.getElementById("recentSermonTitle").textContent = data.recentSermon.title;
+            document.getElementById("recentSermonSpeaker").textContent = data.recentSermon.speaker;
+            document.getElementById("recentSermonDate").textContent = data.recentSermon.date;
+        }
+
+        // Display Top 3 Ministries
+        const topMinistriesContainer = document.getElementById("topMinistries");
+        topMinistriesContainer.innerHTML = "";
+        data.topMinistries.forEach((ministry) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${ministry.ministry_name} - Applications: ${ministry.count}`;
+            topMinistriesContainer.appendChild(listItem);
+        });
+
+    } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+    }
+});
+
 $(document).ready(function() {
     // Always reset to dashboard when a new session starts
     let lastPage = "dashboard";  

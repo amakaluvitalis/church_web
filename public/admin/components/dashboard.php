@@ -8,27 +8,92 @@ if (!isset($_SESSION['admin'])) {
 }
 ?>
 
-<div class="h-full w-full flex flex-col">
-    <!-- Stats Section -->
-    <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-        <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-full">
-            <h3 class="text-lg font-semibold text-gray-800">Total Users</h3>
-            <p class="text-3xl font-bold text-[#660000]">1,245</p>
-        </div>
+<div class="h-full w-full flex flex-col space-y-6 p-6 bg-gray-100">
 
-        <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-full">
-            <h3 class="text-lg font-semibold text-gray-800">Total Posts</h3>
-            <p class="text-3xl font-bold text-[#660000]">320</p>
+    <!-- 🔹 Top Stats Section -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="p-6 bg-white shadow-md rounded-lg text-center border-l-4 border-blue-600">
+            <h3 class="text-lg font-semibold text-gray-700">Total Admins</h3>
+            <p class="text-3xl font-bold text-blue-600" id="totalAdmins">0</p>
         </div>
-
-        <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-full">
-            <h3 class="text-lg font-semibold text-gray-800">Total Donations</h3>
-            <p class="text-3xl font-bold text-[#660000]">$4,500</p>
+        <div class="p-6 bg-white shadow-md rounded-lg text-center border-l-4 border-green-600">
+            <h3 class="text-lg font-semibold text-gray-700">Total Ministries</h3>
+            <p class="text-3xl font-bold text-green-600" id="totalMinistries">0</p>
+        </div>
+        <div class="p-6 bg-white shadow-md rounded-lg text-center border-l-4 border-yellow-500">
+            <h3 class="text-lg font-semibold text-gray-700">Total Members</h3>
+            <p class="text-3xl font-bold text-yellow-500" id="totalMembers">0</p>
+        </div>
+        <div class="p-6 bg-white shadow-md rounded-lg text-center border-l-4 border-red-500">
+            <h3 class="text-lg font-semibold text-gray-700">Total Prayer Requests</h3>
+            <p class="text-3xl font-bold text-red-500" id="totalPrayerRequests">0</p>
         </div>
     </div>
 
-    <!-- Analytics Section -->
-    <div class="w-full h-full mt-8">
-        <?php include_once "analytics.php"; ?>
+    <!-- 🔹 Church Engagement & Communication -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Church Engagement</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-4 bg-purple-100 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-purple-600">Unread Messages</h3>
+                <p class="text-2xl font-bold text-purple-600" id="unreadMessages">0</p>
+            </div>
+            <div class="p-4 bg-indigo-100 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-indigo-600">Upcoming Events</h3>
+                <p class="text-2xl font-bold text-indigo-600" id="upcomingEvents">0</p>
+            </div>
+            <div class="p-4 bg-orange-100 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-orange-600">Pending Announcements</h3>
+                <p class="text-2xl font-bold text-orange-600" id="pendingAnnouncements">0</p>
+            </div>
+        </div>
     </div>
+
+    <!-- 🔹 Ministry Applications Trends -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Ministry Trends</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-4 bg-gray-100 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-gray-700">Total Applications</h3>
+                <p class="text-2xl font-bold text-gray-700" id="totalMinistryApplications">0</p>
+            </div>
+            <div class="p-4 bg-pink-100 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-pink-600">New Applications This Month</h3>
+                <p class="text-2xl font-bold text-pink-600" id="newMinistryApplications">0</p>
+            </div>
+            <div class="p-4 bg-white border border-gray-300 rounded-lg">
+                <h3 class="text-lg font-semibold text-gray-700">Top Requested Ministries</h3>
+                <ul id="topMinistries" class="list-disc list-inside text-gray-600"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 Media & Content -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Media & Content</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-4 bg-teal-100 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-teal-600">Total Sermons</h3>
+                <p class="text-2xl font-bold text-teal-600" id="totalSermons">0</p>
+            </div>
+            <div class="p-4 bg-cyan-100 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-cyan-600">Total Audio Sermons</h3>
+                <p class="text-2xl font-bold text-cyan-600" id="totalAudioSermons">0</p>
+            </div>
+            <div class="p-4 bg-rose-100 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-rose-600">Total Set of Pictures</h3>
+                <p class="text-2xl font-bold text-rose-600" id="totalImageSets">0</p>
+            </div>
+            <div class="p-4 bg-white border border-gray-300 rounded-lg col-span-1 md:col-span-3">
+                <h3 class="text-lg font-semibold text-gray-700">Recent Sermon</h3>
+                <p>Title: <span id="recentSermonTitle" class="font-bold"></span></p>
+                <p>Speaker: <span id="recentSermonSpeaker" class="font-bold"></span></p>
+                <p>Date: <span id="recentSermonDate" class="font-bold"></span></p>
+            </div>
+        </div>
+    </div>
+
 </div>
+<script>
+
+</script>
