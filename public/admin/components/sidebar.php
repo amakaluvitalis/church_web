@@ -1,9 +1,9 @@
 <aside class="w-64 bg-[#660000] text-white h-screen flex flex-col py-6 px-4 shadow-lg">
     <!-- Church Logo & Name -->
     <div class="flex items-center space-x-3 mb-6">
-        <a href="/?page=admin-home" class="flex items-center">
-            <img src="/public/images/ack_logo.png" alt="Church Logo" class="h-16 w-auto object-contain">
-        </a>
+    <a href="#" id="dashboard-logo" class="flex items-center">
+        <img src="/public/images/ack_logo.png" alt="Church Logo" class="h-16 w-auto object-contain">
+    </a>
         <span class="text-xl font-semibold">All Saints ACK Maseno Parish</span>
     </div>
 

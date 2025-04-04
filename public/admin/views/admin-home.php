@@ -40,29 +40,35 @@ header("Expires: Wed, 11 Jan 1984 05:00:00 GMT");
 
 
 <script>
-document.addEventListener("DOMContentLoaded", async function () {
+async function fetchDashboardData() {
     try {
-        const response = await fetch("public/admin/models/dashboard_data.php", {
+        const response = await fetch("/public/admin/models/dashboard_data.php", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             }
         });
+
         const data = await response.json();
+
+        if (!data) {
+            console.error("No data received.");
+            return;
+        }
 
         document.getElementById("totalAdmins").textContent = data.totalAdmins;
         document.getElementById("totalMinistries").textContent = data.totalMinistries;
         document.getElementById("totalMembers").textContent = data.totalMembers;
         document.getElementById("totalPrayerRequests").textContent = data.totalPrayerRequests;
-        
+
         document.getElementById("unreadMessages").textContent = data.unreadMessages;
         document.getElementById("upcomingEvents").textContent = data.upcomingEvents;
         document.getElementById("pendingAnnouncements").textContent = data.pendingAnnouncements;
-        
+
         document.getElementById("totalMinistryApplications").textContent = data.totalMinistryApplications;
         document.getElementById("newMinistryApplications").textContent = data.newMinistryApplications;
-        
+
         document.getElementById("totalSermons").textContent = data.totalSermons;
         document.getElementById("totalAudioSermons").textContent = data.totalAudioSermons;
         document.getElementById("totalImageSets").textContent = data.totalImageSets;
@@ -86,36 +92,52 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (error) {
         console.error("Error fetching dashboard data:", error);
     }
-});
+}
 
 $(document).ready(function() {
-    // Always reset to dashboard when a new session starts
-    let lastPage = "dashboard";  
-    localStorage.setItem("admin_last_page", lastPage);
+    let lastPage = localStorage.getItem("admin_last_page") || "dashboard";
 
-    // Show a loading message before content loads
     $("#admin-content").html('<div class="text-gray-500 text-center mt-4">Loading...</div>');
 
-    // Correct the path issue
-    $("#admin-content").load("/public/admin/components/" + lastPage + ".php");
+    $("#admin-content").load("/public/admin/components/" + lastPage + ".php", function() {
+        if (lastPage === "dashboard") {
+            fetchDashboardData();
+        }
+    });
 
     $(".menu-item").click(function(event) {
-        event.preventDefault(); // Prevent page refresh
+        event.preventDefault();
 
-        let page = $(this).data("page"); // Get the page from the `data-page` attribute
-
-        // Save last selected page in localStorage
+        let page = $(this).data("page"); 
         localStorage.setItem("admin_last_page", page);
 
-        // Load the content smoothly
         $("#admin-content").fadeOut(200, function() {
             $("#admin-content").load("/public/admin/components/" + page + ".php", function() {
                 $("#admin-content").fadeIn(200);
+
+                if (page === "dashboard") {
+                    fetchDashboardData();
+                }
+            });
+        });
+    });
+
+    // **Handle clicking the logo to load dashboard without reload**
+    $("#dashboard-logo").click(function(event) {
+        event.preventDefault(); // Prevent full page reload
+
+        let page = "dashboard";
+        localStorage.setItem("admin_last_page", page);
+
+        $("#admin-content").fadeOut(200, function() {
+            $("#admin-content").load("/public/admin/components/" + page + ".php", function() {
+                $("#admin-content").fadeIn(200);
+                fetchDashboardData();
             });
         });
     });
 });
-
 </script>
+
 </body>
 </html>

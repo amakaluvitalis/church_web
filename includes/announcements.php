@@ -4,11 +4,6 @@ $announcements = getAnnouncements();
 $hasAnnouncements = !empty($announcements);
 ?>
 
-<!-- Debugging Log -->
-<?php if ($hasAnnouncements): ?>
-    <p style="color: red; font-weight: bold;">🔔 Announcements Loaded</p>
-<?php endif; ?>
-
 <!-- Floating Announcements Button -->
 <div id="floatingButton" 
     class="fixed right-4 top-1/2 transform -translate-y-1/2 bg-transparent w-16 h-16 flex items-center justify-center shadow-none transition-all duration-300 <?= $hasAnnouncements ? '' : 'hidden' ?> z-50">

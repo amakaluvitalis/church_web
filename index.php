@@ -19,7 +19,7 @@
 // Detect if this is an admin page
 $isAdminPage = ['admin-login', 'admin-home'];
 
-if (!$isAdminPage) {
+if (!in_array($page, $isAdminPage)) {
     include_once 'includes/header.php';
 }
 ?>
@@ -27,18 +27,12 @@ if (!$isAdminPage) {
 <!-- Main Content Section -->
 <div class="content" id="content">
     <?php 
-    /**
-     * Dynamically loads the requested page.
-     * 
-     * - `router.php` will handle which page to include based on the URL.
-     * - Ensures only the **necessary** page content is displayed.
-     */
     include_once 'routes/router.php';
     ?>
 </div>
 
 <?php 
-if (!$isAdminPage) {
+if (!in_array($page, $isAdminPage)) {
     include_once "includes/announcements.php"; 
     include_once 'includes/footer.php';
 }
